@@ -1,0 +1,37 @@
+{
+  "name": "fly_network",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "run": "bash test_scripts/runApp.sh",
+    "run_test": "bash test_scripts/full_test_API.sh",
+    "test_enroll": "bash test_scripts/enroll_API.sh",
+    "test_channel": "bash test_scripts/channel_API.sh",
+    "test_install": "bash test_scripts/install_API.sh",
+    "test_instantiate": "bash test_scripts/instantiate_API.sh",
+    "test_query": "bash test_scripts/query_API.sh",
+    "test_addseats": "bash test_scripts/add_seats_API.sh",
+    "clean": "bash test_scripts/cleanNetwork.sh"
+  },
+  "engines": {
+    "node": ">=8.9.4 <9.0",
+    "npm": ">=5.6.0 <6.0"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "express-bearer-token": "^2.1.0",
+    "express-jwt": "^5.1.0",
+    "express-session": "^1.15.2",
+    "fabric-ca-client": "~1.1.0",
+    "fabric-client": "~1.1.0",
+    "fs-extra": "^2.0.0",
+    "jsonwebtoken": "^7.3.0",
+    "log4js": "^0.6.38",
+    "npm-install-missing": "^0.1.4"
+  }
+}

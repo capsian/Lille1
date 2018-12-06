@@ -1,0 +1,134 @@
+main() enter ... | &local_stack = 0x564f85161040 (static) | &local = 0x7ffdce311c68
+&main = 0x564f84f607da | &rec = 0x564f84f60770 | &dump_stack = 0x564f84f606f0
+rec() enter ...
+ d = 0 | &d = 0x7ffdce311c38 | &rec_local = 0x7ffdce311c48
+rec() enter ...
+ d = 1 | &d = 0x7ffdce311c08 | &rec_local = 0x7ffdce311c18
+rec() enter ...
+ d = 2 | &d = 0x7ffdce311bd8 | &rec_local = 0x7ffdce311be8
+rec() enter ...
+ d = 3 | &d = 0x7ffdce311ba8 | &rec_local = 0x7ffdce311bb8
+rec() enter ...
+ d = 4 | &d = 0x7ffdce311b78 | &rec_local = 0x7ffdce311b88
+rec() enter ...
+ d = 5 | &d = 0x7ffdce311b48 | &rec_local = 0x7ffdce311b58
+rec() enter ...
+ d = 6 | &d = 0x7ffdce311b18 | &rec_local = 0x7ffdce311b28
+rec() enter ...
+ d = 7 | &d = 0x7ffdce311ae8 | &rec_local = 0x7ffdce311af8
+rec() enter ...
+ d = 8 | &d = 0x7ffdce311ab8 | &rec_local = 0x7ffdce311ac8
+rec() enter ...
+ d = 9 | &d = 0x7ffdce311a88 | &rec_local = 0x7ffdce311a98
+rec() enter ...
+ d = 10 | &d = 0x7ffdce311a58 | &rec_local = 0x7ffdce311a68
+rec() enter ...
+ d = 11 | &d = 0x7ffdce311a28 | &rec_local = 0x7ffdce311a38
+dump_stack() enter ...
+ &anchor = 0x7ffdce311a08 | &anchor_ptr = 0x7ffdce311a00
+
+ *0x7ffdce311a08 = facade			// anchor
+
+ *0x7ffdce311a10 = 7ffdce311a40
+ *0x7ffdce311a18 = 564f84f607b9
+ *0x7ffdce311a20 = 7ffdce311b30
+ *0x7ffdce311a28 = b				// d
+ *0x7ffdce311a30 = 7ffdce311ae8
+ *0x7ffdce311a38 = cafebabe			//	rec_local
+ *0x7ffdce311a40 = 7ffdce311a70
+
+ *0x7ffdce311a48 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311a50 = 7ffdce311b60
+ *0x7ffdce311a58 = a				// d
+ *0x7ffdce311a60 = 7ffdce311b18
+ *0x7ffdce311a68 = cafebabe			//	rec_local
+ *0x7ffdce311a70 = 7ffdce311aa0
+
+ *0x7ffdce311a78 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311a80 = 7ffdce311b90
+ *0x7ffdce311a88 = 9				// d
+ *0x7ffdce311a90 = 7ffdce311b48
+ *0x7ffdce311a98 = cafebabe			//	rec_local
+ *0x7ffdce311aa0 = 7ffdce311ad0
+
+ *0x7ffdce311aa8 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311ab0 = 7ffdce311bc0
+ *0x7ffdce311ab8 = 8				// d
+ *0x7ffdce311ac0 = 7ffdce311b78
+ *0x7ffdce311ac8 = cafebabe			//	rec_local
+ *0x7ffdce311ad0 = 7ffdce311b00
+
+ *0x7ffdce311ad8 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311ae0 = 7ffdce311bf0
+ *0x7ffdce311ae8 = 7				// d
+ *0x7ffdce311af0 = 7ffdce311ba8
+ *0x7ffdce311af8 = cafebabe			//	rec_local
+ *0x7ffdce311b00 = 7ffdce311b30
+
+ *0x7ffdce311b08 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311b10 = 7ffdce311c20
+ *0x7ffdce311b18 = 6				// d
+ *0x7ffdce311b20 = 7ffdce311bd8
+ *0x7ffdce311b28 = cafebabe			//	rec_local
+ *0x7ffdce311b30 = 7ffdce311b60
+
+ *0x7ffdce311b38 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311b40 = 7ffdce311c50
+ *0x7ffdce311b48 = 5				// d
+ *0x7ffdce311b50 = 7ffdce311c08
+ *0x7ffdce311b58 = cafebabe			//	rec_local
+ *0x7ffdce311b60 = 7ffdce311b90
+
+ *0x7ffdce311b68 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311b70 = 7ffdce311c70
+ *0x7ffdce311b78 = 4				// d
+ *0x7ffdce311b80 = 7ffdce311c38
+ *0x7ffdce311b88 = cafebabe			//	rec_local
+ *0x7ffdce311b90 = 7ffdce311bc0
+
+ *0x7ffdce311b98 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311ba0 = 0
+ *0x7ffdce311ba8 = 3				// d
+ *0x7ffdce311bb0 = 7ffdce311c68
+ *0x7ffdce311bb8 = cafebabe			//	rec_local
+ *0x7ffdce311bc0 = 7ffdce311bf0
+
+ *0x7ffdce311bc8 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311bd0 = 0
+ *0x7ffdce311bd8 = 2				// d
+ *0x7ffdce311be0 = 0
+ *0x7ffdce311be8 = cafebabe			//	rec_local
+ *0x7ffdce311bf0 = 7ffdce311c20
+
+ *0x7ffdce311bf8 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311c00 = 0
+ *0x7ffdce311c08 = 1				// d
+ *0x7ffdce311c10 = 7ffdce311c68
+ *0x7ffdce311c18 = cafebabe			//	rec_local
+ *0x7ffdce311c20 = 7ffdce311c50
+
+ *0x7ffdce311c28 = 564f84f607cb		// &retour rec() ?
+ *0x7ffdce311c30 = 564f84f606f0
+ *0x7ffdce311c38 = 0				// d
+ *0x7ffdce311c40 = 0
+ *0x7ffdce311c48 = cafebabe			//	rec_local
+ *0x7ffdce311c50 = 7ffdce311c70
+
+ *0x7ffdce311c58 = 564f84f60834		// ??
+ *0x7ffdce311c60 = 7ffdce311d50		// ??
+ 
+ *0x7ffdce311c68 = deadbeef			// local
+dump_stack() exit ...
+rec() exit ...
+rec() exit ...
+rec() exit ...
+rec() exit ...
+rec() exit ...
+rec() exit ...
+rec() exit ...
+rec() exit ...
+rec() exit ...
+rec() exit ...
+rec() exit ...
+rec() exit ...
+main() exit ...

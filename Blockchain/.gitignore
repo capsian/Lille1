@@ -1,0 +1,5 @@
+.idea
+
+fly_network/node_modules
+fly_network/package-lock.json
+fly_network/fabric-client-kv-*

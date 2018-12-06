@@ -1,0 +1,7 @@
+.idea/
+cmake-build-debug/
+2_systeme_de_fichiers/build/*
+2_systeme_de_fichiers/tests/*.bin
+
+3_memoire_virtuelle/build/*.o
+3_memoire_virtuelle/build/bin/*
