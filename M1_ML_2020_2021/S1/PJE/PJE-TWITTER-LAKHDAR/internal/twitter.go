@@ -19,8 +19,8 @@ type TwitterClient struct {
 
 func InitClient() TwitterClient {
 	var c TwitterClient
-	config := oauth1.NewConfig("z6HLTHCzCPw0U1RmftFuvTAIy", "LMzefF7UachGAd9ZpGBinA6bdIpBufaREY1SY7bgNycNlI1O2o")
-	token := oauth1.NewToken("2170823953-YjTkqlGbFKNtplZutivKjGVjTx3UcWGRb5jGRec", "OF50AgKkmgl5mqow4rW9q6a1JcvzSkR0u3GruIeUe15pX")
+	config := oauth1.NewConfig("", "")
+	token := oauth1.NewToken("", "")
 	// http.Client will automatically authorize Requests
 	httpClient := config.Client(oauth1.NoContext, token)
 	// Twitter client
