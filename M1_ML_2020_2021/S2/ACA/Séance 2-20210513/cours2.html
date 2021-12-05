@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Algorithme min-cut, espérance</title>
+<!-- 2021-03-23 mar. 09:30 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+.code-highlighted { background-color: #ffff00; }
+
+/* .verbatim { color: #3e9409;
+            background-color: #f5fbf4; }*/
+.verbatim {
+    color: #337ab7;
+    background-color: #d9edf7; }
+
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. L'algorithme de min-cut de Karger</a>
+<ul class="nav">
+<li><a href="#sec-1-1">1.1. Théorème : probabilité de trouver une coupe minimale</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Variables aléatoires et espérance</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. Variables aléatoires</a></li>
+<li><a href="#sec-2-2">2.2. Linéarité de l'espérance</a></li>
+<li><a href="#sec-2-3">2.3. Espérance et multiplication par une constante</a></li>
+<li><a href="#sec-2-4">2.4. Inégalité de Jensen</a></li>
+<li><a href="#sec-2-5">2.5. Exercices</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">Algorithme min-cut, espérance</h1>
+<p>
+Ce cours a pour objet d'utiliser les notions de probabilités vues la semaine
+dernière pour comprendre un algorithme de calcul de coupure minimale.
+</p>
+
+<p>
+Nous poursuivrons ensuite par des notions de probabilités : variables
+aléatoires, espérance ; et leurs propriétés. Ces notions nous permettrons par la
+suite d'étudier d'autres algorithmes probabilistes.
+</p>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> L'algorithme de min-cut de Karger</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Pour un graphe, une <i>coupe</i> (<i>cut</i> en anglais) est un ensemble d'arêtes qui,
+lorsqu'on les enlève, coupent le graphe en deux composantes connexes ou plus.
+Le problème de la <i>coupe minimum</i> (<i>min-cut problem</i>) consiste à trouver le
+plus petit nombre d'arêtes à enlever pour réaliser une <i>coupe</i>. Ce problème a
+été fortement étudié pour ces applications (c.f. <a href="https://fr.wikipedia.org/wiki/Coupe_minimum#Applications">wikipedia</a> pour quelques-unes
+d'entre elles).
+</p>
+
+<p>
+L'idée de l'algorithme de Karger travaille sur des <i>multi-graphes</i> non
+orientés. Cela signifie qu'il peut y avoir plusieurs arêtes entre chaque
+noeud. Cet algorithme utilise une opération qui consiste à <i>contracter</i> le
+graphe le long d'une arête. Cela revient à :
+</p>
+<ol class="org-ol">
+<li>fusionner les deux noeuds adjacents à cette arête en un seul noeud
+</li>
+<li>rendre incidentes au noeud fusionné toutes les arêtes incidentes à l'un ou
+l'autre des noeuds (à l'exception des arềtes entre les deux noeuds).
+</li>
+</ol>
+
+<p>
+<b><b>Question</b></b> Est-ce que toute coupe du graphe obtenu après contraction d'une
+arête d'un graphe est aussi une coupe du graphe d'origine ? Pourquoi ?
+</p>
+
+<p>
+Cette opération de contraction s'effectue en \(\mathcal{O}(m)\) (\(m\) étant le
+nombre d'arêtes).
+</p>
+
+
+<p>
+Le choix de l'arête contractée est fait aléatoirement entre toutes les arêtes
+du graphe. Ce processus est répété jusqu'à ce qu'il ne reste plus que deux
+arêtes dans le graphe. On renvoie le nombre d'arêtes entre les deux noeuds
+restant comme étant la coupe minimum. En conservant la trace des ensembles de
+noeuds fusionnés entre eux, on obtient également une partition du graphe.
+</p>
+
+<p>
+En utilisant la librairie <code class="verbatim">python</code> <code class="verbatim">networkx</code> on implémente très facilement
+cet algorithme :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">import</span> networkx <span style="color: #0000FF;">as</span> nx
+<span style="color: #0000FF;">import</span> random
+
+
+<span style="color: #0000FF;">def</span> <span style="color: #006699;">contract_edge</span><span style="color: #707183;">(</span>G, u, v<span style="color: #707183;">)</span>:
+    <span style="color: #BA36A5;">new_edges</span> = <span style="color: #707183;">(</span><span style="color: #7388D6;">(</span>u, w<span style="color: #7388D6;">)</span> <span style="color: #0000FF;">for</span> _, w <span style="color: #0000FF;">in</span> G.edges<span style="color: #7388D6;">(</span>v<span style="color: #7388D6;">)</span>
+                 <span style="color: #0000FF;">if</span> w != u<span style="color: #707183;">)</span>
+    G.remove_node<span style="color: #707183;">(</span>v<span style="color: #707183;">)</span>
+    G.add_edges_from<span style="color: #707183;">(</span>new_edges<span style="color: #707183;">)</span>
+
+
+<span style="color: #0000FF;">def</span> <span style="color: #006699;">karger_cut_aux</span><span style="color: #707183;">(</span>G, labels<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">while</span> G.number_of_nodes<span style="color: #707183;">()</span> &gt; <span style="color: #D0372D;">2</span>:
+        <span style="color: #BA36A5;">u</span>, <span style="color: #BA36A5;">v</span> = random.choice<span style="color: #707183;">(</span>G.edges<span style="color: #7388D6;">()</span><span style="color: #707183;">)</span>
+        <span style="color: #BA36A5;">labels</span><span style="color: #707183;">[</span>u<span style="color: #707183;">]</span> = labels<span style="color: #707183;">[</span>u<span style="color: #707183;">]</span> | labels<span style="color: #707183;">[</span>v<span style="color: #707183;">]</span>
+        <span style="color: #0000FF;">del</span> labels<span style="color: #707183;">[</span>v<span style="color: #707183;">]</span>
+        contract_edge<span style="color: #707183;">(</span>G, u, v<span style="color: #707183;">)</span>
+    <span style="color: #0000FF;">return</span> G.number_of_edges<span style="color: #707183;">()</span>//<span style="color: #D0372D;">2</span>, labels
+
+
+<span style="color: #0000FF;">def</span> <span style="color: #006699;">karger_cut</span><span style="color: #707183;">(</span>G<span style="color: #707183;">)</span>:
+    <span style="color: #BA36A5;">H</span> = G.copy<span style="color: #707183;">()</span>
+    <span style="color: #BA36A5;">labels</span> = <span style="color: #707183;">{</span>x: <span style="color: #006FE0;">set</span><span style="color: #7388D6;">(</span>x<span style="color: #7388D6;">)</span> <span style="color: #0000FF;">for</span> x <span style="color: #0000FF;">in</span> H.nodes<span style="color: #7388D6;">()</span><span style="color: #707183;">}</span>
+    <span style="color: #0000FF;">return</span> karger_cut_aux<span style="color: #707183;">(</span>H, labels<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+<b><b>Question</b></b> Comment se compare la taille de la coupe obtenue par l'algorithme
+et celle de la coupe minimale ?
+</p>
+</div>
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Théorème : probabilité de trouver une coupe minimale</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+La probabilité de produire la coupe minimale est supérieure à
+\(\frac{2}{n(n-1)}\) (si n est le nombre de noeud du graphe).
+</p>
+</div>
+<div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Démonstration</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+Prenons un (multi)-graphe \(G=(V,E)\). On suppose que la taille d'une coupe
+minimale est \(k\) et nous calculons la probabilité de calculer une coupe
+minimale particulière notée \(C\).
+</p>
+
+<p>
+Comme \(C\) est une coupe, il partitionne le graphe en deux ensemble de
+sommets \(S\) et \(V-S\) de sorte que toute arête entre un noeud de \(S\) et un
+noeud de \(V-S\) appartient à \(C\). Nous allons calculer la probabilité du fait
+de ne tirer que des arêtes reliant des noeuds de \(S\) ou des noeuds de \(V-S\)
+pendant l'algorithme.
+</p>
+
+<p>
+L'idée de l'algorithme est que si \(C\) est petit, alors il y a de forte
+chance de choisir à chaque étape une arête hors de \(C\).
+</p>
+
+<p>
+On note \(E_i\) l'évènement de ne pas choisir une arête dans \(C\) à la ième
+étape de l'algorithme. Ainsi l'évènement \(F_i\) de ne pas avoir contracté
+d'arête de \(C\) au cours des i première itération de l'algorithme est
+\(\bigcap_{j=1}^i E_i\). Nous cherchons à calculer \(Pr(F_{n-2})\).
+</p>
+
+<p>
+On commence par calculer \(Pr(E_1) = Pr(F_1)\). Comme la coupe minimum
+contient \(k\) éléments, aucun noeud ne peut avoir un degré inférieur à \(k\).
+Ainsi, nous somme amenés à choisir la première arête parmi au moins
+\(\frac{nk}{2}\) arête. Comme nous faisons un choix uniforme parmi toutes ces
+arêtes, chaque arête a pour probabilité \(\frac{2}{nk}\) d'être choisie.
+Ainsi, nous avons \(k\frac{2}{nk}\) de choisir l'une des \(k\) arêtes de \(C\).
+Et donc, nous obtenons :
+</p>
+
+<p>
+\[Pr(E_1) = Pr(F_1) \geq 1 - \frac{2k}{nk} = 1 - \frac{2}{n}\]
+</p>
+
+<p>
+Lorsque l'évènement \(F_1\) s'est réalisé, nous obtenons un graphe de \(n-1\)
+noeuds ayant une coupe minimale de taille \(k\). En appliquant le même
+raisonnement que précédemment :
+\[Pr(E_2 \mid F_1) = 1 -\frac{2}{n-1}\]
+Par une simple récurrence, nous obtenons que pour tout \(i\) compris entre \(2\)
+et \(n-2\) :
+\[Pr(E_{i} \mid F_{i-1}) = \frac{2}{n-i+1}\]
+</p>
+
+<p>
+Pour obtenir la valeur de \(Pr(F_{n-2})\) :
+\[\begin{array}{rcl}
+    Pr(F_{n-2}) &=& Pr(E_{n-2} \cap F_{n-3})\\
+    &=& Pr(E_{n-2} \mid F_{n-3}) Pr(F_{n-3})\\
+    &=& Pr(E_{n-2} \mid F_{n-3}) Pr(E_{n-3} \mid F_{n-4}) \cdots Pr(E_2\mid
+    F_1)Pr(F_1)\\
+    &=& \prod_{i=1}^{n-2}\left(1-\frac{2}{n-i+1}\right)\\
+    &=& \prod_{i=1}^{n-2}\left(\frac{n-i-1}{n-i+1}\right)\\
+    &=& \frac{n-2}{n} \frac{n-3}{n-1} \frac{n-4}{n-2}\cdots
+    \frac{4}{6}\frac{3}{5}\frac{2}{4}\frac{1}{3}\\
+    &=&\frac{2}{n(n-1)}
+    \end{array}\]
+</p>
+
+<p>
+Ainsi en répétant \(n(n-1)\) fois l'algorithme nous obtenons la probabilité :
+\[\left(1-\frac{2}{n(n-1)}\right)^{\frac{n(n-1)}{2}} \leq e^{-1} =
+    \frac{1}{e}\]
+</p>
+
+<p>
+car \(1-x \leq e^{-x}\). 
+</p>
+
+<p>
+En résumé, nous obtenons un algorithme en
+\(\Theta(\frac{n(n-1)m(n-2)}{2})\) qui nous donne une probabilité de
+\(\frac{1}{e}\) de trouver une coupe minimale. Cette probabilité est
+indépendante du graphe et peut être encore améliorée en itérant encore le
+processus.
+</p>
+
+<p>
+<b><b>NB :</b></b> l'algorithme de Stoer-Wagner résoud se problème exactement en
+\(\mathcal{O}(n m+ n^2 log(n))\) (\(m\) est le nombre d'arêtes). Une
+amélioration de l'algorithme de Karger (par Karger et Stein) permet de
+trouver une coupe minimale en \(\mathcal{O}(n^2(\log^3(n))\) avec forte probabilité.
+</p>
+
+
+<p>
+<b><b>Question</b></b> donner une graphe pour lequel la probabilité de trouver la
+coupe minimale est exponentiellement faible (dans le nombre de noeud) si au
+lieu de choisir les arêtes au hasard, on choisissait des paires de noeuds.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Exercice</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+Écrire en python un algorithme <code>karger_cut_seuil(G,confiance)</code> qui renvoie
+une coupe de <code>G</code> avec une probabilité supérieure à <code>confiance</code>. 
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Variables aléatoires et espérance</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Variables aléatoires</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Une variables aléatoire X est une fonction d'un espace probabiliste \(\Omega\)
+dans \(\mathbb{R}\). Nous n'allons travailler qu'avec des variables aléatoires
+discrètes qui prennent qu'un nombre dénombrable de valeurs.
+</p>
+
+
+<p>
+On représente l'évènement \(\{s \in \Omega\mid X(x) = a\}\) simplement par
+\(X=a\). Ainsi \(Pr(X = a) = \sum_{s\in \Omega : X(x) = a} Pr(s)\).
+</p>
+
+
+<p>
+Deux variables aléatoires \(X\) et $Y sont dites <i>indépendantes</i> ssi \[Pr(X=x
+   \cap Y=y) = Pr(X=x)Pr(Y=y)\] pour toute valeur \(x\) et \(y\). De la même manière
+les variables aléatoires \(X_1\), &#x2026;, \(X_k\) sont deux à deux indépendantes ssi
+pour tout sous-ensemble \(I\subseteq [1,k]\), et toute valeur \(x_i\) pour \(i\in
+   I\),
+\[Pr\left(\bigcap_{i\in I} X_i=x_i\right) = \prod_{i\in I} Pr(X_i=x_i)\]
+</p>
+
+
+<p>
+L'<i>espérance</i> d'une variable aléatoire X est définie par:
+\[E(X) = \sum_{i \in \mathbb{R}} i\, Pr(X=i)\]
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Linéarité de l'espérance</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Pour toutes variables aléatoires discrètes \(X_1\), &#x2026;, \(X_n\) ayant une
+espérance finie, nous avons que :
+</p>
+
+<p>
+\[E(\sum_{i=1}^n X_i) = \sum_{i=1}^n E(X_i)\]
+</p>
+</div>
+<div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> Preuve</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+La propriété se déduit simplement par induction du cas n'impliquant que deux
+variables \(X\) et \(Y\).
+</p>
+
+<p>
+\[\begin{array}{rcl}
+    E(X+Y) & = & \sum_{i\in \mathbb{R}} \sum_{j\in \mathbb{R}} (i+j) Pr(X=i \cap
+    Y=j)\\
+    &=& \sum_{i\in \mathbb{R}} \sum_{j\in \mathbb{R}} i\, Pr(X=i \cap
+    Y=j) + \sum_{i\in \mathbb{R}} \sum_{j\in \mathbb{R}} j\, Pr(X=i \cap
+    Y=j)\\
+    &=& \sum_{i\in \mathbb{R}} i \sum_{j\in \mathbb{R}}  Pr(X=i \cap
+    Y=j) + \sum_{j\in \mathbb{R}} j \sum_{i\in \mathbb{R}}  Pr(X=i \cap
+    Y=j)\\
+     &=& \sum_{i\in \mathbb{R}} i\, Pr(X=i) + \sum_{j\in \mathbb{R}} j\, Pr(Y=j)\\
+     &=& E(X) + E(Y)
+     \end{array}\]
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Important</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+Il est important de noter que la linéarité de l'espérance tient quelles que
+soient les variables aléatoires. En particulier, elles n'ont pas besoin
+d'être indépendantes.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Espérance et multiplication par une constante</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Pour toute constante \(c\) et toute variable aléatoire discrète \(X\),
+\[E(cX) = cE(X)\]
+</p>
+</div>
+<div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> Preuve</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Lorsque \(c=0\) le résultat est évident. Nous supposons que \(c\neq 0\).
+</p>
+
+<p>
+\[\begin{array}{rcl}
+    E(cX) & =& \sum_{j\in\mathbb{R}}  j\, Pr(cX=j)\\
+    &=& c \sum_{j\in\mathbb{R}}  \frac{j}{c} Pr(X=\frac{j}{c})\\
+    &=& c \sum_{k\in\mathbb{R}}  k Pr(X=k)\\
+    &=& c E(X)
+    \end{array}\]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Inégalité de Jensen</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+On dit qu'une fonction \(f :\mathbb{R} \mapsto\mathbb{R}\)  est convexe lorsque
+pour tout \(x_1\) et \(x_2\) et \(0\leq \lambda\leq 1\),
+\[f(\lambda x_1 + (1-\lambda) x_2) \leq \lambda f(x_1) + (1-\lambda) f(x_2)\]
+</p>
+
+<p>
+Cela est équivalent pour les fonctions dérivables deux fois à ce que la
+dérivé seconde soit positive.
+</p>
+</div>
+<div id="outline-container-sec-2-4-1" class="outline-4">
+<h4 id="sec-2-4-1"><span class="section-number-4">2.4.1</span> Inégalité de Jensen</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+Si \(f\) est une fonction convexe, alors
+\[E(f(X)) \geq f(E(X))\]
+pour toute variable aléatoire \(X\).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Exercices</h3>
+<div class="outline-text-3" id="text-2-5">
+</div><div id="outline-container-sec-2-5-1" class="outline-4">
+<h4 id="sec-2-5-1"><span class="section-number-4">2.5.1</span> Dé à k faces</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<p>
+On dispose d'un dé à \(k\) faces numérotées de 1 à \(k\) qui ont chacune la même
+probabilité d'être tirée. \(X\) est la variable aléatoire correspondant au
+nombre tiré, calculer E(X).
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-5-2" class="outline-4">
+<h4 id="sec-2-5-2"><span class="section-number-4">2.5.2</span> Puissance n</h4>
+<div class="outline-text-4" id="text-2-5-2">
+<p>
+Montrer que pour tout \(n\) paire tel que \(n\geq 1\), \(E(X^n) \geq E(X)^n\).
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-5-3" class="outline-4">
+<h4 id="sec-2-5-3"><span class="section-number-4">2.5.3</span> Une histoire de famille</h4>
+<div class="outline-text-4" id="text-2-5-3">
+<p>
+Alice et Bob décide d'avoir des enfants jusqu'à ce que :
+</p>
+<ul class="org-ul">
+<li>ils aient leur première fille, ou 
+</li>
+<li>lorsqu'ils ont atteint le nombre de \(k\) enfants.
+</li>
+</ul>
+
+<p>
+Nous supposons qu'il n'y a pas de naissance multiple et qu'ils ont une
+chance sur deux d'avoir une fille à chaque naissance.
+</p>
+
+<ol class="org-ol">
+<li>Quelle est l'espérance du nombre de filles qu'ils peuvent avoir ?
+</li>
+<li>Quelle est l'espérance du nombre de garçons qu'ils peuvent avoir ?
+</li>
+<li>Si ils décident finalement d'avoir des enfants jusqu'à avoir une fille.
+Quelle est l'espérance du nombre de garçons qu'ils auront.
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-2-5-4" class="outline-4">
+<h4 id="sec-2-5-4"><span class="section-number-4">2.5.4</span> Jensen discret</h4>
+<div class="outline-text-4" id="text-2-5-4">
+<p>
+Montrer que si \(f:\mathbb{R}\mapsto \mathbb{R}\) est convexe alors pour tout
+\(x_1\), &#x2026;, \(x_k\) et \(\lambda_1\), &#x2026;, \(\lambda_k\) tels que
+\(\sum_{i=1}^k\lambda_i = 1\),
+\[f \left( \sum_{i=1}^n\lambda_i x_i \right)\leq \sum_{i=1}^n\lambda_i \,f(x_i)\]
+</p>
+
+<p>
+Montrer alors (sans utiliser l'inégalité de Jensen) que
+\[E(f(X)) \geq f(E(X))\]
+pour toute variable aléatoire prenant seulement un nombre fini de valeurs.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div></div></div>
+</body>
+</html>

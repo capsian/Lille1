@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_2BV1cKp1Eee4M8iNRWva0w" name="Moderateur">
+  <packagedElement xmi:type="uml:Actor" xmi:id="_IoldYKp2Eee4M8iNRWva0w" name="Moderateur"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_rhlckKp2Eee4M8iNRWva0w" name="Accepter une annonce">
+    <include xmi:type="uml:Include" xmi:id="_-KSnoKp3Eee4M8iNRWva0w" addition="_bue6wKp3Eee4M8iNRWva0w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_sA2LcKp2Eee4M8iNRWva0w" name="consulter les demandes d'annonce">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_xrN30Kp3Eee4M8iNRWva0w" name="ExtensionPoint1"/>
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_55KJoKp3Eee4M8iNRWva0w" name="ExtensionPoint2"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_v8TUYKp2Eee4M8iNRWva0w" name="Refuser une annonce">
+    <include xmi:type="uml:Include" xmi:id="_HJULgK3CEeeMwZaCKi8yGw" addition="_wvg6AKp2Eee4M8iNRWva0w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_wvg6AKp2Eee4M8iNRWva0w" name="Informe le vendeur du refus de l'offre"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_bue6wKp3Eee4M8iNRWva0w" name="publication de l'annonce"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_uit10Kp3Eee4M8iNRWva0w" memberEnd="_ujAwwKp3Eee4M8iNRWva0w _ujB-4Kp3Eee4M8iNRWva0w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ui-UgKp3Eee4M8iNRWva0w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ui-Ugap3Eee4M8iNRWva0w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ujAwwKp3Eee4M8iNRWva0w" name="moderateur" type="_IoldYKp2Eee4M8iNRWva0w" association="_uit10Kp3Eee4M8iNRWva0w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ujB-4Kp3Eee4M8iNRWva0w" name="consulter les demandes d'annonce" type="_sA2LcKp2Eee4M8iNRWva0w" association="_uit10Kp3Eee4M8iNRWva0w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_2FbMsK3BEeeMwZaCKi8yGw" memberEnd="_2Fe3EK3BEeeMwZaCKi8yGw _2FfeIK3BEeeMwZaCKi8yGw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2FeQAK3BEeeMwZaCKi8yGw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2FeQAa3BEeeMwZaCKi8yGw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_2Fe3EK3BEeeMwZaCKi8yGw" name="moderateur" type="_IoldYKp2Eee4M8iNRWva0w" association="_2FbMsK3BEeeMwZaCKi8yGw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_2FfeIK3BEeeMwZaCKi8yGw" name="refuser une annonce" type="_v8TUYKp2Eee4M8iNRWva0w" association="_2FbMsK3BEeeMwZaCKi8yGw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_4AsmkK3BEeeMwZaCKi8yGw" memberEnd="_4AtNoq3BEeeMwZaCKi8yGw _4AtNo63BEeeMwZaCKi8yGw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4AtNoK3BEeeMwZaCKi8yGw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4AtNoa3BEeeMwZaCKi8yGw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_4AtNoq3BEeeMwZaCKi8yGw" name="moderateur" type="_IoldYKp2Eee4M8iNRWva0w" association="_4AsmkK3BEeeMwZaCKi8yGw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_4AtNo63BEeeMwZaCKi8yGw" name="accepter une annonce" type="_rhlckKp2Eee4M8iNRWva0w" association="_4AsmkK3BEeeMwZaCKi8yGw"/>
+  </packagedElement>
+</uml:Model>

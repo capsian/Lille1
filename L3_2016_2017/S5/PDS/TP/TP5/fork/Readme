@@ -1,0 +1,17 @@
+TP5
+G4
+ABASSI YOUVA - LAKHDAR SELIM
+
+
+8/
+observation.c contient les deux fonctions; 
+	[+] obs1() : pour 8.2
+	[+] obs2() : pour 8.3 {utilisée} 
+
+8.2/
+	Si le processus père meurt, ses fils sont hérités par le processus /sbin/upstart (la valeur de ppid change) et continuent leur exécution.
+	
+
+8.3/
+	On remarque que suite à l'appel de la fonction read(), le père reste stopper. 
+	Si nous tuons l'un de ses fils, nous remarquons grâce à la commande ps -af, que le fils est présent dans les processus actifs, mais à l'état <defunct>.

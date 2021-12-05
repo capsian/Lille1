@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_9aY60MX5EeeJbdkEEN8WrQ" name="Recherche_Ajout_Annonce">
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_9arOsMX5EeeJbdkEEN8WrQ" name="Interaction1"/>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_9a2N0MX5EeeJbdkEEN8WrQ" name="Interaction2"/>
+</uml:Model>

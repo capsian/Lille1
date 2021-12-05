@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Évènements et probabilités</title>
+<!-- 2021-03-09 mar. 07:44 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+.code-highlighted { background-color: #ffff00; }
+
+/* .verbatim { color: #3e9409;
+            background-color: #f5fbf4; }*/
+.verbatim {
+    color: #337ab7;
+    background-color: #d9edf7; }
+
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Une première application : vérification d'identités polynomiales</a>
+<ul class="nav">
+<li><a href="#sec-1-1">1.1. Exercice</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Un peu de probabilités</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. Définition espace probabiliste discret</a></li>
+<li><a href="#sec-2-2">2.2. Quelques propriétés</a></li>
+<li><a href="#sec-2-3">2.3. Indépendance et probabilité conditionnelle</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">Évènements et probabilités</h1>
+<p>
+Le but de ce cours est d'introduire la notion d'algorithmes randomisés et de
+revoir quelques notions de probabilité pour analyser les performances de
+quelques algorithmes simples.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Une première application : vérification d'identités polynomiales</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+On souhaite vérifier l'égalité entre un produite de monômes et d'un polynôme
+réduit. Par exemple :
+</p>
+
+<p>
+\[(x+1)(x-2)(x+3)(x-4)(x+5)(x-6)\equiv x^6 - 7x^3 + 25\]
+</p>
+
+<p>
+Pour vérifier que l'égalité est correcte, il suffit développer et réduire le
+membre de gauche, puis de vérifier que l'on obtient deux polynômes identiques.
+Plus généralement, cette méthode peut s'appliquer pour vérifier l'égalité de
+n'importe quelle paire de polynôme :
+\[F(x) = G(x)\]
+</p>
+
+
+<p>
+Néanmoins, développer un produit de monômes tel que :
+\[F(x) = \prod_{i=1}^d(x-a_i)\]
+Il faut développer les i premiers monôme, puis multiplier le résultat par le
+ième monôme. Cela requiert de calculer de l'ordre de i produits et de i-1
+sommes, en gros 2i-1 opérations. Ainsi calculer la forme réduite de F(x)
+requiert d<sup>2</sup> opérations.
+</p>
+
+<p>
+Si maintenant, nous abandonnons l'idée de faire un calcul exact et que nous
+nous contentons de faire un test probabiliste, nous pouvons être bien plus
+efficace. Supposons que F(x) et G(x) sont de degré d. Choisissons un entier n
+au hasard dans l'ensemble {1,&#x2026;,100d} et calculons F(n) et G(n), si F(n) ≠
+G(n) les deux polynômes ne sont pas équivalents et si F(n) = G(n), nous
+considérons (avec la possibilité que nous nous trompions) que les deux
+polynômes sont égaux.
+</p>
+
+<p>
+Essayons d'évaluer qu'elles sont nos chances de nous tromper :
+</p>
+<ul class="org-ul">
+<li>un polynôme de degré au plus d a au plus d racines
+</li>
+<li>en particulier le polynôme F(x) - G(x) a au plus d racines
+</li>
+<li>il y a au plus d nombres n dans {1,&#x2026;,100d} tels que F(n) = G(n)
+</li>
+<li>il y a au plus 1 chance sur 100 que F(x) ≠ G(x) et que nous ayons tiré au
+hasard un nombre n tel que F(n) = G(n)
+</li>
+<li>ainsi lorsque nous considérons que F(x) = G(x) nous le faisons avec une
+confiance de 99%.
+</li>
+</ul>
+
+<p>
+Calculer F(n) et G(n) se fait en temps linéaire en d. Ainsi notre algorithme
+probabiliste est plus efficace que l'algorithme exact.
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Exercice</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Écrire une fonction python qui réalise ce test (penser à utiliser le module
+<code>random</code>) :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">def</span> <span style="color: #006699;">test_poly</span><span style="color: #707183;">(</span>f, g, d<span style="color: #707183;">)</span>:
+    <span style="color: #036A07;">"""Si f et g sont de fonctions qui impl&#233;mentent des polyn&#244;mes de degr&#233;s au plus</span>
+<span style="color: #036A07;">       d, renvoie False si f &#8800; g et True avec une confiance de 99% que f = g."""</span>
+    <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">True</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Un peu de probabilités</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Définition espace probabiliste discret</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Un espace probabiliste discret est donné par :
+</p>
+<ol class="org-ol">
+<li>un ensemble Ω dénombrable 
+</li>
+<li>une fonction de probabilité Pr : 𝐏(Ω) → ℝ (𝐏(Ω) est l'ensemble des parties
+de Ω, on les appelle des <i>évènements</i>) telle que :
+<ul class="org-ul">
+<li>0 ≤ Pr(E) ≤ 1
+</li>
+<li>Pr(Ω) = 1
+</li>
+<li>pour toute séquence (finie ou non) d'ensembles E₁, E₂, E₃, &#x2026;
+
+<p>
+\[Pr\left(\bigcup_{i\geq 1} E_i\right) = \sum_{i\geq 1} Pr(E_i)\]
+</p>
+</li>
+</ul>
+</li>
+</ol>
+
+<p>
+NB: pour donner Pr, il suffit de connaître sa valeur sur tous les ensembles
+singletons (à 1 élément) de Ω.
+</p>
+
+
+<p>
+Dans l'exemple sur les polynômes, Ω = {1,&#x2026;, 100d} et Pr est définie de
+sorte que Pr({i}) = 1/100d.
+</p>
+
+<p>
+Comme les évènements sont des ensembles, on peut écrire E₁ ∩ E₂ pour
+l'évènement tel que E₁ et E₂ arrivent, E₁ ∪ E₂ pour l'évènement tel que E₁ ou
+E₂ arrivent. Par exemple, lorsque l'on tire deux dés, Ω est l'ensemble des
+résultats possibles d'un jet, E₁ celui des jets tels que le premier dé vaut
+1, E₂ celui des jets tels que le second dé  vaut 1, alors E₁ ∩ E₂ est
+l'évènement où les deux dés valent 1 et E₁ ∪ E₂ celui où l'un des deux dés
+vaut 1. De façon similaire on note E₁ - E₂ l'évènement qui vérifie E₁ mais
+pas E₂. Et la notation ¬E est utilisée comme une abréviation de Ω - E.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Quelques propriétés</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> Lemme 1</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+Pour toute paire d'évènements E₁ et E₂,
+\[Pr(E_1 \cup E_2) = Pr(E_1) + Pr(E_2) - Pr(E_1\cap E_2)\]
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-2-2-1-1" name="sec-2-2-1-1"></a>Preuve<br ><div class="outline-text-5" id="text-2-2-1-1">
+<p>
+Par définition
+\[Pr(E_1) = Pr(E_1 - (E_1\cap E_2)) + Pr(E_1\cap E_2)\]
+\[Pr(E_2) = Pr(E_2 - (E_1\cap E_2)) + Pr(E_1\cap E_2)\]
+\[Pr(E_1\cup E_2) = Pr(E_1 - (E_1\cap E_2))+ Pr(E_2 - (E_1\cap E_2))+
+     Pr(E_1\cap E_2)\]
+En combinant ces identités on obtient le résultat.
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Lemme 2</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+Pour toute séquence finie ou infinie d'évènements E₁, E₂, &#x2026;,
+\[Pr\left(\bigcup_{i\geq 1} E_i\right) \leq \sum_{i\geq 1}Pr(E_i)\] 
+</p>
+
+
+<p>
+NB: ce lemme diffère de la définition où les évènements sont considérés disjoints
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2-3" class="outline-4">
+<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> Retour à l'exemple</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+Dans l'exemple sur le test de l'égalité de polynôme, l'évènement que
+l'algorithme retourne un mauvaise réponse contient au plus d éléments et
+ainsi Pr(l'algorithme se trompe) ≤ d / 100d = 1/100. Pour améliorer la
+précision, il nous suffirait de prendre un entier au hasard dans {1,&#x2026;,
+1000d}. La probabilité d'erreur est alors 1/1000. Néanmoins, nous sommes
+limités par la précision des machines que nous utilisons.
+</p>
+
+<p>
+Une autre approche consiste à lancer l'algorithme plusieurs fois. On utilise
+le fait que l'algorithme ne se trompe que si il considère que les polynômes
+sont égaux. Ainsi si on obtient que F(x) ≠ G(x) alors on s'arrête.
+</p>
+
+<p>
+Répéter un choix aléatoire dans un espace probabiliste s'appelle <i>sampling</i>
+</p>
+
+<p>
+Répéter un choix aléatoire dans un espace probabiliste s'appelle <i>sampling</i>.
+On pourrait le faire en éliminant les valeurs déjà utilisée ou non. Mais
+cela n'a pas vraiment d'impact su la précision, mais a un impact sur
+l'efficacité.
+</p>
+
+<p>
+Ainsi répéter k fois notre algorithme nous donne une probabilité d'erreur de
+(1/100)<sup>k</sup>.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-2-4" class="outline-4">
+<h4 id="sec-2-2-4"><span class="section-number-4">2.2.4</span> Exercice</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
+Écrire une fonction python qui réalise ce test de sorte que la confiance
+soit supérieur à un seuil :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">def</span> <span style="color: #006699;">test_poly_precis</span><span style="color: #707183;">(</span>f, g, d, seuil<span style="color: #707183;">)</span>:
+    <span style="color: #036A07;">"""Si f et g sont de fonctions qui impl&#233;mentent des polyn&#244;mes de degr&#233;s au plus</span>
+<span style="color: #036A07;">       d, renvoie False si f &#8800; g et True avec une confiance de 1-seuil que f = g."""</span>
+    <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">True</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Indépendance et probabilité conditionnelle</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Deux évènements E et F sont indépendant ssi :
+\[Pr(E \cap F) = Pr(E) Pr(F)\]
+Plus généralement des évènements E₁, E₂, &#x2026;, Eₖ sont deux à deux
+indépendants ssi pour tout sous-ensemble I ⊆ [1, k],
+\[Pr\left(\bigcap_{i\in I}E_i\right) = \prod_{i\in I} Pr(E_i)\]
+</p>
+
+<p>
+La justification de la confiance de notre algorithme de sampling vient du
+fait que nous ayons fait des choix aléatoires indépendants.
+</p>
+
+<p>
+La probabilité conditionnelle de E en sachant que F est (avec Pr(F) &gt; 0) :
+\[Pr(E \mid F) = \frac{Pr(E\cap F)}{Pr(F)}\]
+</p>
+
+
+<p>
+Intuitivement, il s'agit de la probabilité de E ∩ F relativement aux
+évènements définis par F. On renormalise la probabilité de E ∩ F par rapport
+à celle de F. Une forme utile (toujours avec Pr(F) &gt; 0) est :
+\[Pr(E \mid F)Pr(F) = Pr(E\cap F)\]
+</p>
+
+<p>
+On remarque que lorsque E et F sont indépendants et Pr(F) ≠ 0, nous avons :
+\[Pr(E \mid F) = \frac{Pr(E\cap F)}{Pr(F)} = \frac{Pr(E)Pr(F)}{Pr(F)} = Pr(E)\]
+</p>
+</div>
+
+
+
+<div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> Exercices</h4>
+<div class="outline-text-4" id="text-2-3-1">
+</div><ol class="org-ol"><li><a id="sec-2-3-1-1" name="sec-2-3-1-1"></a>Encore un jeu de dés<br ><div class="outline-text-5" id="text-2-3-1-1">
+<p>
+On tire deux dès à 6 faces. Donner la probabilité des évènements suivants
+en considérant que les résultats des dés sont indépendants :
+</p>
+<ol class="org-ol">
+<li>Les deux dés portent le même nombre.
+</li>
+<li>Le nombre qui apparaît sur le premier dé est plus grand que celui du second.
+</li>
+<li>La somme des dés est paire.
+</li>
+</ol>
+</div>
+</li>
+
+
+
+<li><a id="sec-2-3-1-2" name="sec-2-3-1-2"></a>Un test médical sûr ?<br ><div class="outline-text-5" id="text-2-3-1-2">
+<p>
+Une firme pharmaceutique propose un nouveau test très efficace pour une
+maladie :
+</p>
+<ul class="org-ul">
+<li>La probabilité d'un faux négatif est très faible : une personne atteinte
+a une probabilité de 0.999 d'avoir une test positif.
+</li>
+<li>La probabilité d'un faux positif est également très faible : une personne
+saine a une probabilité 0.005 d'avoir un test positif.
+</li>
+</ul>
+
+<p>
+Il y 2% des personnes qui sont atteintes pas la maladie. Si une personne
+est choisie au hasard dans la population et que son test est positif,
+quelle est la probabilité qu'elle soit malade ?
+</p>
+</div>
+</li>
+
+
+<li><a id="sec-2-3-1-3" name="sec-2-3-1-3"></a>Un tir aléatoire de Von Neumann<br ><div class="outline-text-5" id="text-2-3-1-3">
+<p>
+On suppose que nous avons un fonction <code>flip()</code> qui renvoie la valeur <code>True</code>
+avec une probabilité <code>p</code> inconnue et <code>False</code> avec une probabilité <code>1-p</code>.
+Nous allons étudier l'algorithme suivant :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">def</span> <span style="color: #006699;">tir</span><span style="color: #707183;">()</span>:
+    <span style="color: #0000FF;">while</span> <span style="color: #D0372D;">True</span>:
+        <span style="color: #BA36A5;">t1</span> = flip<span style="color: #707183;">()</span>
+        <span style="color: #BA36A5;">t2</span> = flip<span style="color: #707183;">()</span>
+        <span style="color: #0000FF;">if</span> t1 <span style="color: #0000FF;">and</span> <span style="color: #0000FF;">not</span> t2:
+            <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">True</span>
+        <span style="color: #0000FF;">if</span> t2 <span style="color: #0000FF;">and</span> <span style="color: #0000FF;">not</span> t1:
+            <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">False</span>
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>Quelle est la probabilité que pendant un tour de boucle la fonction
+retourne <code>True</code> ?
+</li>
+<li>Quelle est la probabilité que pendant un tour de boucle la fonction
+retourne <code>False</code> ?
+</li>
+<li>Quelle est la probabilité que la boucle tourne indéfiniment ?
+</li>
+<li>Quelle est la probabilité que la fonction retourne <code>True</code> ?
+</li>
+<li>Quelle est la probabilité que la fonction retourne <code>False</code> ?
+</li>
+</ol>
+</div>
+</li>
+
+
+
+<li><a id="sec-2-3-1-4" name="sec-2-3-1-4"></a>Tirer un nombre<br ><div class="outline-text-5" id="text-2-3-1-4">
+<p>
+On suppose que nous disposons d'une fonction <code>flip()</code> qui renvoie la valeur
+<code>True</code> avec probabilité 1/2 et <code>False</code> avec probabilité 1/2.
+Nous allons étudier l'algorithme suivant:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">def</span> <span style="color: #006699;">tir</span><span style="color: #707183;">(</span>n<span style="color: #707183;">)</span>:
+    <span style="color: #BA36A5;">v</span> = <span style="color: #D0372D;">1</span>
+    <span style="color: #BA36A5;">c</span> = <span style="color: #D0372D;">0</span>
+    <span style="color: #0000FF;">while</span> <span style="color: #D0372D;">True</span>:
+        <span style="color: #BA36A5;">v</span> = <span style="color: #D0372D;">2</span>*v
+        <span style="color: #BA36A5;">c</span> = <span style="color: #D0372D;">2</span>*c + <span style="color: #D0372D;">1</span> <span style="color: #0000FF;">if</span> flip<span style="color: #707183;">()</span> <span style="color: #0000FF;">else</span> <span style="color: #D0372D;">0</span>
+        <span style="color: #0000FF;">if</span> v &gt;= n:
+            <span style="color: #0000FF;">if</span> c &lt; n:
+                <span style="color: #0000FF;">return</span> c
+            <span style="color: #0000FF;">else</span>:
+                <span style="color: #BA36A5;">v</span> = v - n
+                <span style="color: #BA36A5;">c</span> = c - n
+</pre>
+</div>
+<p>
+On considère l'invariant suivant :
+</p>
+<blockquote>
+<p>
+c est distribué uniformément dans {0,&#x2026;, v-1}
+</p>
+</blockquote>
+<p>
+c'est-à-dire qu'à chaque tour de boucle, pour tout i, c a la valeur i dans
+{0,&#x2026;,v-1} avec une probabilité 1/v.
+</p>
+
+<ol class="org-ol">
+<li>Montrer que l'invariant est vérifié :
+<ul class="org-ul">
+<li>avant la boucle
+</li>
+<li>après les deux affectations du début de boucle
+</li>
+<li>en fin de boucle
+</li>
+</ul>
+</li>
+<li>Quelle est la probabilité que la boucle termine?
+</li>
+<li>Quelle est la probabilité que l'algorithme termine?
+</li>
+<li>Avec quelle probabilité, l'algorithme renvoie-t-il la valeur i?
+</li>
+<li>Comparer cet algorithme avec l'algorithme <code>_randbelow_with_getrandbits</code>
+de la librairie <a href="https://github.com/python/cpython/blob/0554044ddccdb7bf1fa4a8bc880e7a7b59f6479c/Lib/random.py#L240"><code>random</code> de python</a>.
+</li>
+</ol>
+</div>
+</li></ol>
+</div>
+</div>
+</div>
+</div></div></div>
+</body>
+</html>

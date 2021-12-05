@@ -1,0 +1,79 @@
+---- TP 5 en TRC: Q3 et Q4
+
+
+--- Q3
+---Quelles routes (départ et destination) 
+---peuvent \^etre volées par tous les pilotes
+---gagnant plus de 100 000 euros?
+
+
+{ t | exists v in vols: v[dep]=t[dep] and v[arr]=t[arr] and
+  --- un vol, tel que pour tous les employes
+    forall e in employes: 
+    	   (e[salaire]>1000 and exists c in certifications: c[eid]=e[eid])
+ 	   -- si un employe est un pilote gagnant plus de 100kE, alors il existe pour lui
+ 	   implies
+	       exists a in avions, exists c2 in certifications:
+	       -- un avion pour lequel cet employe est certifie, de portee permettant de faire ce vol
+	       a[aid]=c2[aid] and c2[eid]=e[eid] and a[portee]>= v[distance]
+   }
+--------------- normalise forall 
+{ t | exists v in vols: v[dep]=t[dep] and v[arr]=t[arr] and
+  --- un vol, tel que pour tous les employes
+    not exists e in employes: 
+    	   not [
+	   (e[salaire]>1000 and exists c in certifications: c[eid]=e[eid])
+	   -- si un employe est un pilote gagnant plus de 100kE, alors il existe pour lui
+ 	   implies
+	       (exists a in avions, exists c2 in certifications:
+	       -- un avion pour lequel cet employe est certifie, de portee permettant de faire ce vol
+	       a[aid]=c2[aid] and c2[eid]=e[eid] and a[portee]>= v[distance])
+	       ]
+   }
+-- normalise l'implication
+{ t | exists v in vols: v[dep]=t[dep] and v[arr]=t[arr] and
+  --- un vol, tel que pour tous les employes
+    not exists e in employes: 
+    	   not [
+	   NOT(e[salaire]>1000 and exists c in certifications: c[eid]=e[eid])
+	   -- si un employe est un pilote gagnant plus de 100kE, alors il existe pour lui
+ 	   OR
+	       (exists a in avions, exists c2 in certifications:
+	       -- un avion pour lequel cet employe est certifie, de portee permettant de faire ce vol
+	       a[aid]=c2[aid] and c2[eid]=e[eid] and a[portee]>= v[distance])
+	       ]
+   }
+----------- de morgan, double negation.
+{ t | exists v in vols: v[dep]=t[dep] and v[arr]=t[arr] and
+  --- un vol, tel que pour tous les employes
+    not exists e in employes: 
+    	    [
+	   (e[salaire]>100000 and exists c in certifications: c[eid]=e[eid])
+	   -- si un employe est un pilote gagnant plus de 100kE, alors il existe pour lui
+ 	   AND
+	       NOT (exists a in avions, exists c2 in certifications:
+	       -- un avion pour lequel cet employe est certifie, de portee permettant de faire ce vol
+	       a[aid]=c2[aid] and c2[eid]=e[eid] and a[portee]>= v[distance])
+	       ]
+   }
+---- en SQL
+select v.dep, v.arr,v.distance
+from vols v
+where not exists
+(select * from employes e, certifications c
+	where e.eid=c.eid and e.salaire >=100000
+	and not exists (
+	select * 
+	from avions a, certifications c2
+	where a.aid=c2.aid and c2.eid=e.eid and a.portee>=v.distance
+	)
+);
+
+
+-------- ajout possible 
+--------- pour assurer qu'il y a effectivement au moins un pilote gagnant >100kE, pour cette distance
+--and exists 
+--(select * from employes e, certifications c, avions a2
+--where e.eid=c.eid and c.aid=a2.aid and e.salaire >=100000 and a2.portee>=v.distance)
+---;
+

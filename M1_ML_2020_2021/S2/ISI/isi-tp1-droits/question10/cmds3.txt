@@ -1,0 +1,3 @@
+1002 admin
+list /home/ubuntu/isi-tp1/question10/dir_c
+exit

@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  proxy:
+    hostname: proxy
+    image: proxy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      CRX:
+        ipv4_address: 172.16.1.2
+    ports:
+      - "3128:3128"
+    volumes:
+      - "./configFiles/squid.conf:/etc/squid/squid.conf:ro"
+      - "./configFiles/cache:/var/cache/squid:rw"
+      - "/var/log/squid:/var/log/squid:rw"
+      - "/etc/localtime:/etc/localtime:ro"
+
+networks:
+  CRX:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.1.0/25

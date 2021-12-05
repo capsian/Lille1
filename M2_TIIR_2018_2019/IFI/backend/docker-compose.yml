@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  back:
+    hostname: backend
+    image: backend:$version
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SRC_FILE: $src
+    networks:
+      IFI:
+        ipv4_address: 172.16.1.2
+    ports:
+      - "8080:8080"
+    environment:
+      - ENVIRO=$ENV
+
+networks:
+  IFI:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.1.0/25

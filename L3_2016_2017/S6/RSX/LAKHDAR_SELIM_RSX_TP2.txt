@@ -1,0 +1,112 @@
+Lakhdar Selim -- GR 4
+
+I/ CAPTURE DE TRAMES
+
+	q1/
+			ifconfig - configure une interface réseau
+	q2/
+			eth0 et l0
+	q3/
+			eth0 RUNNING
+	q4/
+			IPV4 192.168.5.58
+			@MAC 98:90:96:bb:80:7c
+	q5/
+			ping 192.168.5.59
+			PING 192.168.5.59 (192.168.5.59) 56(84) bytes of data.
+			64 bytes from 192.168.5.59: icmp_seq=1 ttl=64 time=0.759 ms
+			64 bytes from 192.168.5.59: icmp_seq=2 ttl=64 time=0.630 ms
+	q6/
+			Time : le temps d'aller retour
+	q7/
+			Car les machines ne communiquent entre elles qu'avec les @IP
+			On utilise le protocole ARP pour transformer @MAC <> @IP
+	q8/
+			Les protocoles Ethernet, ICMP, ainsi que une éventuelle requête/reponse ARP
+	q9/
+			Ethernet : couche liaison 
+			ARP et ICMP : couche reseau
+	q10/
+			filter Wireshark : ip.addr == @IP
+			N'affiche que les requetes qui correspondent à @IP
+	q11/
+			promiscuous mode = off
+			host 192.168.5.60
+		
+II/ ETHERNET
+	
+	q1/
+			Type: IP
+	q2/
+			@MAC dest et @MAC source
+	q3/
+			Ces commandes permettent de savoir la configuration physique du réseau. La couche concernée est la couche physique.
+	q4/
+			mii-tool => No link
+	q5/
+	
+III/ CONCENTRATEUR
+
+	q1/
+			Le hub retransmet les données à tous ceux qui "écoutent".
+			Le hub ne différencie pas les destinataires.
+	q2/
+			Le mode promiscuous permet de capturer tous les paquets qui transitent, même s'ils ne nous sont pas destinés.
+	q3/
+			Half Duplex : on ne peut pas envoyer en même temps que recevoir.
+			soit on envoie, soit on reçoit.
+	q4/
+			Physique : étoile. 
+			Logique : bus.
+	q5/
+			2 machines :
+				215 erreurs, bande passante 6.42 Mbits/s
+			4 machines  
+				242 erreurs, bande passante 3.25Mb/s, collisions 462
+			=> Le hub retransmets tous les paquets à tous le monde.
+				 Le débit est dévisé sur le nombre d'utilisateur
+				 Plus grand nombre de collision
+	
+IV/ COMMUTATEUR
+
+	q1/
+			Le switch retransmet les données à leur destinataires. (switch = hub intélligent :p )
+			Meilleur bande passante
+	q2/
+			Le switch reçoit les packet réseau et associe les adresses sources avec le port par lequel ils ont reçu le packet.
+			Pour choisir le port de destination d'un packet, le switch recherche l'adresse de destination dans la table et envoi le packet uniquement au port concerné. 
+	q3/
+			Oui il a besoin de connaître les adresses MAC afin de pouvoir identifier précisément les machines concernés, ils n'a pas besoin de connaître les adresses IP des paquets car il s'agit d'un réseau
+			local.
+			Les switchs interviennent sur la couche liaison.
+			les hubs interviennent sur la couche physique.
+	q4/
+			Le switch permet d'envoyer les paquets uniquement à la machine concerné.
+			Pas de collisions/erreurs
+	q5/
+			Broadcast : Tous le mondre reçoit le ping. Tous le mondre répond.
+			
+			
+V/ ROUTEUR
+
+	q6/
+			TTL : Time To Live
+			C'est la durée de vie du paquet.
+			Si TTL < 0 <> paquet détruit
+	q7/
+			TTL = 2 (ou 1 ?)
+	q8/
+	
+	q9/
+	
+	q10/
+	
+	q11/
+	
+	q12/
+	
+	q13/
+	
+	q14/
+	
+	q15/

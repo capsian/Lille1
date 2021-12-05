@@ -1,0 +1,92 @@
+*0x7ffe3e6fcd60 = facade 
+*0x7ffe3e6fcd68 = 7ffe3e6fcd68 
+*0x7ffe3e6fcd70 = 7ffe3e6fcda0
+ 
+*0x7ffe3e6fcd78 = 55e36bcde724 
+*0x7ffe3e6fcd80 = 8 
+*0x7ffe3e6fcd88 = b 
+*0x7ffe3e6fcd90 = 7ff66e18d708 
+*0x7ffe3e6fcd98 = cafebabe 
+*0x7ffe3e6fcda0 = 7ffe3e6fcdd0
+
+*0x7ffe3e6fcda8 = 55e36bcde736 
+*0x7ffe3e6fcdb0 = 7ff66dd2a307 
+*0x7ffe3e6fcdb8 = a 
+*0x7ffe3e6fcdc0 = 7ffe3e6fce28 
+*0x7ffe3e6fcdc8 = cafebabe 
+*0x7ffe3e6fcdd0 = 7ffe3e6fce00
+
+*0x7ffe3e6fcdd8 = 55e36bcde736 
+*0x7ffe3e6fcde0 = 7ffe3e6fcf00 
+*0x7ffe3e6fcde8 = 9 
+*0x7ffe3e6fcdf0 = 7ffe3e6fce24 
+*0x7ffe3e6fcdf8 = cafebabe 
+*0x7ffe3e6fce00 = 7ffe3e6fce30 
+
+*0x7ffe3e6fce08 = 55e36bcde736 
+*0x7ffe3e6fce10 = 0 
+*0x7ffe3e6fce18 = 8 
+*0x7ffe3e6fce20 = 0 
+*0x7ffe3e6fce28 = cafebabe 
+*0x7ffe3e6fce30 = 7ffe3e6fce60
+
+*0x7ffe3e6fce38 = 55e36bcde736 
+*0x7ffe3e6fce40 = 7ffe3e6fcf90 
+*0x7ffe3e6fce48 = 7 
+*0x7ffe3e6fce50 = 0 
+*0x7ffe3e6fce58 = cafebabe 
+*0x7ffe3e6fce60 = 7ffe3e6fce90
+
+*0x7ffe3e6fce68 = 55e36bcde736 
+*0x7ffe3e6fce70 = 0 
+*0x7ffe3e6fce78 = 6 
+*0x7ffe3e6fce80 = 0 
+*0x7ffe3e6fce88 = cafebabe 
+*0x7ffe3e6fce90 = 7ffe3e6fcec0 
+
+*0x7ffe3e6fce98 = 55e36bcde736 
+*0x7ffe3e6fcea0 = 0 
+*0x7ffe3e6fcea8 = 5 
+*0x7ffe3e6fceb0 = 0 
+*0x7ffe3e6fceb8 = cafebabe 
+*0x7ffe3e6fcec0 = 7ffe3e6fcef0 
+
+*0x7ffe3e6fcec8 = 55e36bcde736 
+*0x7ffe3e6fced0 = 7ff66e18d708 
+*0x7ffe3e6fced8 = 4 
+*0x7ffe3e6fcee0 = 7ff66dd2a307 
+*0x7ffe3e6fcee8 = cafebabe 
+*0x7ffe3e6fcef0 = 7ffe3e6fcf20
+
+*0x7ffe3e6fcef8 = 55e36bcde736 
+*0x7ffe3e6fcf00 = 7ffe3e7b5268 
+*0x7ffe3e6fcf08 = 3 
+*0x7ffe3e6fcf10 = 0 
+*0x7ffe3e6fcf18 = cafebabe 
+*0x7ffe3e6fcf20 = 7ffe3e6fcf50
+
+*0x7ffe3e6fcf28 = 55e36bcde736 
+*0x7ffe3e6fcf30 = 0 
+*0x7ffe3e6fcf38 = 2 
+*0x7ffe3e6fcf40 = 0 
+*0x7ffe3e6fcf48 = cafebabe 
+*0x7ffe3e6fcf50 = 7ffe3e6fcf80
+
+*0x7ffe3e6fcf58 = 55e36bcde736 
+*0x7ffe3e6fcf60 = 0 
+*0x7ffe3e6fcf68 = 1 
+*0x7ffe3e6fcf70 = c2 
+*0x7ffe3e6fcf78 = cafebabe 
+*0x7ffe3e6fcf80 = 7ffe3e6fcfb0
+
+*0x7ffe3e6fcf88 = 55e36bcde736 
+*0x7ffe3e6fcf90 = 1 
+*0x7ffe3e6fcf98 = 0 
+*0x7ffe3e6fcfa0 = 0 
+*0x7ffe3e6fcfa8 = cafebabe 
+*0x7ffe3e6fcfb0 = 7ffe3e6fcfd0 
+
+*0x7ffe3e6fcfb8 = 55e36bcde75f 
+*0x7ffe3e6fcfc0 = 7ffe3e6fd0b0 
+
+*0x7ffe3e6fcfc8 = deadbeef 

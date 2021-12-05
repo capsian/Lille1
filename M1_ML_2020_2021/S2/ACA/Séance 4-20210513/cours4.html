@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Éloignement à la moyenne</title>
+<!-- 2021-03-29 lun. 22:25 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+.code-highlighted { background-color: #ffff00; }
+
+/* .verbatim { color: #3e9409;
+            background-color: #f5fbf4; }*/
+.verbatim {
+    color: #337ab7;
+    background-color: #d9edf7; }
+
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Inégalité de Markov</a>
+<ul class="nav">
+<li><a href="#sec-1-1">1.1. Exercice</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Variance, moments et co-variance d'une variable aléatoire</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. Exercice</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Inégalité de Tchebitchev</a>
+<ul class="nav">
+<li><a href="#sec-3-1">3.1. Exercice</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">Éloignement à la moyenne</h1>
+<p>
+Nous avons vu que les espérances permettent d'avoir de comportements moyens de
+variables aléatoires. Nous cherchons maintenant à comprendre avec quelle
+probabilité une variable peut s'éloigner de la moyenne.
+</p>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Inégalité de Markov</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Étant donnée une variable aléatoire X à valeur positive et a &gt; 0, l'inégalité de Markov est:
+\[Pr(X \geq a) \leq \frac{E(X)}{a}\]
+</p>
+
+
+<p>
+On pose \(I\) la variable aléatoire suivante:
+\[I = \left\{\begin{array}{l} 1 \text{ si }  X \geq a\\
+  0\text{ sinon}\end{array}\right.\]
+</p>
+
+<p>
+comme \(X \geq 0\), nous avons \(I\leq \frac{X}{a}\). 
+</p>
+
+<p>
+\(I\) est une variable aléatoire de Bernoulli. Ainsi \(E(I) = Pr(I=1) = Pr(X\geq a)\).
+</p>
+
+
+<p>
+Ainsi,
+</p>
+
+<p>
+\[Pr(X \geq a) = E(I) \leq E\left(\frac{X}{a}\right) = \frac{E(x)}{a}\]
+</p>
+</div>
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Exercice</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+En utilisant l'inégalité de Markov, donner une borne supérieure à la
+probabilité qu'après n tirs à pile ou face, 3/4 des lancés aient donné pile
+(penser à la loi binomiale).
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Variance, moments et co-variance d'une variable aléatoire</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Sans autre connaissance que l'espérance d'une variable aléatoire, l'inégalité
+de Markov nous donne la meilleure borne possible. On peut cependant améliorer
+la précision de la borne en connaissant les <i>moments</i> d'une variables aléatoires.
+</p>
+
+
+<p>
+Le kème moment de la variable aléatoire X et \(E(X^k)\).
+</p>
+
+<p>
+Le deuxième moment \(E(X^2)\) permet de calculer la variance et l'écart-type
+d'une variable aléatoire:
+</p>
+<ul class="org-ul">
+<li>la variance de X est \(Var(X) = E\left(X-E(X)\right)^2)\)
+</li>
+<li>l'écart-type de X est \(\sigma(X) = \sqrt{Var(X)}\).
+
+<p>
+Nous avons \(Var(X) = E(X^2) -E(X)^2\), en effet:
+\[\begin{array}{rcl}
+    E\left(X-E(X)\right)^2) &=& E(X^2 -2XE(X) + E(X)^2)\\
+    &=& E(X^2) -2E(XE(X))+ E(X)^2\\
+    &=& E(X^2) -2E(X)E(X) + E(X)^2\\
+    &=& E(X^2) -E(X)^2\\
+    \end{array}\]
+</p>
+</li>
+</ul>
+
+<p>
+La co-variance de deux variables aléatoires X et Y est:
+\[Cov(X,Y) = E\left((X-E(X))(Y-E(Y)\right)\]
+</p>
+
+<p>
+On peut montrer que \(Var(X+Y) = Var(X) + Var(Y) + 2 Cov(X,Y)\).
+</p>
+
+<p>
+Lorsque deux variables sont indépendantes, nous avons:
+</p>
+<ul class="org-ul">
+<li>\(E(X\times Y) = E(X)E(Y)\)
+</li>
+<li>\(Cov(X,Y) = 0\)
+</li>
+<li>\(Var(X+Y) = Var(X)+Var(Y)\)
+</li>
+</ul>
+</div>
+
+
+
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Exercice</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-sec-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> Ex 1</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+Montrer les identités au-dessus.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-2" class="outline-4">
+<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> Variance d'un variable binomiale</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<ol class="org-ol">
+<li>Calculer la variance d'une variable aléatoire Bernoulli avec probabilité
+de succès p.
+</li>
+<li>En déduire la variance d'une variable aléatoire de loi binomiale.
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Inégalité de Tchebitchev</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Pour tout a&gt;0, l'inégalité de Tchebitchev est:
+\[Pr(|X-E(X)|\geq a) \leq \frac{Var(X)}{a^2}\]
+</p>
+
+<p>
+On observe que \(Pr(|X-E(X)|\geq a) = Pr((X-E(X))^2\geq a^2)\)
+</p>
+
+<p>
+Comme (X-E(X))<sup>2</sup> est une variable aléatoire positive on peut appliquer
+l'inégalité de Markov:
+</p>
+
+<p>
+\[Pr((X-E(X))^2\geq a^2) \leq \frac{E\left((X-E(X))^2\right)}{a^2} =
+  \frac{Var(X)}{a^2}\]
+</p>
+
+
+<p>
+On en déduit que pour tout t&gt;1:
+\[Pr(|X-E(X)|\geq t\times \sigma(X))\leq \frac{1}{t^2}\]
+et
+\[Pr(|X-E(X)|\geq t.E(X)) \leq \frac{Var(X)}{t^2E(X)^2}\]
+</p>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Exercice</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Retour sur pile ou face</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+En utilisant l'inégalité de Tchebitchev, donner une borne supérieure à la
+probabilité qu'après n tirs à pile ou face, 3/4 des lancés aient donné pile. 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Variance d'une variable géométrique</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+Soit X une variable aléatoire de loi géométrique
+</p>
+<ol class="org-ol">
+<li>En utilisant l'espérance conditionnelle, calculer \(E(X^2)\)
+</li>
+<li>Calculer la variance de \(X\).
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div></div></div>
+</body>
+</html>

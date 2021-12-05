@@ -1,0 +1,6 @@
+#!/bin/sh
+# LD_LIBRARY_PATH doit contenir le chemin dans lequel se trouve
+# le binaire : gurobix
+LD_LIBRARY_PATH=/home/io/LFI3/ARO/ampl
+export LD_LIBRARY_PATH
+exec gurobix "$@"

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_d1ddEKpxEeeJ4dcVRHlygQ" name="test">
+  <packagedElement xmi:type="uml:Actor" xmi:id="_QmOskKp6Eee4M8iNRWva0w" name="Acheteur"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_ZtP7cKp6Eee4M8iNRWva0w" name="Effectue une recherche">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_psbU8Kp6Eee4M8iNRWva0w" name="ExtensionPoint1"/>
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_teSdAKp6Eee4M8iNRWva0w" name="ExtensionPoint2"/>
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_USYG0Kp9EeeJn9cU4--vuw" name="ExtensionPoint3"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_fVjAsKp6Eee4M8iNRWva0w" name="Ajouter des critères à la recherche">
+    <extend xmi:type="uml:Extend" xmi:id="_psat4Kp6Eee4M8iNRWva0w" extendedCase="_ZtP7cKp6Eee4M8iNRWva0w" extensionLocation="_psbU8Kp6Eee4M8iNRWva0w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_ixSHwKp6Eee4M8iNRWva0w" name="Contact le vendeur">
+    <extend xmi:type="uml:Extend" xmi:id="_teR18Kp6Eee4M8iNRWva0w" extendedCase="_M4fIIKp9EeeJn9cU4--vuw" extensionLocation="_teSdAKp6Eee4M8iNRWva0w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ofzJwKp6Eee4M8iNRWva0w" memberEnd="_ofzJw6p6Eee4M8iNRWva0w _ofzw0Kp6Eee4M8iNRWva0w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ofzJwap6Eee4M8iNRWva0w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ofzJwqp6Eee4M8iNRWva0w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ofzJw6p6Eee4M8iNRWva0w" name="effectue une recherche" type="_ZtP7cKp6Eee4M8iNRWva0w" association="_ofzJwKp6Eee4M8iNRWva0w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ofzw0Kp6Eee4M8iNRWva0w" name="acheteur" type="_QmOskKp6Eee4M8iNRWva0w" association="_ofzJwKp6Eee4M8iNRWva0w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_BNt1AKp7Eee4M8iNRWva0w" name="Visiteur"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_NZX5kKp7Eee4M8iNRWva0w" name="Inscrire"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_Q98zkKp7Eee4M8iNRWva0w" name="Connecter"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Zf7bsKp7Eee4M8iNRWva0w" memberEnd="_Zf7bs6p7Eee4M8iNRWva0w _Zf8CwKp7Eee4M8iNRWva0w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Zf7bsap7Eee4M8iNRWva0w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Zf7bsqp7Eee4M8iNRWva0w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Zf7bs6p7Eee4M8iNRWva0w" name="inscrire" type="_NZX5kKp7Eee4M8iNRWva0w" association="_Zf7bsKp7Eee4M8iNRWva0w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Zf8CwKp7Eee4M8iNRWva0w" name="visiteur" type="_BNt1AKp7Eee4M8iNRWva0w" association="_Zf7bsKp7Eee4M8iNRWva0w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_aTQWEKp7Eee4M8iNRWva0w" memberEnd="_aTRkMKp7Eee4M8iNRWva0w _aTSLQKp7Eee4M8iNRWva0w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aTQ9IKp7Eee4M8iNRWva0w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aTQ9Iap7Eee4M8iNRWva0w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_aTRkMKp7Eee4M8iNRWva0w" name="connecter" type="_Q98zkKp7Eee4M8iNRWva0w" association="_aTQWEKp7Eee4M8iNRWva0w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_aTSLQKp7Eee4M8iNRWva0w" type="_BNt1AKp7Eee4M8iNRWva0w" association="_aTQWEKp7Eee4M8iNRWva0w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_s6C1kKp8EeeEUvIQoWuFGw" name="Noter profil"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_zYCMsKp8EeeEUvIQoWuFGw" memberEnd="_zYCzwKp8EeeEUvIQoWuFGw _zYCzwap8EeeEUvIQoWuFGw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zYCMsap8EeeEUvIQoWuFGw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zYCMsqp8EeeEUvIQoWuFGw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_zYCzwKp8EeeEUvIQoWuFGw" name="noter profil" type="_s6C1kKp8EeeEUvIQoWuFGw" association="_zYCMsKp8EeeEUvIQoWuFGw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_zYCzwap8EeeEUvIQoWuFGw" name="acheteur" type="_QmOskKp6Eee4M8iNRWva0w" association="_zYCMsKp8EeeEUvIQoWuFGw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_M4fIIKp9EeeJn9cU4--vuw" name="Consulter une annonce">
+    <extend xmi:type="uml:Extend" xmi:id="_USWRoKp9EeeJn9cU4--vuw" extendedCase="_ZtP7cKp6Eee4M8iNRWva0w" extensionLocation="_USYG0Kp9EeeJn9cU4--vuw"/>
+  </packagedElement>
+</uml:Model>

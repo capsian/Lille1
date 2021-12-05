@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Notes de cours ACA <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-04-13 mar.&gt;</span></span></title>
+<!-- 2021-05-10 lun. 13:22 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Exercice : fonction des moments d'une loi géométrique</a></li>
+<li><a href="#sec-2">2. Exercice : variables de Bernoulli et loi binomiale</a></li>
+<li><a href="#sec-3">3. Qualité du tri rapide</a></li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">Notes de cours ACA <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-04-13 mar.&gt;</span></span></h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Exercice : fonction des moments d'une loi géométrique</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Par définition, si X est une variable obéissant à un loi géométrique, nous
+avons :
+\[\begin{array}{rcl}
+  M_X(t) &=& \sum_{k=0}^\infty (1-p)^k p e^{t(k+1)}\\
+  &=& pe^t \sum_{k=0}^\infty (1-p)^k e^{tk} \\
+  &=& pe^t \sum_{k=0}^\infty \left((1-p)e^{t}\right)^k \\
+  &=& pe^t \frac{1}{1 - (1-p)e^{t}}\\ 
+  &=&  \frac{pe^t}{1 - (1-p)e^{t}} 
+  \end{array}\] 
+</p>
+
+<p>
+Calculons \(M'_X(t)\) (\(\left(\frac{u}{v}\right)' = \frac{u'v -v'u}{v^2}\)):
+\[\begin{array}{rcl}
+   M'_X(t) &=&   \frac{pe^t}{1 - (1-p)e^{t}} + \frac{p e^t (1-p)e^t}{(1 -
+  (1-p)e^{t})^2}
+   &=&   \frac{pe^t}{1 - (1-p)e^{t}} + \frac{p(1-p)e^{2t}}{(1 -
+  (1-p)e^{t})^2}\\
+  \end{array}\]
+Évaluons \(E(X) = M'_X(0)\):
+ \[\begin{array}{rcl}
+   M'_X(0) &=&   \frac{p}{1 - (1-p)} + \frac{p (1-p)}{(1 -
+  (1-p))^2}\\
+   &=&   1 + \frac{p (1-p)}{p^2}\\
+   &=& 1 + \frac{1-p}{p}\\
+   &=& \frac{1}{p}\\
+  \end{array}\]
+</p>
+
+
+<p>
+Calculons maintenant \(M''_X(t)\):
+ \[\begin{array}{rcl}
+   M''_X(t) &=&   \frac{pe^t}{1 - (1-p)e^{t}} + \frac{p (1-p)e^{2t}}{(1 -
+  (1-p)e^{t})^2} +  \frac{2p(1-p)e^{2t}}{(1 -
+  (1-p)e^{t})^2} +  \frac{2p (1-p)e^{t}(1-p)e^{2t}}{(1 -
+  (1-p)e^{t})^3}\\
+  &=& \frac{pe^t}{1 - (1-p)e^{t}} + \frac{3p(1-p)e^{2t}}{(1 -
+  (1-p)e^{t})^2} +  \frac{2p (1-p)^2e^{3t}}{(1 -
+  (1-p)e^{t})^3}\\
+  \end{array}\]
+Évaluons \(E(X^2) = M''_X(0)\):
+\[\begin{array}{rcl}
+   M''_X(0) &=&  \frac{p}{p} + \frac{3p(1-p)}{p^2} +  \frac{2p (1-p)^2}{p^3}\\
+   &=& 1 + \frac{3p(1-p)}{p^2} + \frac{2(1-p)^2}{p^2}\\
+   &=& 1 + \frac{3p(1-p)+2(1-p)^2}{p^2}\\
+   &=& 1 + \frac{(1-p)(3p +2(1-p))}{p^2}\\
+   &=& 1 + \frac{(1-p)(2 +p)}{p^2}\\
+   &=& 1 + \frac{2-p -p^2}{p^2}\\
+   &=&\frac{2-p}{p^2}\\
+  \end{array}\]
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Exercice : variables de Bernoulli et loi binomiale</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+On veut évaluer \(M_{X_i}(t) = E(e^{tX_i}) = (1-p) e^0 + p e^t = (1-p) + p
+  e^t\leq e^{p(e^{t}-1)}\)
+</p>
+
+<p>
+Comme \(X = \sum_{i=1}^n X_i\), \(M_X(t) = \prod_{i=1}^n M_{X_i}(t) \leq
+  e^{np(e^{t}-1)}\).
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Qualité du tri rapide</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+La probabilité qu'un noeud x soit bon, est la probabilité de tirer
+uniformément dans S (l'ensemble qui étiquette x0
+un élément a tel que :
+</p>
+<ol class="org-ol">
+<li>au plus 2/3 des éléments de S sont plus grands que a
+</li>
+<li>au plus 2/3 des éléments de S sont plus petits que a
+</li>
+</ol>
+
+<p>
+Cela n'est possible que ssi a appartient au deuxième tiers des éléments de x
+quand ceux-ci sont classés. Ainsi seuls un éléments sur 3 de S vérifie cette
+propriété. On en déduit que Pr(x bon) = 1/3.
+</p>
+
+<p>
+Le nombre k de noeuds bons dans un chemins qui va de la racine à une feuille
+est tel :
+\[1 \leq \left(\frac{2}{3}\right)^k n\]
+où n est le nombre d'éléments de l'ensemble à trier. En effet à chaque fois
+que l'on passe à travers un noeud bon, le nombre d'éléments contenu dans
+l'ensemble qui étiquette le noeud suivant dans le chemin est multiplié par 2/3
+par rapport au nombre d'éléments dans le noeud bon considéré.
+On obtient que : \(\left(\frac{3}{2}\right)^k\leq n\) et ainsi \(k\leq
+  \log_{3/2}(n)\). On prend \(M =  \log_{3/2}(n)\).
+</p>
+
+
+<p>
+La variable \(X\) consiste en 48M tirs indépendants avec un probabilité 1/3 de
+succès. Ainsi \(E(X) = 16M\).
+</p>
+
+<p>
+Nous avons que :
+\[\begin{array}{rcl}
+  Pr(X \leq M) &\leq & Pr(X \leq 8M)\\
+  &=& Pr(X \leq ((1 - \frac{1}{2}) 16M)\\
+  &\leq& \exp\left( \frac{-16M \left(\frac{1}{2}\right)^2}{3}\right)\\
+  &=& \exp\left( -\frac{4}{3} M\right)\\
+  &=& \exp\left( -\frac{4}{3} \log_{3/2}(n)\right)\\
+  &\leq& \exp\left(-2\log(n)\right)\\
+  &=& \frac{1}{n^2}
+  \end{array}\]
+</p>
+
+<p>
+On en déduit que l'arbre contient un chemin de taille 48M avec probabilité au
+plus 1/n. Ainsi avec forte probabilité, l'arbre ne contient pas de branche de
+taille plus grande que 48M. Et la complexité du tri rapide est en O(nlog(n))
+avec forte probabilité.
+</p>
+</div>
+</div>
+</div></div></div>
+</body>
+</html>

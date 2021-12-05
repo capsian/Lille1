@@ -1,0 +1,4 @@
+getStatistics(surface, moyenne, min, max, ecartType, histogramme);
+print ("Niveau maximal : "+max);
+print ("Moyenne : "+moyenne);
+print ("ecartType : "+ecartType)

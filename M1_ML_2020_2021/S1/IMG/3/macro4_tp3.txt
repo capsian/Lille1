@@ -1,0 +1,17 @@
+original = getImageID();
+
+run("Duplicate...", "title=gateaux1-tr.png");
+
+selectWindow("gateaux1-tr.png");
+i_min = 0;
+i_max = 204
+for (y = 0; y < getHeight; y = y + 1)
+{   
+	for (x = 0; x < getWidth; x = x + 1)
+	{   
+		p = getPixel(x, y);     
+		p1 = (255 * (p - i_min)) / (i_max - i_min);
+		setPixel(x,y,p1);
+	}
+}
+updateDisplay();

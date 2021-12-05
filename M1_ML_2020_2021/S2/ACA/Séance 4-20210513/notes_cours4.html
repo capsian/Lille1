@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Notes de cours ACA <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-03-30 Tue&gt;</span></span></title>
+<!-- 2021-03-30 Tue 10:14 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Une histoire de famille</a>
+<ul class="nav">
+<li><a href="#sec-1-1">1.1. Espérance du nombre de filles</a></li>
+<li><a href="#sec-1-2">1.2. Espérance du nombre de garçons</a></li>
+<li><a href="#sec-1-3">1.3. Espérance du nombre de garçons sans la limite k</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Markov appliqué à pile ou face</a></li>
+<li><a href="#sec-3">3. Identités sur co-variance et variance</a>
+<ul class="nav">
+<li><a href="#sec-3-1">3.1. E(XY) = E(X)E(Y) si X et Y sont indépendantes</a></li>
+<li><a href="#sec-3-2">3.2. Cov(X,Y)=0 lorsque X et Y indépendantes</a></li>
+<li><a href="#sec-3-3">3.3. Var(X+Y) = Var(X)+Var(Y) lorsque X et Y indépendantes</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Variance loi binomiale</a>
+<ul class="nav">
+<li><a href="#sec-4-1">4.1. Variance Bernoulli</a></li>
+<li><a href="#sec-4-2">4.2. Variance de la loi binomiale</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">Notes de cours ACA <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-03-30 Tue&gt;</span></span></h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Une histoire de famille</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Espérance du nombre de filles</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+On appelle X<sub>i</sub> la variable aléatoire qui prend pour valeur 1 lorsque Alice
+et Bob ont i enfants et que le ième est une fille et 0 sinon. Pour i &gt; k X<sub>i</sub>
+est toujours égale à 0.
+</p>
+
+<p>
+Supposons X<sub>i</sub> ≤ k, et calculons Pr(X<sub>i</sub>=1) = (1/2)<sup>i</sup>.
+</p>
+
+<p>
+On appelle X, la variable aléatoire qui représente le nombre de filles de
+Alice et Bob, nous avons \(X = \sum_{i=1}^k X_i\).
+</p>
+
+<p>
+\[\begin{array}{rcl}
+   E(X) &=& E\left(\sum_{i=1}^k X_i \right)\\
+   &=&  \sum_{i=1}^k E(X_i)\\
+   &=&  \sum_{i=1}^k Pr(X_i=1)\\
+   &=& \sum_{i=1}^k \frac{1}{2}^i\\
+   &=& \frac{1}{2} \sum_{i=0}^{k-1}\frac{1}{2}^i\\
+   &=& \frac{1}{2} \frac{1-\frac{1}{2}^k}{1-\frac{1}{2}}\\
+   &=& \frac{2^i-1}{2^i}\\
+   \end{array}\]
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Espérance du nombre de garçons</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+On appelle Y<sub>i</sub>, la variable aléatoire qui renvoie le nombre de garçons
+d'Alice et Bob, lorsqu'ils ont i enfants (le dernier étant une fille ou
+i=k). On remarque que, lorsque i &lt; k, le nombre de garçon est i-1 et Y<sub>i</sub> =
+(i-1)X<sub>i</sub>. Pour i = k, il y a deux cas :
+</p>
+<ol class="org-ol">
+<li>ou bien Alice et Bob ont une fille et alors ils ont k-1 garçons
+</li>
+<li>ou bien ils ont k garçons
+</li>
+</ol>
+<p>
+Le deux cas ont une probabilité (1/2)<sup>k</sup>.
+</p>
+
+<p>
+Si Y est la variable aléatoire qui représente le nombre de garçons,
+\(Y =\sum_{i=1}^k Y_i = Y_k + \sum_{i=1}^{k-1}  (i-1) X_i\)
+</p>
+
+<p>
+On calcule \(E(Y)\):
+</p>
+
+<p>
+\[\begin{array}{rcl}
+   E(Y)&=& E\left(Y_k+ \sum_{i=1}^{k-1}  (i-1) X_i \right)\\
+   &=& E(Y_k) +  \sum_{i=1}^{k-1}  (i-1) E(X_i)\\
+   &=& k\frac{1}{2}^k + (k-1)\frac{1}{2}^k +  \sum_{i=1}^{k-1}  (i-1)
+   \frac{1}{2}^i\\
+    &=& k\frac{1}{2}^k +\sum_{i=1}^{k}  (i-1) \frac{1}{2}^i\\
+    &=& k\frac{1}{2}^k +\frac{1}{4}\sum_{i=1}^{k}  (i-1) \frac{1}{2}^{i-2}\\
+   \end{array}\]
+</p>
+
+<p>
+Pour terminer, si on prend \(f(x) = \sum_{i=1}^k x^{i-1}\) on remarque que \(f'(x) = \sum_{i=1}^k (i-1)x^{i-2}\).
+Or, nous avons \(f(x) = \sum_{i=1}^k x^{i-1} =  \sum_{i=0}^{k-1} x^{i-1} = \frac{1-x^k}{1-x}\).
+</p>
+
+<p>
+Pour terminer, il faut calculer f'(x) et f'(1/2).
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Espérance du nombre de garçons sans la limite k</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Si Z est la variable aléatoire qui indique le nombre d' enfants qu'Alice et
+Bob ont, alors le nombre de garçons, G est égale à Z-1. Ainsi, E(G) = E(Z-1)
+= E(Z) -1. Comme Z est dans ce cas une variable géométrique avec probabilité
+de succès 1/2, E(Z) = 2 et E(G)=1.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Markov appliqué à pile ou face</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Le nombre de lancés qui donnent pile lors de n jets successifs d'une pièce
+obéit à une loi binomiale. Si on appelle X cette variable aléatoire, nous
+avons vu que E(X) = np où p est la probabilité d'obtenir pile. Ici p = 1/2.
+</p>
+
+<p>
+En utilisant l'inégalité de Markov, nous savons que:
+\[Pr\left(X \geq \frac{3n}{4}\right) \leq \frac{E(X)}{\frac{3n}{4}} = \frac{4n}{2 \times
+  3n} = \frac{2}{3}\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Identités sur co-variance et variance</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> E(XY) = E(X)E(Y) si X et Y sont indépendantes</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+\[\begin{array}{rcl}
+   E(XY) &=& \sum_{i,j} ijPr(X=i\cap Y=j)\\
+   &=& \sum_{i,j} ijPr(X=i)Pr(Y=j)\\
+   &=& \sum_i iPr(X=i) \left(\sum_j jPr(Y=j)\right)\\
+   &=& \sum_i   iPr(X=i) E(Y)\\
+   &=& E(X)E(Y)
+   \end{array}\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Cov(X,Y)=0 lorsque X et Y indépendantes</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+\[\begin{array}{rcl}
+   Cov(X,Y) &=& E((X-E(X))(Y-E(Y))\\
+   &=& E(XY -XE(Y)-YE(X) +E(X)E(Y))\\
+   &=& E(XY)-E(X)E(Y) -E(Y)E(X) + E(X)E(Y)\\
+   &=& E(X)E(Y) -E(X)E(Y)
+   &=& 0
+   \end{array}\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Var(X+Y) = Var(X)+Var(Y) lorsque X et Y indépendantes</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+\[\begin{array}
+   Var(X+Y) &=& E((X+Y)^2) - E(X+Y)^2\\
+   &=& E(X^2 + 2XY+ Y^2) - (E(X) + E(Y))^2 \\
+   &=& E(X^2) + 2E(XY) + E(Y^2) - E(X)^2 - 2E(X)E(Y) - E(Y)^2\\
+   &=& E(X^2) + 2E(X)E(Y) + E(Y^2) - E(X)^2 - 2E(X)E(Y) - E(Y)^2\\
+   &=& E(X^2)-E(X)^2 + E(Y^2)-E(Y)^2\\
+   &=& Var(X)+ Var(Y)
+   \end{array}\]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Variance loi binomiale</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Variance Bernoulli</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Pour une variable de Bernoulli \(X\), \(X=X^2\), et \(Var(X) = E(X^2) -E(X)^2 =
+   E(X) - E(X)^2 = E(X)(1-E(X))\). Ainsi si la probabilité de succès de \(X\) est
+\(p\), alors, \(Var(X) = p(1-p)\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Variance de la loi binomiale</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+On prend une variable aléatoire \(Y\) de loi binomiale \(B(n,p)\). On suppose que \(Y\)
+est la somme des variables aléatoires de Bernoulli indépendantes \(X_1\), &#x2026;,
+\(X_n\).
+</p>
+
+<p>
+On sait que \(E(Y) = np\) et que \(Var(Y) = E(Y^2) -E(Y)^2\). On cherche à
+calculer \(E(Y^2)\), or \(Y=\sum_{i=1}^n X_i\):
+</p>
+
+<p>
+\[\begin{array}{rcl}
+   E(Y^2)&=& E\left(\left(\sum_{i=1}^n X_i \right)^2\right)\\
+   &=& E(\sum_{i,j\in[1,n]} X_iX_j)\\
+   &=& E(\sum_{i\in[1,n]} X_i^2 + \sum_{i,j\in[1,n] \mid i\neq j} X_iX_j)\\
+   &=& \sum_{i\in[1,n]} E(X_i^2) + \sum_{i,j\in[1,n] \mid i\neq j} E(X_iX_j)\\
+   &=& \sum_{i\in[1,n]} E(X_i) + \sum_{i,j\in[1,n] \mid i\neq j} E(X_i)E(X_j)\\
+   &=& np+(n^2-n)p^2
+   \end{array}\]
+</p>
+
+<p>
+Ainsi \(Var(Y) = np+(n^2-n)p^2 -(np)^2 = np-np^2 =np(1-p)\).
+</p>
+</div>
+</div>
+</div>
+</div></div></div>
+</body>
+</html>

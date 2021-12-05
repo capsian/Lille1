@@ -1,0 +1,99 @@
+(sorry pour les accents, j'ai eu la flemme de configurer mon clavier depuis
+la VM)
+
+2.1 :
+
+#psql -U postgres -d postgres
+-> psql: FATAL:  authentification peer échouée pour l'utilisateur « postgres »
+
+La premiere ligne de hba.conf est
+local   all             postgres                                peer
+
+C'est donc normal (voir la doc)
+
+#su postgres
+$psql
+-> fonctionne
+
+2.2 :
+
+Apres les modifications indiquees, la commande fonctionne (pas besoin
+de la lancer en tant que l'utilisateur postgres de la VM)
+
+2.3 :
+
+#CREATE ROLE admin LOGIN CREATEDB CREATEROLE PASSWORD 'admin' ;
+Pour se connecter avec admin, etant donne la configuratin de pg_hba.conf,
+on peut simplement faire
+#psql -U admin -d postgres
+(notons que le mot de passe n'est pas demande) puis
+#CREATE DATABASE labase;
+puis se connecter a labase avec
+#\c labase; 
+et
+#REVOKE CONNECT ON DATABASE labase FROM PUBLIC;
+
+2.4 :
+
+Le proprietaire du schema public est Postgres ! (et tout le monde a les
+droits CREATE et USAGE dessus). En temps normal, le proprietaire d'un objet
+est celui qui l'a cree (sauf si on fait un ALTER).  En fait, comme la base
+est creee a partir d'un template et que dans ce template le proprietaire du
+schema est postgres, cela reste.  Pour supprimer le schema, il faut se
+reconnecter en tant que postgres puis faire
+#DROP SCHEMA public;
+On cree en suite le schema music avec l'utilisateur admin
+#CREATE SCHEMA music;
+Puis on grant usage a tout le monde
+#GRANT USAGE ON SCHEMA music TO PUBLIC;
+\dn+ montre bien les droits qu'on veut.
+
+2.5 :
+
+#SET search_path TO music;
+#\i music-schema.sql
+
+2.6 :
+
+#CREATE ROLE vendeurs;
+#CREATE ROLE vendeur1 LOGIN PASSWORD 'vendeur1';
+#CREATE ROLE vendeur2 LOGIN PASSWORD 'vendeur2';
+#GRANT vendeurs TO vendeur1,vendeur2;
+#GRANT CONNECT ON DATABASE labase TO vendeurs;
+GRANT INSERT,SELECT,UPDATE,DELETE ON factures,clients,lignes_factures TO vendeurs;
+
+(note : il est probable que les élèves oublient le grant connect)
+
+2.7 :
+
+#CREATE ROLE comptable LOGIN PASSWORD 'comptable';
+#CREATE ROLE serveurweb LOGIN PASSWORD 'serveurweb';
+#GRANT CONNECT ON DATABASE labase TO comptable,serveurweb;
+#GRANT SELECT ON factures,lignes_factures TO comptable;
+#GRANT SELECT ON albums,produits TO serveurweb;
+
+2.8 :
+
+Avec l'interface VirtualBox, configuration de la VM, reseau -> options
+avancees, ajouter une redirection de port, rediriger port 5555 de l'hote
+vers 5432 de la VM.
+
+2.9 :
+
+La deuxieme fois qu'on fait 
+psql -U vendeur1 -d labase -h adresse_ip -p 5555
+psql nous raconte qu'aucune entree dans pg_hba ne correspond
+a l'utilisateur vendeur1 pour la base labase pour l'hote 10.0.2.2.
+(Notons qu'ici, 10.0.2.2 est l'adresse de la passerelle NAT de la VM,
+ce qu'on peut voir en faisant
+#ip route
+depuis la VM).
+
+On eteint le serveur puis on edite pg_hba.conf pour rajouter cette ligne en second :
+host    labase             vendeur1             samenet	md5 
+(on peut remplacer samenet par 10.0.2.2 (ou la valeur que vous avez chez vous)), et labase et vendeur1 par des valeurs moins strictes si on veut).
+Lorsqu'on le redemare, cela fonctionne enfin : le mot de passe est demandé et on
+peut se connecter à la base tourne dans la VM depuis la machine hote.
+
+
+

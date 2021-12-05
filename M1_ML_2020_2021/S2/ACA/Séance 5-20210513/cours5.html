@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Trouver la médiane</title>
+<!-- 2021-04-06 mar. 07:37 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+.code-highlighted { background-color: #ffff00; }
+
+/* .verbatim { color: #3e9409;
+            background-color: #f5fbf4; }*/
+.verbatim {
+    color: #337ab7;
+    background-color: #d9edf7; }
+
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Algorithme de la médiane</a></li>
+<li><a href="#sec-2">2. Analyse de l'algorithme</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. Borner Pr(E<sub>1</sub>)</a></li>
+<li><a href="#sec-2-2">2.2. Borner Pr(E<sub>2</sub>)</a></li>
+<li><a href="#sec-2-3">2.3. Borner Pr(E<sub>3</sub>)</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Une classification des algorithmes randomisés</a></li>
+<li><a href="#sec-4">4. Exercice</a>
+<ul class="nav">
+<li><a href="#sec-4-1">4.1. De Monte-Carlo à Las Vegas</a></li>
+<li><a href="#sec-4-2">4.2. Implémentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">Trouver la médiane</h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Algorithme de la médiane</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Nous allons nous intéresser à cherche la médiane d'un ensemble S contenant un
+nombre impaire d'éléments. Les hypothèses (utilisation d'un ensemble et nombre
+impaire d'éléments) servent à simplifier la présentation. Les idées de
+l'algorithme se généralisent au cas des multi-ensembles et d'un nombre
+quelconque d'éléments. L'algorithme que nous allons étudier calcule la médiane
+en O(n).
+</p>
+
+<p>
+L'idée de l'algorithme est de trouver deux éléments d et u  de S tels que:
+</p>
+<ol class="org-ol">
+<li>d ≤ m ≤ u (m étant la médiane de S)
+</li>
+<li>le nombre d'éléments de S compris entre d et u est o(n/log(n)).
+C = {s ∈ S | d ≤ s ≤ u} et |C| = o(n/log(n))
+</li>
+</ol>
+
+<p>
+Une fois que d et u ont été trouvés, on peut trouver la médiane m en temps
+linéaire. Il suffit pour cela:
+</p>
+<ol class="org-ol">
+<li>de parcourir S tout en:
+<ol class="org-ol">
+<li>sélectionnant les éléments compris entre d et u
+</li>
+<li>comptant le nombre l<sub>d</sub> des éléments strictement inférieurs à d
+</li>
+<li>comptant le nombre l<sub>u</sub> des éléments strictement supérieurs à u
+</li>
+</ol>
+</li>
+<li>trier les éléments compris entre d et u et renvoyer l'élément de place
+⌊n/2⌋ -l<sub>d</sub>+1 dans ce tri.
+</li>
+</ol>
+
+<p>
+Pour obtenir le temps linéaire, il faut noter qu'un algorithme de tri en O(m
+log(m)) prendrait un temps au plus linéaire pour trier les o(n/log(n))
+éléments compris entre d et u. En effet, n/log(n) (log(n/log(n)) =
+n/log(n)(log(n)-log(log(n)) ≤ n.
+</p>
+
+
+<p>
+La recherche de d et u s'effectue par la méthode d'<i>échantillonnage</i> ou
+<i>sampling</i>. Pour cela nous tirons au hasard \(\left\lceil n^{3/4}
+  \right\rceil\) (chaque tir est indépendant des autres). Les étapes de
+l'algorithme fonctionnent avec <i>forte probabilité</i>, c'est-à-dire avec une
+probabilité d'au moins 1-O(1/n<sup>c</sup>) avec c&gt;0.
+</p>
+
+<p>
+Nous espérons que la médiane de S fait partie de l'échantillonnage que nous
+avons tiré et nous allons prendre d et u parmi les élément de l'échantillon.
+Afin de garantir avec forte probabilité que m soit compris entre d et u, nous
+choisissons d et u comme étant respectivement le \(\left\lfloor
+  n^{3/4}/2-\sqrt{n}\right\rfloor\) et le \(\left\lfloor
+  n^{3/4}/2+\sqrt{n}\right\rfloor\) éléments de l'échantillonnage trié dans
+l'ordre croissant (le choix de ces nombres deviendra plus clair lors de
+l'analyse).
+</p>
+
+<p>
+En résumé les étapes de l'algorithmes sont les suivantes:
+</p>
+<ol class="org-ol">
+<li>Tirer au hasard uniformément et indépendamment \(\left\lceil n^{3/4}
+     \right\rceil\) éléments de S et les placer dans une liste R
+</li>
+<li>Trier R
+</li>
+<li>Prendre pour d l'élément de R en position \(\left\lfloor
+     n^{3/4}/2-\sqrt{n}\right\rfloor\)
+</li>
+<li>Prendre pour u l'élément de R en position \(\left\lfloor
+     n^{3/4}/2+\sqrt{n}\right\rfloor\)
+</li>
+<li>En comparant les éléments de S à d et à u, calculer :
+<ul class="org-ul">
+<li>C = {s ∈ S | d ≤ x ≤ u}
+</li>
+<li>l<sub>d</sub> = |{s ∈ S | x &lt; d}|
+</li>
+<li>l<sub>u</sub> = |{s ∈ S | x &gt; u}|
+</li>
+</ul>
+</li>
+<li>Si l<sub>d</sub> &gt; n/2 ou l<sub>u</sub> &lt; n/2, l'algorithme <b><b>échoue</b></b> 
+</li>
+<li>Si \(|C| ≤ 4n^{3/4}\), alors trier l'ensemble C, sinon l'algorithme <b><b>échoue</b></b>
+</li>
+<li>Renvoyer l'élément de position  ⌊n/2⌋ -l<sub>d</sub>+1 de C.
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Analyse de l'algorithme</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Nous remarquons tout d'abord que:
+</p>
+<ol class="org-ol">
+<li>l'algorithme termine en temps linéaire (on montre facilement que
+\(n^{3/4}log(n^{3/4}) = O(n)\) en utilisant la règle de l'Hospital),
+</li>
+<li>ou bien renvoie le résultat correct ou alors échoue.
+</li>
+</ol>
+
+
+
+<p>
+Ce qui nous intéresse est de borner la probabilité que l'algorithme échoue.
+Il peut échouer ssi l'un des trois évènements suivants se produit:
+</p>
+<ol class="org-ol">
+<li>E<sub>1</sub>: \(Y_1 = |{r\in R \mid r\leq m}| < \frac{1}{2} n^{3/4} -\sqrt{n}\)
+</li>
+<li>E<sub>2</sub>: \(Y_2 = |{r\in R \mid r\geq m}| < \frac{1}{2} n^{3/4} -\sqrt{n}\)
+</li>
+<li>E<sub>3</sub>: \(|C| > 4 n^{3/4}\)
+</li>
+</ol>
+
+
+<p>
+Nous allons borner la probabilité de chacun de ces évènements.
+</p>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Borner Pr(E<sub>1</sub>)</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Nous allons montrer que
+\[Pr(E_1) \leq \frac{1}{4} n^{-1/4}\]
+</p>
+
+<p>
+Nous utilisons le variables de Bernoulli X<sub>i</sub> définies par:
+</p>
+<ol class="org-ol">
+<li>X<sub>i</sub> = 1 si le ième tir dans S est inférieur ou égal à m
+</li>
+<li>X<sub>i</sub> = 0 sinon.
+</li>
+</ol>
+
+
+<p>
+Les X<sub>i</sub> sont indépendants et les tirs sont uniformes et ainsi:
+\[Pr(X_i = 1) = \frac{(n-1)/2 +1}{n} = \frac{1}{2} + \frac{1}{2n}\]
+</p>
+
+<p>
+L'évènement E<sub>1</sub> est équivalent à:
+</p>
+
+<p>
+\[Y_1 = \sum_{i=1}^{n^{3/4}} X_i < \frac{1}{2} n^{3/4} -\sqrt{n}\]
+</p>
+</div>
+
+<div id="outline-container-sec-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> Exercice</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+En remarquant que Y<sub>1</sub> est une variable aléatoire de Bernoulli montrer
+l'inégalité.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Borner Pr(E<sub>2</sub>)</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Un raisonnement similaire à celui concernant Pr(E<sub>1</sub>) montre que:
+\[Pr(E_2) \leq \frac{1}{4} n^{-1/4}\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Borner Pr(E<sub>3</sub>)</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Nous allons voir que
+\[Pr(E_3) \leq \frac{1}{2} n^{-1/4}\]
+</p>
+
+<p>
+E<sub>3</sub> se produit lorsque \(|C|> 4 n^{3/4}\) et l'un de ces deux évènements se
+produit:
+</p>
+<ul class="org-ul">
+<li>E<sub>3</sub><sub>1</sub>: au moins \(2n^{3/4}\) éléments de C sont plus grands que la médiane
+</li>
+<li>E<sub>3</sub><sub>2</sub>: au moins \(2n^{3/4}\) éléments de C sont plus petits que la médiane
+</li>
+</ul>
+
+<p>
+Nous allons calculer Pr(E<sub>3</sub><sub>1</sub>). Pr(E<sub>3</sub><sub>2</sub>) s'obtient par symmétrie.
+</p>
+
+<p>
+Si il y a \(2n^{3/4}\) éléments de C sont plus grands que la médiane dans C,
+alors u est au moins le \(\frac{1}{2}n+ 2n^{3/4}\)-ème élément de S. De plus
+R contien au moins \(\frac{1}{2}n^{3/4}-\sqrt{n}\) éléments parmis les
+\(\frac{1}{2}n+ 2n^{3/4}\) plus grands éléments de S.
+</p>
+</div>
+
+
+<div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> Exercice</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+En utilisant une méthode similaire à celle du calcul du majorant de
+Pr(E<sub>1</sub>), montrer que \(\frac{1}{4}n^{-1/4}\) est un majorant de Pr(E<sub>3</sub><sub>1</sub>).
+En déduire:
+</p>
+<ol class="org-ol">
+<li>le majorant pour Pr(E<sub>3</sub>)
+</li>
+<li>le fait que l'algorithme trouve la médiane avec forte probabilité
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Une classification des algorithmes randomisés</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Nous venons de voir un algorithme qui a la propriété suivante:
+</p>
+<ol class="org-ol">
+<li>Il peut échouer avec une certaine probabilité
+</li>
+<li>Si il donne une réponse sa réponse est la bonne
+</li>
+<li>Il termine dans un temps prévisible
+</li>
+</ol>
+
+
+<p>
+Les algorithmes randomisés qui s'arrêtent toujours dans une temps fixé mais
+peuvent ne pas donner de réponse ou même donner une mauvaise réponse sont des
+algorithmes <b><b>Monte Carlo</b></b>. Ceux qui renvoient toujours la bonne réponse sont
+des algorithmes <b><b>Las Vegas</b></b>.
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Exercice</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> De Monte-Carlo à Las Vegas</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Comment modifier l'algorithme de calcul de la médiane pour en faire un
+algorithme Las Vegas. Donner le temps moyen d'exécution
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Implémentation</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Implémenter et tester sur des exemples de grande taille l'algorithme de
+calcul de la médiane.
+</p>
+</div>
+</div>
+</div>
+</div></div></div>
+</body>
+</html>

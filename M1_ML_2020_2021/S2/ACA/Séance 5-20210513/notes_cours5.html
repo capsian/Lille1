@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Notes de cours ACA <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-04-06 mar.&gt;</span></span></title>
+<!-- 2021-04-13 mar. 07:26 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Borner Pr(E<sub>1</sub>)</a></li>
+<li><a href="#sec-2">2. Borner Pr(E<sub>3</sub><sub>1</sub>)</a></li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">Notes de cours ACA <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-04-06 mar.&gt;</span></span></h1>
+<p>
+Pour montrer que l'algorithme s'exécute en temps linéaire, il faut montrer que
+\(n^{3/4}\) est o(n/log(n)). Pour y parvenir, il nous faut calculer la limite
+suivante :
+\[\lim_{n \to \infty} \frac{n^{3/4}}{\frac{n}{\log(n)}} = \lim_{n \to \infty}
+\frac{\log(n)}{n^{1/4}} \]
+</p>
+
+<p>
+La règle de l'Hospital nous dit que lorsque \(\lim_{n\to\infty} f(n) =
+\lim_{n\to\infty} g(n) = \infty\) alors  \(\lim_{n\to\infty} \frac{f(n)}{g(n)} =
+\lim_{n\to\infty} \frac{f'(n)}{g'(n)}\). Or, \(\log(n)' = \frac{1}{n}\) et
+\(\left(n^{1/4}\right)' = \frac{1}{4 n^{3/4}}\). La limite que nous cherchons est donc égale
+à \[\lim_{n\to\infty}  \frac{1}{4 n^{7/4}} = 0\]
+Ainsi \(n^{3/4}\) est bien o(n/log(n)).
+</p>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Borner Pr(E<sub>1</sub>)</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+On veut utiliser Chebyshev qui nous dit : \(Pr(|Y_1 -E(Y_1)| \geq a) \leq
+  \frac{Var(Y_1)}{a^2}\)
+</p>
+
+<p>
+On sait que \(Y_1\) obéit à une loi binomiale. Il faut :
+</p>
+<ol class="org-ol">
+<li>déterminer les paramètres de cette loi, nb le nombre de tir et p la
+probabilité de succès
+</li>
+<li>calculer \(E(Y_1) = nb  \times p\)
+</li>
+<li>calculer \(Var(Y_1) = nb \times p \times (1-p)\)
+</li>
+</ol>
+
+<p>
+Le nombre de tir est \(n^{3/4}\) et la probabilité de succès est
+\(p=\frac{1}{2}+\frac{1}{2n}\).
+</p>
+
+<p>
+L'espérance de \(Y_1\) est:
+\[E(Y_1) = \frac{n^{3/4}}{2} + \frac{n^{3/4}}{2n} =  \frac{n^{3/4}}{2} +
+  \frac{1}{2n^{1/4}} < \frac{n^{3/4}}{2} \]
+</p>
+
+<p>
+La variance de \(Y_1\) est:
+\[\begin{array}{rcl}
+  Var(Y_1)
+  &=& n^{3/4} \left(\frac{1}{2} + \frac{1}{2n}\right)\left(\frac{1}{2}-
+  \frac{1}{2n}\right)\\
+  &=& n^{3/4} \left(\frac{1}{4} - \frac{1}{4n^4}\right)\\
+  &=& n^{3/4} \left(\frac{1}{4} - \frac{1}{4n^4}\right)\\
+  &=&  \frac{n^{3/4}}{4} - \frac{n^{3/4}}{4n^4}\\
+  &\geq&  \frac{n^{3/4}}{4}\\
+  \end{array}\]
+</p>
+
+<p>
+Pour borner Pr(E<sub>1</sub>), on procède de la manière suivante:
+\[\begin{array}{rcl}
+  Pr(E_1) &=& Pr(Y_1 < \frac{n^{3/4}}{2} - \sqrt{n})\\
+  &\leq & Pr(Y_1 \leq \frac{n^{3/4}}{2} - \sqrt{n}) +  Pr(Y_1 \geq
+  \frac{n^{3/4}}{2} + \sqrt{n})\\
+  & =& Pr(|Y_1 - E(Y_1)| \geq \sqrt{n})\\
+  & \leq & \frac{Var(Y_1)}{n}\\
+  &=& \frac{1}{4} n^{-1/4}
+  \end{array}\]
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Borner Pr(E<sub>3</sub><sub>1</sub>)</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+On utilise les variables de Bernoulli \(Z_i\) telles que:
+</p>
+<ol class="org-ol">
+<li>\(Z_i=1\) lorsque le ième tir aléatoire dans S est l'un des
+\(\frac{1}{2}n+2n^{3/4}\) plus grands éléments de S,
+</li>
+<li>\(Z_i=0\) sinon.
+</li>
+</ol>
+
+
+<p>
+On pose \(Z = \sum_{i=1}{n^{3/4}} Z_i\), et nous avons que \(Pr(E_{31})
+  \leq Pr(Z \geq \frac{n^{3/4}}{2} - \sqrt{n})\).
+</p>
+
+<p>
+On va d'abord évaluer la probabilité \(Pr(Z_i=1)\).
+Comme les tirs sont uniformes sur S et indépendants:
+\[Pr(Z_i=1) = \frac{\frac{n}{2}+2n^{3/4}}{n} = \frac{1}{2} + 2 n^{-1/4}\]
+</p>
+
+<p>
+La variable aléatoire \(Z\) obéit à une loi binomiale de paramètres :
+</p>
+<ol class="org-ol">
+<li>nombre de tirs : \(n^{3/4}\)
+</li>
+<li>probabilité de succès : \(\frac{1}{2} + 2 n^{-1/4}\).
+</li>
+</ol>
+
+
+<p>
+Calculons \(E(Z)\):
+\[\begin{array}{rcl}
+  E(Z)&=& n^{3/4} \left(\frac{1}{2} + 2 n^{-1/4}\right)\\
+  &=& \frac{n^{3/4}}{2} + 2 \sqrt{n}
+  \end{array}\]
+</p>
+
+<p>
+Calculons \(Var(Z)\):
+\[\begin{array}{rcl}
+  Var(Z)&=& E(Z)\left(\frac{1}{2}-2 n^{-1/4}\right)\\
+  &=&  \frac{n^{3/4}}{4} + \sqrt{n} - \sqrt{n} -4 n^{1/4}\\
+  &=&  \frac{n^{3/4}}{4} -4 n^{1/4}\\
+  \end{array}\]
+</p>
+
+
+<p>
+Nous allons maintenant borner \(Pr(E_{31})\):
+\[\begin{array}{rcl}
+  Pr(E_{31})
+  &\leq& Pr(Z \geq \frac{n^{3/4}}{2} - \sqrt{n})\\
+  &\leq & Pr(|Z - \frac{n^{3/4}}{2} + 2 \sqrt{n}| \geq \sqrt{n})\\
+  &= & Pr(|Z - E(Z)| \geq \sqrt{n})\\
+  &\leq& \frac{Var(Z)}{n}\\
+  &=&  \frac{\frac{n^{3/4}}{4} -4 n^{1/4}}{n}\\
+  &\leq& \frac{1}{4n^{1/4}}\\
+  \end{array}\]
+</p>
+
+<p>
+On peut borner \(Pr(E_3)\) par \(Pr(E_{31})+ Pr(E_{32}) =\frac{1}{4n^{1/4}}+
+  \frac{1}{4n^{1/4}} = \frac{1}{2n^{1/4}}\) (par symétrie, Pr(E<sub>3</sub><sub>1</sub>)=Pr(E<sub>3</sub><sub>2</sub>)).
+</p>
+
+<p>
+On en déduit que la probabilité que l'algorithme échoue est \(n^{1/4}\). On en
+conclut que l'algorithme renvoit la bonne réponse avec forte probabilité.
+</p>
+</div>
+</div>
+</div></div></div>
+</body>
+</html>

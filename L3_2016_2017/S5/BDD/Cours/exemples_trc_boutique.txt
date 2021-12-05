@@ -1,0 +1,68 @@
+---- exemples TRC avec la boutique
+--- auteur: Celine Kuttler
+
+-- 1  -- lister tous les noms de fournisseurs 
+{t | exists f in fournisseurs: 
+   t[fnom]=f[fnom]
+}
+
+
+
+-- 2 -- Donner les noms des articles verts
+{t | exists a in articles: 
+   t[anom]=a[anom] and
+   a[acoul]='vert' 
+}
+
+
+-- 3 -- Donner les noms des articles rouges, qui n'existent pas en vert
+{t | exists a in articles: 
+   t[anom]=a[anom] and
+   a[acoul]='rouge' and 
+   not exists a2 in articles: a2[anom]=a[anom] and 
+   a2[acoul]='vert'
+}
+
+
+
+
+-- 4 -- Donner les noms des fournisseurs d'articles verts
+
+{t | 
+exists c in catalogue, 
+exists a in articles, 
+exists f in fournisseurs :
+       c[fid]=t[fid] anda 
+       c[aid]=a[aid] and 
+       a[acoul='vert'] and 
+       f[fid]=c[aid] 
+}
+-- 5 --- les couleurs rares
+{t | exists a in articles: 
+   t[anom]=a[anom] and
+   not exists a2 in articles: a2[anom] !=  a[anom] and a2[acoul]=a[acoul] 
+}
+
+
+
+
+--6 -- Donner les noms des articles non fournissables
+
+{t | 
+exists a in articles:
+       a[aid]=t[aid] and
+       not exists c in catalogue: c[aid]=a[aid]
+}
+
+--7 -- Le(s)  nom(s) de(s) article(s) le plus cher
+
+{ t | 
+exists c in catalogue,
+exists a in articles:
+       a[anom]=t[anom] and
+       a[aid]=c[aid] and
+       not exists c1 in catalogue:
+           c1[prix]>c[prix]
+}
+
+

@@ -1,0 +1,89 @@
+---- TP 5 en TRC: Q3 et Q4
+--- Q3
+---Quelles routes (départ et destination) peuvent ^etre volées par tous les pilotes
+---gagnant plus de 100 000 euros?
+
+--- TRAVAIL A FAIRE: 
+----pour les premieres etapes, identifier la regle d'equivalence, 
+--- et marquer ou elle est appliquee (avant/apres avec deux couleurs differentes).
+
+--- pour la derniere etape: ecrire la version finale de la formule
+
+{ t | exists v in vols: v[dep]=t[dep] and v[arr]=t[arr] and
+  --- un vol, tel que pour tous les employes
+    forall e in employes: 
+    	   (e[salaire]>1000 and exists c in certifications: c[eid]=e[eid])
+ 	   -- si un employe est un pilote gagnant plus de 100kE, alors il existe pour lui
+ 	   implies
+	       exists a in avions, exists c2 in certifications:
+	       -- un avion pour lequel cet employe est certifie, de portee permettant de faire ce vol
+	       a[aid]=c2[aid] and c2[eid]=e[eid] and a[portee]>= v[distance]
+   }
+--------------- regle d'equivalence:
+
+{ t | exists v in vols: v[dep]=t[dep] and v[arr]=t[arr] and
+    not exists e in employes: 
+    	   not [
+	   (e[salaire]>1000 and exists c in certifications: c[eid]=e[eid])
+ 	   implies
+	       (exists a in avions, exists c2 in certifications:
+	       a[aid]=c2[aid] and c2[eid]=e[eid] and a[portee]>= v[distance])
+	       ]
+   }
+------------  regle d'equivalence:
+{ t | exists v in vols: v[dep]=t[dep] and v[arr]=t[arr] and
+    not exists e in employes: 
+    	   not [
+	   not(e[salaire]>1000 and exists c in certifications: c[eid]=e[eid])
+ 	   or
+	       (exists a in avions, exists c2 in certifications:
+	       a[aid]=c2[aid] and c2[eid]=e[eid] and a[portee]>= v[distance])
+	       ]
+   }
+----------- derniere etape: a faire vous memes!
+{ t | exists v in vols: v[dep]=t[dep] and v[arr]=t[arr] and
+    not exists e in employes: 
+
+
+
+
+
+   }
+
+
+
+---- en SQL
+select v.dep, v.arr,v.distance
+from vols v
+where not exists
+
+
+
+
+
+
+
+
+
+
+----- Q4
+-- Affichez les noms des pilotes qui sont uniquement certifies pour des avions avec une
+---portee superieure a 1500 km
+
+{t | exists e in employes, c in certifications: 
+   c[eid]=e[eid] and t[enom]=e[enom] 
+   and forall c2 in certifications: 
+   [
+   c2[eid]=e.eid implies 
+   		 (exists a in avions : c2[aid]=a2[aid] and a2[portee]>1500)
+   ]
+}
+
+=== regles a appliquer: 
+--- re-ecrire l'implication et le POUR TOUS
+--- loi de DE MORGAN
+---- ensuite, passer en SQL
+
+
+
+

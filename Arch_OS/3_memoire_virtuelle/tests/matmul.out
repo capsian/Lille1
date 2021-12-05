@@ -1,8 +1,0 @@
-[Starting user process]
-matrices size: 400x400
-vm used:   468 pages
-pm space:   256 pages
-vm space:  4096 pages
-initializing matrices
-adding VM matrices .................... done
-timestamp: 0xd956, operation: 0, checksum: 0x4b5c

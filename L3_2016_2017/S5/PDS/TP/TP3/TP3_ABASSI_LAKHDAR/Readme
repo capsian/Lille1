@@ -1,0 +1,39 @@
+TP4 PDS
+ABASSI YOUVA - LAKHDAR SELIM
+G4
+
+[-] Details des constantes
+	
+	[*] TAILLE : 
+		[+] Représente la taille du buffer, son changement impacte sur le nombre d'octets lus
+		[+] Sa taille impliquera un éventuel dépassement de tampon (affichage d'une ligne en moins/plus)
+		[+] Taille fixée à 4
+		[+] Taille optimale : 1	
+
+	[*] ntail (variable) :
+		[+] Représente le nombre de lignes à afficher
+
+[-] Details des fonctions
+
+	[*] void get_file_info(int fd_source, ssize_t* file_size, int* file_lines)
+		[+] Fonction get_file_info qui retourne des informations sur le fichier (taille,nombre de lignes) et qui prend en argument;
+			- fd_source  : un entier qui représente l'identifiant du fichier
+			- file_size  : un pointeur sur entier qui stockera la taille du fichier
+			- file_lines : un pointeur sur entier qui stochera le nombre de lignes du fichier
+
+	[*] int get_buffer_lines(char buffer[])
+		[+] Fonction get_buffer_lines qui retourne le nombre de ligne et qui prend en argument;
+			- buffer[]   : un tableau de caractère qui stock les caractères lus par la fonction read() [ligne71]
+
+	[*] void mread(int fd_source, ssize_t file_size, int* readed_lines, int *actual_pos)
+		[+] Fonction mread qui affiche récursivement les N lignes du fichier et qui prend en argument;
+			- fd_source    : un entier qui représente l'identifiant du fichier
+			- file_size    : un pointeur sur entier qui stockera la taille du fichier
+			- readed_lines : un pointeur sur entier qui contient le nombre de lignes lus à partir de la fin (compte le nombre de '\n') depuis le buffer (fonction get_buffer_lines(char*))
+			- actual_pos   : un entier qui représente l'offset de file_size - TAILLE
+
+	[*] void mtail (const char *path)
+		[+] Fonction mtail qui regroupe les fonctions et qui prend en argument;
+			- path   : un pointeur sur charactère qui reprèsente le nom du fichier
+
+

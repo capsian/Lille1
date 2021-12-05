@@ -1,0 +1,29 @@
+found new best score: 7971, ind: 379383370
+
+
+python heuristiques.py -it ACT_Instances/n40/n40_1.txt
+Let's explore !
+found new best score: 7971, ind: 379383370
+
+found new best score: 7915, ind: 699441394
+found new best score: 7913, ind: 699443314
+found new best score: 7817, ind: 709526431
+found new best score: 7759, ind: 709526434
+found new best score: 7757, ind: 709528354
+found new best score: 7736, ind: 709602031
+found new best score: 7678, ind: 709602034
+found new best score: 7676, ind: 709603954
+found new best score: 7639, ind: 858307234
+found new best score: 7637, ind: 858309154
+found new best score: 7616, ind: 858382831
+found new best score: 7558, ind: 858382834
+found new best score: 7556, ind: 858384754
+
+
+init pos: [25 33 37  2 14 24 38 12 22 34  8 16 29  0 21 27  5 11  4 31 19 13 39  3 35 17  9 30  1 32 26 28 36 10 23 20  7 15 18  6]
+init score: 5029
+
+
+new best score found: 2516, fixed_tasks: [ 0  9 11 13 14 16 32 33 34 36]
+tmp_ind: [26 22 31 25 29 27 30 33  8 37 16 21  0 18  2 35 36 19  4 20 10  5  3 24  17 14 38 32 34 39  1  9 11 28 13 15 23  7  6 12]
+

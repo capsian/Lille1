@@ -1,0 +1,19 @@
+1
+5
+2 4
+0 2
+7 2
+3 1
+1 2
+1
+
+une solution pour attente= 3
+pas de solution pour attente= 2
+
+D= 3
+curr=0  curr=2   curr=4     cuur: 5    cuur: 9
+t1,    | t1,   |   t1, 0  |  t1, 5  |  t1, 5
+t2, 0  | t2, 0 |   t2, 0  |  t2, 0  |  t2, 0
+t3,    | t3,   |   t3,    |  t3,    |  t3, 9
+t4,    | t4,   |   t4, 4  |  t4, 4  |  t4, 4
+t5,    | t5, 2 |   t5, 2  |  t5, 2  |  t5, 2

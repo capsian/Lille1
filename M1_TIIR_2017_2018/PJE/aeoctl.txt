@@ -1,0 +1,58 @@
+TP12 version groupe2
+
+Avant tout  il vous faut commenter dans Hmaster.vhd  l’instanciation de rdm et de fibo. Replacez aussi si besoin les valeurs de X et Y
+constant NX_SLAVE : integer := 0;
+constant NY_SLAVE : integer := 0;
+Les IPcodes de rdm et fibo pourront être utilisés par la suite ….
+Partie 1 un IP short sur 3 points
+1. Définissez un code vhdl qui transforme un codage hexa2RGB sur un mot de 24 bits en trois mots  de 8 bits  qui représentent le codage RGB. 
+Puis définissez le codeur inverse RGB2Hexa. 3 mots vers 1, toujours en VHDL. Simulez le avec Isim.
+ 
+
+2. Intégrez ces deux codes dans deux  IPs RGB2H H2RGB  HoMade  en lui affectant des valeurs d’IP  short libres ;
+R  pile, puis G puis B. Testez-les par simulation
+3. Placez ces IPs dans HoMade et exécutez sur la carte en ayant au préalable écrit un programme fsh qui  accepte trétant placé en sommet deois mots de 8 bits A B et C depuis les switchs 
+et qui affiche en 3 étapes successive  les couleurs RGB sur 7seg en ayant appliqué sur ce pixel le filtre qui réalise un OR avec  la valeur x808080 
+Faire valider les 3 points
+ 
+Partie 2 un IP long  sur 2 points
+4. Vous allez réaliser un IPlong qui affiche un mot de 32 bits sur les 8 leds en 4 fois  avec un délai d’environ 1 seconde entre deux affichages. Il faut utiliser une FSM avec 3 process.
+ 
+Ex : x12345678 en sommet de pile , affiche x78 puis x56 puis x34 puis x12, l’Ip  termine son exécution ensuite.
+5. Reprendre le programme précédent en utilisant cet IP pour afficher le pixel après filtrage
+ 
+Faire valider les 2 points
+
+groupe 5
+ctrl2mercredi
+TD2
+
+Avant tout  il vous faut commenter dans Hmaster.vhd  l’instanciation de rdm et de fibo. Replacez aussi si besoin les valeurs de X et Y
+
+constant NX_SLAVE : integer := 0;
+
+constant NY_SLAVE : integer := 0;
+
+Les IPcodes de rdm et fibo pourront être utilisés par la suite ….
+
+Partie 1 un IP short sur 3 points
+
+1.      Définissez un code VHDL qui à partir de 3 nombres entiers non signés de 32 bits A, B et C produit 3 sorties  VRAI x"FFFF_FFFF ou FAUX x"0000_0000" sur 32 bits.
+
+·        X <= C ͼ  [ A B ]
+
+·        Y <= C == A
+
+·        Z <= C == B
+
+2.      Intégrez ce code dans un IP interval en lui affectant une valeur d’IP  short libre ; X étant placé en sommet de pile, puis Y puis Z. Testez-le par simulation
+
+3.      Placez cet IP dans HoMade et exécutez sur la carte en ayant au préalable écrit un programme fsh qui  accepte en boucle successivement trois mots de 8 bits A B et C depuis les switchs et qui affiche VRAI ou FAUX sur 16 bits  à la question C ͼ  ] A B [ ( attention au sens des crochets)
+Faire valider les 3 points
+
+
+Partie 2 un IP long  sur 2 points
+
+En vous inspirant de IP_waitbt et IP_switch, réalisez un IPlong switchx4 avec un nouveau IPcode long et qui saisit un nombre de 32 bits sur les 8 switchs en 4 étapes, 4 pressions du seul btn(0) séquence le changement d’état de la FSM  après chaque saisie. L’ordre de saisie va des poids faibles vers les poids forts. La seule sortie 32 bits ainsi formée sera utilisée en port Tout. Cette FSM doit être construite avec 3 process. Utilisez un composant Pulse sur le btn(0) afin d’obtenir un signal propre pour votre FSM. Simulez l’IP avec Isim.
+Reprendre le programme précédant en utilisant cet IP swicthx4 pour saisir les 3 valeurs A B et C sur 32 bits cette fois.
+Faire valider les 2 points

@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cheese
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  namespace: gitlab
+spec:
+  rules:
+  - host: groupe8.tiir.ovh
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: frontend
+          servicePort: http

@@ -1,0 +1,5 @@
+.idea/
+cmake-build-debug/
+*/build/*
+3_np/tests/*.ps
+3_np/tests/*.dot

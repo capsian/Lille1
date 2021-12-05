@@ -1,0 +1,61 @@
+
+----- Q4
+-- Affichez les noms des pilotes qui sont uniquement certifies pour des avions avec une
+---portee superieure a 1500 km
+
+{t | exists e in employes, c in certifications: c[eid]=e[eid] and t[enom]=e[enom] 
+   and forall c2 in certifications: 
+   [
+   c2[eid]=e.eid implies 
+   (exists a in avions : c2[aid]=a2[aid] and a2[portee]>1500)
+   ]
+}
+== pour changer, on commence par IMPLIES 
+{t | exists e in employes, c in certifications: c[eid]=e[eid] and t[enom]=e[enom] 
+   and forall c2 in certifications: 
+   [
+   c2[eid]<>e.eid or 
+   (exists a in avions : c2[aid]=a2[aid] and a2[portee]>1500)
+   ]
+}
+== forall 
+{t | exists e in employes, c in certifications: c[eid]=e[eid] and t[enom]=e[enom] 
+   and not exists c2 in certifications: 
+   NOT
+   [
+   c2[eid]<>e.eid or 
+   (exists a in avions : c2[aid]=a2[aid] and a2[portee]>1500)
+   ]
+}
+== de morgan
+
+{t | exists e in employes, c in certifications: c[eid]=e[eid] and t[enom]=e[enom] 
+   and not exists c2 in certifications: 
+   [
+   c2[eid]=e.[eid] 
+   AND 
+   NOT (exists a in avions : c2[aid]=a2[aid] and a2[portee]>1500)
+   ]
+}
+-----------
+
+select distinct e.enom
+from employes e, certifications c
+where c.eid=e.eid 
+and not exists 
+	(select * from certifications c2
+	where c2.eid=e.eid 
+	and not exists 
+		(select * from avions a2 where a2.aid=c2.aid and a2.portee>1500)
+	);
+
+-- il faut faire tres attention en regroupant les "not exists", 
+
+select distinct e.enom
+from employes e, certifications c
+where c.eid=e.eid 
+and not exists 
+(select * from certifications c2, avions a2
+where c2.eid=e.eid and  a2.aid=c2.aid and a2.portee<=1500
+);
+

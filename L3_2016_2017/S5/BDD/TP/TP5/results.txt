@@ -1,0 +1,118 @@
+    eid    | max  
+-----------+------
+  11564812 | 4010
+ 141582651 | 6475
+ 142519864 | 8430
+ 159542516 | 1530
+ 242518965 | 4010
+ 269734834 | 8430
+ 274878974 | 6475
+ 310454876 | 6900
+ 355548984 | 6900
+ 390487451 | 7120
+ 550156548 | 8430
+ 552455318 | 3383
+ 556784565 | 7120
+ 567354612 | 8430
+ 573284895 | 7120
+ 574489456 | 4103
+(16 rows)
+
+      enom       
+-----------------
+ Oussama Moulana
+(1 row)
+
+ vid  |     dep     |       arr       | distance |        h_dep        |        h_arr        |  prix  
+------+-------------+-----------------+----------+---------------------+---------------------+--------
+   13 | Los Angeles | Chicago         |     1749 | 2016-04-12 08:45:00 | 2016-04-12 20:45:00 | 220.98
+   68 | Chicago     | New York        |      802 | 2016-04-12 09:00:00 | 2016-04-12 12:02:00 | 202.45
+   76 | Chicago     | Los Angeles     |     1749 | 2016-04-12 08:32:00 | 2016-04-12 10:03:00 | 220.98
+   99 | Los Angeles | Washington D.C. |     2308 | 2016-04-12 09:30:00 | 2016-04-12 21:40:00 | 235.98
+  149 | Pittsburgh  | New York        |      303 | 2016-04-12 09:42:00 | 2016-04-12 12:09:00 | 116.50
+  299 | Boston      | CDG             |     2308 | 2016-04-12 09:33:00 | 2016-04-12 17:40:00 | 399.98
+  304 | Minneapolis | New York        |      991 | 2016-04-12 10:00:00 | 2016-04-12 01:39:00 | 101.56
+  346 | Los Angeles | Dallas          |     1251 | 2016-04-12 11:50:00 | 2016-04-12 19:05:00 | 225.43
+  387 | Los Angeles | Boston          |     2606 | 2016-04-12 07:03:00 | 2016-04-12 17:03:00 | 261.56
+  701 | Detroit     | New York        |      470 | 2016-04-12 08:55:00 | 2016-04-12 10:26:00 | 180.56
+  702 | Madison     | New York        |      789 | 2016-04-12 07:05:00 | 2016-04-12 10:12:00 | 202.34
+ 2223 | Madison     | Pittsburgh      |      517 | 2016-04-12 08:02:00 | 2016-04-12 10:01:00 | 189.98
+ 4884 | Madison     | Chicago         |       84 | 2016-04-12 22:12:00 | 2016-04-12 23:02:00 | 112.45
+ 5694 | Madison     | Minneapolis     |      247 | 2016-04-12 08:32:00 | 2016-04-12 09:33:00 | 120.11
+ 7789 | Madison     | Detroit         |      319 | 2016-04-12 06:15:00 | 2016-04-12 08:19:00 | 120.33
+(15 rows)
+
+       enom        
+-------------------
+ Anael Klein
+ Astelia Massamba
+ Boubacar Diallo
+ Etienne Renard
+ Hakim Taleb
+ Hugo Ermenidis
+ Ivonne Boulala
+ Joris Robillard
+ Linda Mariencourt
+ Nicolas Baudin
+ Tommy Carpentier
+ Valentin Owczarek
+ Victor Goron
+(13 rows)
+
+       enom        
+-------------------
+ Anael Klein
+ Boubacar Diallo
+ Etienne Renard
+ Hugo Ermenidis
+ Ivonne Boulala
+ Joris Robillard
+ Linda Mariencourt
+ Nicolas Baudin
+ Tommy Carpentier
+ Valentin Owczarek
+ Victor Goron
+(11 rows)
+
+       enom        
+-------------------
+ Anael Klein
+ Etienne Renard
+ Ivonne Boulala
+ Joris Robillard
+ Valentin Owczarek
+ Victor Goron
+(6 rows)
+
+    eid    
+-----------
+ 269734834
+(1 row)
+
+    eid    |       enom        
+-----------+-------------------
+  90873519 | Hakim Taleb
+ 310454876 | Boubacar Diallo
+ 355548984 | Hugo Ermenidis
+ 356187925 | Astelia Massamba
+ 390487451 | Linda Mariencourt
+ 573284895 | Tommy Carpentier
+ 574489456 | Nicolas Baudin
+(7 rows)
+
+ enom | salaire 
+------+---------
+(0 rows)
+
+        diff        
+--------------------
+ 42400.709677419355
+(1 row)
+
+        h_dep        | vid  
+---------------------+------
+ 2016-04-12 06:15:00 | 7789
+ 2016-04-12 07:05:00 |  702
+ 2016-04-12 08:32:00 | 5694
+(3 rows)
+

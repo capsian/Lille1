@@ -1,0 +1,20 @@
+original = getImageID();
+
+run("Duplicate...", "title=gateaux1-bin.png");
+
+selectWindow("gateaux1-bin.png");
+t = 55;
+for (y = 0; y < getHeight; y = y + 1)
+{   
+	for (x = 0; x < getWidth; x = x + 1)
+	{   
+		valeurPixel = getPixel(x, y);     
+		if (valeurPixel > t)    
+		{
+			setPixel(x,y,255);
+		} else {
+			setPixel(x,y,0);
+		}
+	}
+}
+updateDisplay();

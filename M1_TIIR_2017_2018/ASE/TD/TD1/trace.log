@@ -1,0 +1,124 @@
+&local_stack = 0x55692600a040 || &dump_stack() = 0x556925e096f0 || &rec() = 0x556925e097a6 || &main() = 0x556925e0983a || &local = 0x7ffc8d7f8e68
+rec enter ... with d = 0
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8e38 | &rec_local = 0x7ffc8d7f8e48
+ else ...
+rec enter ... with d = 1
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8e08 | &rec_local = 0x7ffc8d7f8e18
+ else ...
+rec enter ... with d = 2
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8dd8 | &rec_local = 0x7ffc8d7f8de8
+ else ...
+rec enter ... with d = 3
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8da8 | &rec_local = 0x7ffc8d7f8db8
+ else ...
+rec enter ... with d = 4
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8d78 | &rec_local = 0x7ffc8d7f8d88
+ else ...
+rec enter ... with d = 5
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8d48 | &rec_local = 0x7ffc8d7f8d58
+ else ...
+rec enter ... with d = 6
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8d18 | &rec_local = 0x7ffc8d7f8d28
+ else ...
+rec enter ... with d = 7
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8ce8 | &rec_local = 0x7ffc8d7f8cf8
+ else ...
+rec enter ... with d = 8
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8cb8 | &rec_local = 0x7ffc8d7f8cc8
+ else ...
+rec enter ... with d = 9
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8c88 | &rec_local = 0x7ffc8d7f8c98
+ else ...
+rec enter ... with d = 10
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8c58 | &rec_local = 0x7ffc8d7f8c68
+ else ...
+rec enter ... with d = 11
+ &rec = 0x556925e097a6 | &d = 0x7ffc8d7f8c28 | &rec_local = 0x7ffc8d7f8c38
+ if ...
+dump_stack enter ...
+ &tmp = 0x7ffc8d7f8c08 ...
+ &tmp_ptr = 0x7ffc8d7f8c00 ...
+ &local_stack = 0x55692600a040 || local_stack = 0x7ffc8d7f8e68...
+
+*0x7ffc8d7f8c08 = facade		  // tmp
+
+*0x7ffc8d7f8c10 = 7ffc8d7f8c40 
+*0x7ffc8d7f8c18 = 556925e09819 
+*0x7ffc8d7f8c20 = 9 
+*0x7ffc8d7f8c28 = b				  // d
+*0x7ffc8d7f8c30 = 7ffc8d7f8c70 
+*0x7ffc8d7f8c38 = cafebabe        // rec_local
+*0x7ffc8d7f8c40 = 7ffc8d7f8c70 
+*0x7ffc8d7f8c48 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8c50 = 9 
+*0x7ffc8d7f8c58 = a				  // d
+*0x7ffc8d7f8c60 = 7ffc8d7f8ca0 
+*0x7ffc8d7f8c68 = cafebabe        // rec_local
+*0x7ffc8d7f8c70 = 7ffc8d7f8ca0 
+*0x7ffc8d7f8c78 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8c80 = 9 
+*0x7ffc8d7f8c88 = 9				  // d 
+*0x7ffc8d7f8c90 = 7ffc8d7f8cd0 
+*0x7ffc8d7f8c98 = cafebabe        // rec_local
+*0x7ffc8d7f8ca0 = 7ffc8d7f8cd0 
+*0x7ffc8d7f8ca8 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8cb0 = 9 
+*0x7ffc8d7f8cb8 = 8				  // d 
+*0x7ffc8d7f8cc0 = 7ffc8d7f8d00 
+*0x7ffc8d7f8cc8 = cafebabe        // rec_local
+*0x7ffc8d7f8cd0 = 7ffc8d7f8d00 
+*0x7ffc8d7f8cd8 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8ce0 = 9 
+*0x7ffc8d7f8ce8 = 7				  // d 
+*0x7ffc8d7f8cf0 = 7ffc8d7f8d30 
+*0x7ffc8d7f8cf8 = cafebabe        // rec_local
+*0x7ffc8d7f8d00 = 7ffc8d7f8d30 
+*0x7ffc8d7f8d08 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8d10 = 9 
+*0x7ffc8d7f8d18 = 6				  // d 
+*0x7ffc8d7f8d20 = 7ffc8d7f8d60 
+*0x7ffc8d7f8d28 = cafebabe        // rec_local
+*0x7ffc8d7f8d30 = 7ffc8d7f8d60 
+*0x7ffc8d7f8d38 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8d40 = 9 
+*0x7ffc8d7f8d48 = 5				  // d 
+*0x7ffc8d7f8d50 = 7ffc8d7f8d90 
+*0x7ffc8d7f8d58 = cafebabe        // rec_local
+*0x7ffc8d7f8d60 = 7ffc8d7f8d90 
+*0x7ffc8d7f8d68 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8d70 = 9 
+*0x7ffc8d7f8d78 = 4				  // d 
+*0x7ffc8d7f8d80 = 7ffc8d7f8dc0 
+*0x7ffc8d7f8d88 = cafebabe        // rec_local
+*0x7ffc8d7f8d90 = 7ffc8d7f8dc0 
+*0x7ffc8d7f8d98 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8da0 = 9 
+*0x7ffc8d7f8da8 = 3				  // d 
+*0x7ffc8d7f8db0 = 7ffc8d7f8df0 
+*0x7ffc8d7f8db8 = cafebabe        // rec_local
+*0x7ffc8d7f8dc0 = 7ffc8d7f8df0 
+*0x7ffc8d7f8dc8 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8dd0 = 9 
+*0x7ffc8d7f8dd8 = 2				  // d 
+*0x7ffc8d7f8de0 = 7ffc8d7f8e20 
+*0x7ffc8d7f8de8 = cafebabe        // rec_local
+*0x7ffc8d7f8df0 = 7ffc8d7f8e20
+
+*0x7ffc8d7f8df8 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8e00 = 4b 
+*0x7ffc8d7f8e08 = 1				  // d 
+*0x7ffc8d7f8e10 = 7ffc8d7f8e50 
+*0x7ffc8d7f8e18 = cafebabe        // rec_local
+*0x7ffc8d7f8e20 = 7ffc8d7f8e50
+
+*0x7ffc8d7f8e28 = 556925e09837   // ptr sur func || &retour func 
+*0x7ffc8d7f8e30 = 7ffc8d7f8e68 
+*0x7ffc8d7f8e38 = 0 
+*0x7ffc8d7f8e40 = 0 
+*0x7ffc8d7f8e48 = cafebabe        // rec_local
+*0x7ffc8d7f8e50 = 7ffc8d7f8e70
+
+*0x7ffc8d7f8e58 = 556925e09894 	  // ??
+*0x7ffc8d7f8e60 = 7ffc8d7f8f50	  // ??
+
+*0x7ffc8d7f8e68 = deadbeef		  // local 

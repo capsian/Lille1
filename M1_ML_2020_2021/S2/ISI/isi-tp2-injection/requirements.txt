@@ -1,0 +1,2 @@
+cherrypy 
+mysql-connector-python

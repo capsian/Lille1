@@ -1,0 +1,75 @@
+moy_machines = 16
+med_machines = 2
+moy_time = 2787
+med_time = 1200
+create_paliers: nb = 160, scale = 10, alloc = 17, max_t = 604800
+== display res_plaiers ==
+palier 0 = 0
+palier 1 = 10
+palier 2 = 20
+palier 3 = 30
+palier 4 = 40
+palier 5 = 50
+palier 6 = 60
+palier 7 = 70
+palier 8 = 80
+palier 9 = 90
+palier 10 = 100
+palier 11 = 110
+palier 12 = 120
+palier 13 = 130
+palier 14 = 140
+palier 15 = 150
+palier 16 = 160
+palier 17 = 170
+== display res_p_machines ==
+palier 0 = 1035
+palier 1 = 2511
+palier 2 = 512
+palier 3 = 251
+palier 4 = 37
+palier 5 = 7
+palier 6 = 40
+palier 7 = 2
+palier 8 = 19
+palier 9 = 18
+palier 10 = 1
+palier 11 = 8
+palier 12 = 0
+palier 13 = 0
+palier 14 = 0
+palier 15 = 20
+palier 16 = 29
+create_paliers: nb = 604800, scale = 50000, alloc = 13, max_t = 604800
+== display paliers_time ==
+palier 0 = 0
+palier 1 = 50000
+palier 2 = 100000
+palier 3 = 150000
+palier 4 = 200000
+palier 5 = 250000
+palier 6 = 300000
+palier 7 = 350000
+palier 8 = 400000
+palier 9 = 450000
+palier 10 = 500000
+palier 11 = 550000
+palier 12 = 600000
+palier 13 = 650000
+== display res_p_time ==
+palier 0 = 4474
+palier 1 = 7
+palier 2 = 3
+palier 3 = 5
+palier 4 = 0
+palier 5 = 0
+palier 6 = 0
+palier 7 = 0
+palier 8 = 0
+palier 9 = 0
+palier 10 = 0
+palier 11 = 0
+palier 12 = 1
+== display wait ==
+moy_wait = 64216
+med_wait = 1676

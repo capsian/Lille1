@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>BDR : TD indexation &lt;span 
+class="timestamp-wrapper"&gt;&lt;span 
+class="timestamp"&gt;&lt;2021-03-16 mar.&gt;&lt;/span&gt;&lt;/span&gt;</title>
+<!-- 2021-03-17 mer. 09:26 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link href="notes_td_indexation_data/bootstrap.css" rel="stylesheet">
+<script src="notes_td_indexation_data/jquery.js"></script>
+<script src="notes_td_indexation_data/bootstrap.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+.code-highlighted { background-color: #ffff00; }
+
+/* .verbatim { color: #3e9409;
+            background-color: #f5fbf4; }*/
+.verbatim {
+    color: #337ab7;
+    background-color: #d9edf7; }
+
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+
+</script>
+
+<script type="text/x-mathjax-config;executed=true">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="notes_td_indexation_data/MathJax.js" id=""></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_SVG_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%; font-size: 100%; margin-left: -2.281em}
+.MathJax_SVG .MJX-monospace {font-family: monospace}
+.MathJax_SVG .MJX-sans-serif {font-family: sans-serif}
+#MathJax_SVG_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax_SVG {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax_SVG * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.mjx-svg-href {fill: blue; stroke: blue}
+.MathJax_SVG_Processing {visibility: hidden; position: absolute; top: 0; left: 0; width: 0; height: 0; overflow: hidden; display: block!important}
+.MathJax_SVG_Processed {display: none!important}
+.MathJax_SVG_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0}
+.MathJax_SVG_LineBox {display: table!important}
+.MathJax_SVG_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax_SVG .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px none; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_SVG_Hidden"></div><svg><defs id="MathJax_SVG_glyphs"><path stroke-width="1" id="MJMAIN-230A" d="M174 734Q174 735 175 737T177 740T180 744T184 747T189 749T196 750Q206 748 214 735V-210H310H373Q401 -210 411 -213T422 -230T411 -247T369 -251Q362 -251 338 -251T298 -250H190Q178 -246 174 -234V734Z"></path><path stroke-width="1" id="MJMAIN-66" d="M273 0Q255 3 146 3Q43 3 34 0H26V46H42Q70 46 91 49Q99 52 103 60Q104 62 104 224V385H33V431H104V497L105 564L107 574Q126 639 171 668T266 704Q267 704 275 704T289 705Q330 702 351 679T372 627Q372 604 358 590T321 576T284 590T270 627Q270 647 288 667H284Q280 668 273 668Q245 668 223 647T189 592Q183 572 182 497V431H293V385H185V225Q185 63 186 61T189 57T194 54T199 51T206 49T213 48T222 47T231 47T241 46T251 46H282V0H273Z"></path><path stroke-width="1" id="MJMAIN-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path stroke-width="1" id="MJMAIN-63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path><path stroke-width="1" id="MJMAIN-5F" d="M0 -62V-25H499V-62H0Z"></path><path stroke-width="1" id="MJMAIN-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path stroke-width="1" id="MJMAIN-75" d="M383 58Q327 -10 256 -10H249Q124 -10 105 89Q104 96 103 226Q102 335 102 348T96 369Q86 385 36 385H25V408Q25 431 27 431L38 432Q48 433 67 434T105 436Q122 437 142 438T172 441T184 442H187V261Q188 77 190 64Q193 49 204 40Q224 26 264 26Q290 26 311 35T343 58T363 90T375 120T379 144Q379 145 379 161T380 201T380 248V315Q380 361 370 372T320 385H302V431Q304 431 378 436T457 442H464V264Q464 84 465 81Q468 61 479 55T524 46H542V0Q540 0 467 -5T390 -11H383V58Z"></path><path stroke-width="1" id="MJMAIN-6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path stroke-width="1" id="MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="1" id="MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="1" id="MJMAIN-230B" d="M229 734Q229 735 230 737T232 740T235 744T239 747T244 749T251 750Q262 748 269 735V-235Q266 -240 256 -249L147 -250H77Q43 -250 32 -247T21 -230T32 -213T72 -209Q79 -209 99 -209T133 -210H229V734Z"></path><path stroke-width="1" id="MJSZ3-230A" d="M246 -949V1450H308V-887H571V-949H246Z"></path><path stroke-width="1" id="MJSZ3-230B" d="M274 -887V1450H336V-949H11V-887H274Z"></path><path stroke-width="1" id="MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="1" id="MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="1" id="MJMAIN-21D4" d="M308 524Q318 526 323 526Q340 526 340 514Q340 507 336 499Q326 476 314 454T292 417T274 391T260 374L255 368Q255 367 500 367Q744 367 744 368L739 374Q734 379 726 390T707 416T685 453T663 499Q658 511 658 515Q658 525 680 525Q687 524 690 523T695 519T701 507Q766 359 902 287Q921 276 939 269T961 259T966 250Q966 246 965 244T960 240T949 236T930 228T902 213Q763 137 701 -7Q697 -16 695 -19T690 -23T680 -25Q658 -25 658 -15Q658 -11 663 1Q673 24 685 46T707 83T725 109T739 126L744 132Q744 133 500 133Q255 133 255 132L260 126Q265 121 273 110T292 84T314 47T336 1Q341 -11 341 -15Q341 -25 319 -25Q312 -24 309 -23T304 -19T298 -7Q233 141 97 213Q83 221 70 227T51 235T41 239T35 243T34 250T35 256T40 261T51 265T70 273T97 287Q235 363 299 509Q305 522 308 524ZM792 319L783 327H216Q183 294 120 256L110 250L120 244Q173 212 207 181L216 173H783L792 181Q826 212 879 244L889 250L879 256Q826 288 792 319Z"></path><path stroke-width="1" id="MJMAIN-2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path><path stroke-width="1" id="MJMAIN-3C" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"></path><path stroke-width="1" id="MJMAIN-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path></defs></svg></div><div id="MathJax_Message" style="display: none;"></div>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar affix">
+<ul class="nav">
+<li class="active"><a href="#sec-1">1. Exercice 1</a>
+<ul class="nav">
+<li class=""><a href="#sec-1-1">1.1. Question 1.1</a></li>
+<li class=""><a href="#sec-1-2">1.2. Question 1.2</a></li>
+<li class="active"><a href="#sec-1-3">1.3. Question 1.3</a></li>
+<li><a href="#sec-1-4">1.4. Question 1.4</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Exercice 2</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. Question 2.1</a></li>
+<li><a href="#sec-2-2">2.2. Question 2.2</a></li>
+<li><a href="#sec-2-3">2.3. Question 2.3</a></li>
+<li><a href="#sec-2-4">2.4. Question 2.4</a></li>
+<li><a href="#sec-2-5">2.5. Question 2.5</a></li>
+<li><a href="#sec-2-6">2.6. Exercice 3</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">BDR : TD indexation <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-03-16 mar.&gt;</span></span></h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Exercice 1</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Question 1.1</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+La clé primaire <code>fac_num</code> de la table <code>facture</code> est un Btree. On peut
+l'observer en cliquant sur le bouton <code class="verbatim">indexes</code> lorsque l'on regarde la table
+<code>facture</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Question 1.2</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Pour obtenir la construction du plan on utilise la commande suivante :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #006FE0;">EXPLAIN</span> <span style="color: #0000FF;">SELECT</span> fac_num, fac_date, fac_montant
+  <span style="color: #0000FF;">FROM</span> facture
+  <span style="color: #0000FF;">WHERE</span> fac_num = <span style="color: #D0372D;">500</span>;
+</pre>
+</div>
+<p>
+Le plan proposé par <code class="verbatim">Postgres</code> est :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #006FE0;">Index</span> Scan <span style="color: #0000FF;">using</span> facture_pkey <span style="color: #0000FF;">on</span> facture  <span style="color: #707183;">(</span><span style="color: #006FE0;">cost</span>=<span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">28</span>..<span style="color: #D0372D;">8</span>.<span style="color: #D0372D;">29</span> <span style="color: #006FE0;">rows</span>=<span style="color: #D0372D;">1</span> width=<span style="color: #D0372D;">15</span><span style="color: #707183;">)</span>
+  <span style="color: #006FE0;">Index</span> Cond: <span style="color: #707183;">(</span>fac_num = <span style="color: #008000;">'500'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+<p>
+Pour retrouver les tuples recherchés, <code class="verbatim">Postgres</code> utilise l'index
+<code>facture_pkey</code> de la colonne <code>fac_num</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Question 1.3</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Le plan est obtenu par :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #006FE0;">EXPLAIN</span> <span style="color: #0000FF;">SELECT</span> fac_num, fac_date, fac_montant
+  <span style="color: #0000FF;">FROM</span> facture
+  <span style="color: #0000FF;">WHERE</span> <span style="color: #006FE0;">floor</span><span style="color: #707183;">(</span>fac_num/<span style="color: #D0372D;">100</span><span style="color: #707183;">)</span> = <span style="color: #D0372D;">5</span>;
+</pre>
+</div>
+<p>
+<code class="verbatim">Postgres</code> propose :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql">Seq Scan <span style="color: #0000FF;">on</span> facture  <span style="color: #707183;">(</span><span style="color: #006FE0;">cost</span>=<span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">00</span>..<span style="color: #D0372D;">48</span>.<span style="color: #D0372D;">56</span> <span style="color: #006FE0;">rows</span>=<span style="color: #D0372D;">10</span> width=<span style="color: #D0372D;">15</span><span style="color: #707183;">)</span>
+  <span style="color: #006FE0;">Filter</span>: <span style="color: #707183;">(</span><span style="color: #006FE0;">floor</span><span style="color: #7388D6;">(</span><span style="color: #909183;">(</span>fac_num / <span style="color: #008000;">'100'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> = <span style="color: #008000;">'5'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+<p>
+Avec ce plan, la requête est résolue avec un parcours séquentiel de toute la
+table.
+</p>
+
+<p>
+Pour utiliser l'index on utilise une requête équivalente suivante :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #006FE0;">EXPLAIN</span> <span style="color: #0000FF;">SELECT</span> fac_num, fac_date, fac_montant
+  <span style="color: #0000FF;">FROM</span> facture
+  <span style="color: #0000FF;">WHERE</span> fac_num &gt;= <span style="color: #D0372D;">500</span> <span style="color: #0000FF;">AND</span> fac_num &lt; <span style="color: #D0372D;">600</span>;
+</pre>
+</div>
+<p>
+Cette requête est équivalente parce que :
+<span class="MathJax_Preview" style="color: inherit; display: none;"></span><div class="MathJax_SVG_Display" style="text-align: center;"><span style="font-size: 100%; display: inline-block; position: relative;" class="MathJax_SVG" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;mrow&gt;&lt;mo&gt;&amp;#x230A;&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;f&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;a&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;c&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x005F;&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;n&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;u&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;m&lt;/mi&gt;&lt;/mrow&gt;&lt;mn&gt;100&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x230B;&lt;/mo&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;&amp;#x21D4;&lt;/mo&gt;&lt;mn&gt;500&lt;/mn&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;f&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;a&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;c&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x005F;&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;n&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;u&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;m&lt;/mi&gt;&lt;/mrow&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mn&gt;600&lt;/mn&gt;&lt;/math&gt;" role="presentation"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="42.08ex" height="5.909ex" style="vertical-align: -2.405ex; margin-left: 4.645ex; margin-right: -4.645ex;" viewBox="0 -1508.9 18117.7 2544.3" role="img" focusable="false" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#MJSZ3-230A"></use><g transform="translate(583,0)"><g transform="translate(120,0)"><rect stroke="none" width="3884" height="60" x="0" y="220"></rect><g transform="translate(60,676)"><use xlink:href="#MJMAIN-66" x="0" y="0"></use><use xlink:href="#MJMAIN-61" x="372" y="0"></use><use xlink:href="#MJMAIN-63" x="873" y="0"></use><use xlink:href="#MJMAIN-5F" x="1317" y="0"></use><use xlink:href="#MJMAIN-6E" x="1818" y="0"></use><use xlink:href="#MJMAIN-75" x="2374" y="0"></use><use xlink:href="#MJMAIN-6D" x="2931" y="0"></use></g><g transform="translate(1191,-686)"><use xlink:href="#MJMAIN-31"></use><use xlink:href="#MJMAIN-30" x="500" y="0"></use><use xlink:href="#MJMAIN-30" x="1001" y="0"></use></g></g></g><use xlink:href="#MJSZ3-230B" x="4708" y="-1"></use><use xlink:href="#MJMAIN-3D" x="5569" y="0"></use><use xlink:href="#MJMAIN-35" x="6625" y="0"></use><use xlink:href="#MJMAIN-21D4" x="7403" y="0"></use><g transform="translate(8682,0)"><use xlink:href="#MJMAIN-35"></use><use xlink:href="#MJMAIN-30" x="500" y="0"></use><use xlink:href="#MJMAIN-30" x="1001" y="0"></use></g><use xlink:href="#MJMAIN-2264" x="10461" y="0"></use><g transform="translate(11517,0)"><use xlink:href="#MJMAIN-66" x="0" y="0"></use><use xlink:href="#MJMAIN-61" x="372" y="0"></use><use xlink:href="#MJMAIN-63" x="873" y="0"></use><use xlink:href="#MJMAIN-5F" x="1317" y="0"></use><use xlink:href="#MJMAIN-6E" x="1818" y="0"></use><use xlink:href="#MJMAIN-75" x="2374" y="0"></use><use xlink:href="#MJMAIN-6D" x="2931" y="0"></use></g><use xlink:href="#MJMAIN-3C" x="15559" y="0"></use><g transform="translate(16616,0)"><use xlink:href="#MJMAIN-36"></use><use xlink:href="#MJMAIN-30" x="500" y="0"></use><use xlink:href="#MJMAIN-30" x="1001" y="0"></use></g></g></svg><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mo>⌊</mo><mfrac><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="normal">f</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">_</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">m</mi></mrow><mn>100</mn></mfrac><mo>⌋</mo></mrow><mo>=</mo><mn>5</mn><mo stretchy="false">⇔</mo><mn>500</mn><mo>≤</mo><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="normal">f</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">_</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">m</mi></mrow><mo>&lt;</mo><mn>600</mn></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-1">\left\lfloor \frac{\mathrm{fac\_num}}{100} \right\rfloor =5 \Leftrightarrow
+  500\leq \mathrm{fac\_num} < 600</script>
+Cette fois <code class="verbatim">Postgres</code> utilise bien l'index. Il propose le plan suivant :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #006FE0;">Index</span> Scan <span style="color: #0000FF;">using</span> facture_pkey <span style="color: #0000FF;">on</span> facture  <span style="color: #707183;">(</span><span style="color: #006FE0;">cost</span>=<span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">28</span>..<span style="color: #D0372D;">10</span>.<span style="color: #D0372D;">28</span> <span style="color: #006FE0;">rows</span>=<span style="color: #D0372D;">100</span> width=<span style="color: #D0372D;">15</span><span style="color: #707183;">)</span>
+  <span style="color: #006FE0;">Index</span> Cond: <span style="color: #707183;">(</span><span style="color: #7388D6;">(</span>fac_num &gt;= <span style="color: #008000;">'500'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #7388D6;">)</span> <span style="color: #0000FF;">AND</span> <span style="color: #7388D6;">(</span>fac_num &lt; <span style="color: #008000;">'600'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Question 1.4</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Nous utilisons la commande suivante :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #006FE0;">EXPLAIN</span> <span style="color: #0000FF;">SELECT</span> fac_num, fac_date, fac_montant
+  <span style="color: #0000FF;">FROM</span> facture
+  <span style="color: #0000FF;">WHERE</span> fac_num <span style="color: #006FE0;">BETWEEN</span> <span style="color: #D0372D;">500</span> <span style="color: #0000FF;">AND</span> <span style="color: #D0372D;">550</span> <span style="color: #0000FF;">AND</span>
+  fac_date <span style="color: #006FE0;">BETWEEN</span> <span style="color: #008000;">'2017-06-01'</span> <span style="color: #0000FF;">AND</span> <span style="color: #008000;">'2017_08_31'</span>;
+</pre>
+</div>
+<p>
+Le plan proposé par <code class="verbatim">Postgres</code> utilise bien l'index :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #006FE0;">Index</span> Scan <span style="color: #0000FF;">using</span> facture_pkey <span style="color: #0000FF;">on</span> facture  <span style="color: #707183;">(</span><span style="color: #006FE0;">cost</span>=<span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">28</span>..<span style="color: #D0372D;">9</span>.<span style="color: #D0372D;">55</span> <span style="color: #006FE0;">rows</span>=<span style="color: #D0372D;">13</span> width=<span style="color: #D0372D;">15</span><span style="color: #707183;">)</span>
+  <span style="color: #006FE0;">Index</span> Cond: <span style="color: #707183;">(</span><span style="color: #7388D6;">(</span>fac_num &gt;= <span style="color: #008000;">'500'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #7388D6;">)</span> <span style="color: #0000FF;">AND</span> <span style="color: #7388D6;">(</span>fac_num &lt;= <span style="color: #008000;">'550'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+  <span style="color: #006FE0;">Filter</span>: <span style="color: #707183;">(</span><span style="color: #7388D6;">(</span>fac_date &gt;= <span style="color: #008000;">'2017-06-01'</span>::<span style="color: #6434A3;">date</span><span style="color: #7388D6;">)</span> <span style="color: #0000FF;">AND</span> <span style="color: #7388D6;">(</span>fac_date &lt;= <span style="color: #008000;">'2017-08-31'</span>::<span style="color: #6434A3;">date</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Exercice 2</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Question 2.1</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+On crée l'index avec la commande suivante :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #0000FF;">CREATE</span> <span style="color: #006FE0;">INDEX</span> facture_par_100 <span style="color: #0000FF;">ON</span> facture
+  <span style="color: #0000FF;">USING</span> btree <span style="color: #707183;">(</span><span style="color: #006FE0;">floor</span><span style="color: #7388D6;">(</span>fac_num/<span style="color: #D0372D;">100</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>;
+</pre>
+</div>
+<p>
+La <i>sélectivité de l'index</i> est le nombre de ligne par entrée de l'index. Ici
+on a une entrée d'index pour 100 lignes de la table. La sélectivité est de 1%.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Question 2.2</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+On demande le plan de la requête en présence du nouvel index :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #006FE0;">EXPLAIN</span> <span style="color: #0000FF;">ANALYSE</span> <span style="color: #0000FF;">SELECT</span> fac_num, fac_date, fac_montant
+  <span style="color: #0000FF;">FROM</span> facture
+  <span style="color: #0000FF;">WHERE</span> <span style="color: #006FE0;">floor</span><span style="color: #707183;">(</span>fac_num/<span style="color: #D0372D;">100</span><span style="color: #707183;">)</span> = <span style="color: #D0372D;">5</span>;
+</pre>
+</div>
+
+<p>
+Cette fois l'index est utilisé par le plan proposé suivant :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql">Bitmap Heap Scan <span style="color: #0000FF;">on</span> facture  <span style="color: #707183;">(</span><span style="color: #006FE0;">cost</span>=<span style="color: #D0372D;">4</span>.<span style="color: #D0372D;">36</span>..<span style="color: #D0372D;">17</span>.<span style="color: #D0372D;">70</span> <span style="color: #006FE0;">rows</span>=<span style="color: #D0372D;">10</span> width=<span style="color: #D0372D;">15</span><span style="color: #707183;">)</span>
+  <span style="color: #006FE0;">Recheck</span> Cond: <span style="color: #707183;">(</span><span style="color: #006FE0;">floor</span><span style="color: #7388D6;">(</span><span style="color: #909183;">(</span>fac_num / <span style="color: #008000;">'100'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> = <span style="color: #008000;">'5'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #707183;">)</span>
+  -&gt;  Bitmap <span style="color: #006FE0;">Index</span> Scan <span style="color: #0000FF;">on</span> facture_par_100  <span style="color: #707183;">(</span><span style="color: #006FE0;">cost</span>=<span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">00</span>..<span style="color: #D0372D;">4</span>.<span style="color: #D0372D;">35</span> <span style="color: #006FE0;">rows</span>=<span style="color: #D0372D;">10</span> width=<span style="color: #D0372D;">0</span><span style="color: #707183;">)</span>
+  <span style="color: #006FE0;">Index</span> Cond: <span style="color: #707183;">(</span><span style="color: #006FE0;">floor</span><span style="color: #7388D6;">(</span><span style="color: #909183;">(</span>fac_num / <span style="color: #008000;">'100'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> = <span style="color: #008000;">'5'</span>::<span style="color: #6434A3;">numeric</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+<p>
+Sans index le temps d'exécution de la requête est de 3.426ms. Avec l'index, le
+temps d'exécution est de 2.859ms. Sans index, la requête prend presque 20% de
+temps en plus (par rapport à son exéecution en présence de l'index). En
+utilisant al <i>range query</i> on a une exécution de 2.952ms, soit du même ordre
+de grandeur que la requête utilisant notre nouvel index.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Question 2.3</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Pour créer l'index on utilise la commande suivante :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #0000FF;">CREATE</span> <span style="color: #006FE0;">INDEX</span> <span style="color: #0000FF;">ON</span> facture <span style="color: #0000FF;">USING</span> btree <span style="color: #707183;">(</span>fac_date<span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Question 2.4</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #0000FF;">CREATE</span> <span style="color: #006FE0;">INDEX</span> par_mois_idx <span style="color: #0000FF;">ON</span> facture <span style="color: #707183;">(</span><span style="color: #006FE0;">EXTRACT</span> <span style="color: #7388D6;">(</span><span style="color: #006FE0;">YEAR</span> <span style="color: #0000FF;">FROM</span> fac_date<span style="color: #7388D6;">)</span>, <span style="color: #006FE0;">EXTRACT</span> <span style="color: #7388D6;">(</span><span style="color: #006FE0;">MONTH</span> <span style="color: #0000FF;">FROM</span> fac_date<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Question 2.5</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Pour trouver les factures du mois de juin 2017, on utilise la requête
+suivante :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #0000FF;">SELECT</span> fac_num, fac_date, fac_montant
+  <span style="color: #0000FF;">FROM</span> facture
+ <span style="color: #0000FF;">WHERE</span> <span style="color: #006FE0;">EXTRACT</span> <span style="color: #707183;">(</span><span style="color: #006FE0;">YEAR</span> <span style="color: #0000FF;">FROM</span> fac_date<span style="color: #707183;">)</span> = <span style="color: #D0372D;">2017</span> <span style="color: #0000FF;">AND</span>
+       <span style="color: #006FE0;">EXTRACT</span> <span style="color: #707183;">(</span><span style="color: #006FE0;">MONTH</span> <span style="color: #0000FF;">FROM</span> fac_date<span style="color: #707183;">)</span> = <span style="color: #D0372D;">6</span>
+</pre>
+</div>
+<p>
+<code class="verbatim">Postgres</code> propose le plan suivant :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #006FE0;">Index</span> Scan <span style="color: #0000FF;">using</span> par_mois_idx <span style="color: #0000FF;">on</span> facture  <span style="color: #707183;">(</span><span style="color: #006FE0;">cost</span>=<span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">28</span>..<span style="color: #D0372D;">8</span>.<span style="color: #D0372D;">30</span> <span style="color: #006FE0;">rows</span>=<span style="color: #D0372D;">1</span> width=<span style="color: #D0372D;">15</span><span style="color: #707183;">)</span>
+  <span style="color: #006FE0;">Index</span> Cond: <span style="color: #707183;">(</span><span style="color: #7388D6;">(</span>date_part<span style="color: #909183;">(</span><span style="color: #008000;">'year'</span>::<span style="color: #6434A3;">text</span>, <span style="color: #709870;">(</span>fac_date<span style="color: #709870;">)</span>::<span style="color: #6434A3;">timestamp</span> <span style="color: #006FE0;">without</span> <span style="color: #6434A3;">time</span> <span style="color: #006FE0;">zone</span><span style="color: #909183;">)</span> = <span style="color: #008000;">'2017'</span>::<span style="color: #6434A3;">double</span> <span style="color: #006FE0;">precision</span><span style="color: #7388D6;">)</span> <span style="color: #0000FF;">AND</span> <span style="color: #7388D6;">(</span>date_part<span style="color: #909183;">(</span><span style="color: #008000;">'month'</span>::<span style="color: #6434A3;">text</span>, <span style="color: #709870;">(</span>fac_date<span style="color: #709870;">)</span>::<span style="color: #6434A3;">timestamp</span> <span style="color: #006FE0;">without</span> <span style="color: #6434A3;">time</span> <span style="color: #006FE0;">zone</span><span style="color: #909183;">)</span> = <span style="color: #008000;">'6'</span>::<span style="color: #6434A3;">double</span> <span style="color: #006FE0;">precision</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+<p>
+ce plan utilise bien l'index que nous venons de créer.
+</p>
+
+<p>
+Pour le premier trimestre 2017, il suffit d'utiliser :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #0000FF;">SELECT</span> fac_num, fac_date, fac_montant
+  <span style="color: #0000FF;">FROM</span> facture
+ <span style="color: #0000FF;">WHERE</span> <span style="color: #006FE0;">EXTRACT</span> <span style="color: #707183;">(</span><span style="color: #006FE0;">YEAR</span> <span style="color: #0000FF;">FROM</span> fac_date<span style="color: #707183;">)</span> = <span style="color: #D0372D;">2017</span> <span style="color: #0000FF;">AND</span>
+       <span style="color: #006FE0;">EXTRACT</span> <span style="color: #707183;">(</span><span style="color: #006FE0;">MONTH</span> <span style="color: #0000FF;">FROM</span> fac_date<span style="color: #707183;">)</span> <span style="color: #006FE0;">BETWEEN</span> <span style="color: #D0372D;">1</span> <span style="color: #0000FF;">AND</span> <span style="color: #D0372D;">3</span>;
+</pre>
+</div>
+<p>
+<code class="verbatim">Postgres</code> propose le plan suivant :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #006FE0;">Index</span> Scan <span style="color: #0000FF;">using</span> par_mois_idx <span style="color: #0000FF;">on</span> facture  <span style="color: #707183;">(</span><span style="color: #006FE0;">cost</span>=<span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">28</span>..<span style="color: #D0372D;">8</span>.<span style="color: #D0372D;">30</span> <span style="color: #006FE0;">rows</span>=<span style="color: #D0372D;">1</span> width=<span style="color: #D0372D;">15</span><span style="color: #707183;">)</span>
+  <span style="color: #006FE0;">Index</span> Cond: <span style="color: #707183;">(</span><span style="color: #7388D6;">(</span>date_part<span style="color: #909183;">(</span><span style="color: #008000;">'year'</span>::<span style="color: #6434A3;">text</span>, <span style="color: #709870;">(</span>fac_date<span style="color: #709870;">)</span>::<span style="color: #6434A3;">timestamp</span> <span style="color: #006FE0;">without</span> <span style="color: #6434A3;">time</span> <span style="color: #006FE0;">zone</span><span style="color: #909183;">)</span> = <span style="color: #008000;">'2017'</span>::<span style="color: #6434A3;">double</span> <span style="color: #006FE0;">precision</span><span style="color: #7388D6;">)</span> <span style="color: #0000FF;">AND</span> <span style="color: #7388D6;">(</span>date_part<span style="color: #909183;">(</span><span style="color: #008000;">'month'</span>::<span style="color: #6434A3;">text</span>, <span style="color: #709870;">(</span>fac_date<span style="color: #709870;">)</span>::<span style="color: #6434A3;">timestamp</span> <span style="color: #006FE0;">without</span> <span style="color: #6434A3;">time</span> <span style="color: #006FE0;">zone</span><span style="color: #909183;">)</span> &gt;= <span style="color: #008000;">'1'</span>::<span style="color: #6434A3;">double</span> <span style="color: #006FE0;">precision</span><span style="color: #7388D6;">)</span> <span style="color: #0000FF;">AND</span> <span style="color: #7388D6;">(</span>date_part<span style="color: #909183;">(</span><span style="color: #008000;">'month'</span>::<span style="color: #6434A3;">text</span>, <span style="color: #709870;">(</span>fac_date<span style="color: #709870;">)</span>::<span style="color: #6434A3;">timestamp</span> <span style="color: #006FE0;">without</span> <span style="color: #6434A3;">time</span> <span style="color: #006FE0;">zone</span><span style="color: #909183;">)</span> &lt;= <span style="color: #008000;">'3'</span>::<span style="color: #6434A3;">double</span> <span style="color: #006FE0;">precision</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+<p>
+ce plan utilise toujours l'index que nous venons de créer.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="section-number-3">2.6</span> Exercice 3</h3>
+<div class="outline-text-3" id="text-2-6">
+</div><div id="outline-container-sec-2-6-1" class="outline-4">
+<h4 id="sec-2-6-1"><span class="section-number-4">2.6.1</span> Question 3.1</h4>
+<div class="outline-text-4" id="text-2-6-1">
+<p>
+Les paires sont ordonnées dans l'index dans l'ordre lexicographique. Cela
+signifie qu'une paire (a, b) est inférieure à une paire (c, d) lorsque :
+</p>
+
+<p>
+a &lt; c ou (a = c et b &lt;= d)
+</p>
+
+<p>
+Ainsi, l'index est utile dès que on a des informations sur la valeur de
+<code>lig_facture</code>. En revanche lorsque les contraintes, comme dans la dernière
+requête, ne porte que sur <code>lig_produit</code>, l'index n'apporte aucune aide.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-6-2" class="outline-4">
+<h4 id="sec-2-6-2"><span class="section-number-4">2.6.2</span> Question 3.2</h4>
+<div class="outline-text-4" id="text-2-6-2">
+<p>
+Utiliser un index sur un couple, permet de répondre rapidement aux requêtes
+qui expriment des contraintes sur les deux colonnes du couple et également à
+celles qui n'ont des contraintes que sur la première.
+</p>
+
+<p>
+Indexer les deux colonnes offrent plus de souplesse quant à l'utilisation
+des index pour exécuter des requêtes. Par exemple, les trois requêtes
+auraient alors bénéficié de l'utilisation d'un index. La première aurait été
+probablement moins rapide. Par contre, les modifications de la table
+entraînent la mise à jour des deux index. Cette mise à jours est plus lourde
+qu'avec seulement un index.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div></div></div>
+
+
+</body></html>

@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html dir="ltr" xml:lang="fr" class="yui3-js-enabled" lang="fr"><head>
+    <title>BDR: Notes sur le TD indexation</title>
+    <link rel="shortcut icon" href="https://moodle.univ-lille.fr/theme/image.php/ulille/theme/1619762772/favicon">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="moodle, BDR: Notes sur le TD indexation">
+<link rel="stylesheet" type="text/css" href="BDR%20Notes%20sur%20le%20TD%20indexation_files/yui_combo_002.css"><script type="text/javascript" async="" defer="defer" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/matomo.js"></script><script charset="utf-8" id="yui_3_17_2_1_1621259354848_9" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/yui_combo_004.js" async=""></script><link charset="utf-8" rel="stylesheet" id="yui_3_17_2_1_1621259354848_19" href="BDR%20Notes%20sur%20le%20TD%20indexation_files/yui_combo.css"><script charset="utf-8" id="yui_3_17_2_1_1621259354848_20" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/yui_combo_003.js" async=""></script><script charset="utf-8" id="yui_3_17_2_1_1621259354848_32" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/yui_combo.js" async=""></script><script charset="utf-8" id="yui_3_17_2_1_1621259354848_39" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/yui_combo_002.js" async=""></script><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="BDR%20Notes%20sur%20le%20TD%20indexation_files/all.css">
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/moodle.univ-lille.fr","sesskey":"5r7Uadel7e","themerev":"1619762772","slasharguments":1,"theme":"ulille","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1619762772","admin":"admin","svgicons":true,"usertimezone":"Europe\/Paris","contextid":1493776};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
+if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
+YUI_config = {"debug":false,"base":"https:\/\/moodle.univ-lille.fr\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/moodle.univ-lille.fr\/theme\/yui_combo.php?","combine":true,"filter":null,"insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/moodle.univ-lille.fr\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/moodle.univ-lille.fr\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/moodle.univ-lille.fr\/theme\/yui_combo.php?m\/1619762772\/","combine":true,"comboBase":"https:\/\/moodle.univ-lille.fr\/theme\/yui_combo.php?","ext":false,"root":"m\/1619762772\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":null,"modules":{"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-checknet":{"requires":["base-base","moodle-core-notification-alert","io-base"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-dock":{"requires":["base","node","event-custom","event-mouseenter","event-resize","escape","moodle-core-dock-loader","moodle-core-event"]},"moodle-core-dock-loader":{"requires":["escape"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-modchooser":{"requires":["moodle-core-chooserdialogue","moodle-course-coursebase"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-showadvanced":{"requires":["node","base","selector-css3"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-question-qbankmanager":{"requires":["node","selector-css3"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_stash-form":{"requires":["base","node","event","handlebars","moodle-core_availability-form"]},"moodle-availability_xp-form":{"requires":["base","node","event","handlebars","moodle-core_availability-form"]},"moodle-qtype_ddimageortext-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-qtype_ddimageortext-form":{"requires":["moodle-qtype_ddimageortext-dd","form_filepicker"]},"moodle-qtype_ddmarker-form":{"requires":["moodle-qtype_ddmarker-dd","form_filepicker","graphics","escape"]},"moodle-qtype_ddmarker-dd":{"requires":["node","event-resize","dd","dd-drop","dd-constrain","graphics"]},"moodle-qtype_ddwtos-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_bigbluebuttonbn-imports":{"requires":["base","node"]},"moodle-mod_bigbluebuttonbn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbluebuttonbn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbluebuttonbn-modform":{"requires":["base","node"]},"moodle-mod_bigbluebuttonbn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_forum-subscriptiontoggle":{"requires":["base-base","io-base"]},"moodle-mod_offlinequiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_offlinequiz-offlinequizbase","moodle-mod_offlinequiz-util-base","moodle-mod_offlinequiz-util-page","moodle-mod_offlinequiz-util-slot","moodle-course-util"]},"moodle-mod_offlinequiz-offlinequizbase":{"requires":["base","node"]},"moodle-mod_offlinequiz-offlinequizquestionbank":{"requires":["base","event","node","io","io-form","yui-later","moodle-question-qbankmanager","moodle-core-notification-dialogue"]},"moodle-mod_offlinequiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_offlinequiz-util","querystring-parse"]},"moodle-mod_offlinequiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_offlinequiz-randomquestion":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_offlinequiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_offlinequiz-offlinequizbase","moodle-mod_offlinequiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_offlinequiz-modform":{"requires":["base","node","event"]},"moodle-mod_offlinequiz-repaginate":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_offlinequiz-util":{"requires":["node"],"use":["moodle-mod_offlinequiz-util-base"],"submodules":{"moodle-mod_offlinequiz-util-base":{},"moodle-mod_offlinequiz-util-slot":{"requires":["node","moodle-mod_offlinequiz-util-base"]},"moodle-mod_offlinequiz-util-page":{"requires":["node","moodle-mod_offlinequiz-util-base"]}}},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-mod_quiz-repaginate":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_scheduler-studentlist":{"requires":["base","node","event","io"]},"moodle-mod_scheduler-saveseen":{"requires":["base","node","event"]},"moodle-mod_scheduler-delselected":{"requires":["base","node","event"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-block_xp-filters":{"requires":["base","node","moodle-core-dragdrop","moodle-block_xp-rulepicker"]},"moodle-block_xp-notification":{"requires":["base","node","handlebars","button-plugin","moodle-core-notification-dialogue"]},"moodle-block_xp-rulepicker":{"requires":["base","node","handlebars","moodle-core-notification-dialogue"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-format_grid-gridkeys":{"requires":["event-nav-keys"]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-warning","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_html-button":{"requires":["moodle-editor_atto-plugin","event-valuechange"]},"moodle-atto_htmlplus-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_htmlplus-beautify","moodle-atto_htmlplus-codemirror","event-valuechange"]},"moodle-atto_htmlplus-beautify":{},"moodle-atto_htmlplus-codemirror":{"requires":["moodle-atto_htmlplus-codemirror-skin"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_poodll-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]}}},"gallery":{"name":"gallery","base":"https:\/\/moodle.univ-lille.fr\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/moodle.univ-lille.fr\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1619762772\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/moodle.univ-lille.fr\/lib\/javascript.php\/1619762772\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/moodle.univ-lille.fr\/lib\/javascript.php\/1619762772\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdn.jsdelivr.net\/npm\/mathjax@2.7.8\/MathJax.js?delayStartupUntil=configured"}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.moodle.univ-lille.fr"]);
+  _paq.push(["setDomains", ["*.moodle.univ-lille.fr"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.univ-lille.fr/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '115']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//piwik.univ-lille.fr/matomo.php?idsite=115&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/x-mathjax-config">MathJax.Hub.Config({
+    config: ["Accessible.js", "Safe.js"],
+    TeX: {extensions: ["AMSmath.js","AMSsymbols.js","mhchem.js","noErrors.js","noUndefined.js"]},
+    errorSettings: { message: ["!"] },
+    skipStartupTypeset: true,
+    messageStyle: "none"
+});
+</script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="core/first" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/first.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="core/event" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/event.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/jquery-3.js"></script></head>
+<body id="page-mod-resource-view" class="format-topics  path-mod path-mod-resource gecko dir-ltr lang-fr yui-skin-sam yui3-skin-sam moodle-univ-lille-fr pagelayout-incourse course-26531 context-1493776 cmid-778221 category-1888 category-152 category-66 category-16  jsenabled">
+
+<div id="page-wrapper">
+
+    <div>
+    <a class="sr-only sr-only-focusable" href="#maincontent">Passer au contenu principal</a>
+</div><script type="text/javascript" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/yui_combo_005.js"></script><script type="text/javascript" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/jquery-3_002.js"></script>
+<script type="text/javascript" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/javascript-static.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+
+    <nav class="fixed-top navbar   navbar-expand moodle-has-zindex">
+            <div data-region="drawer-toggle" class="d-inline-block mr-3">
+                <button aria-expanded="false" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-secondary" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav"><i class="icon fa fa-bars fa-fw " aria-hidden="true"></i><span class="sr-only">Panneau latéral</span></button>
+            </div>
+            <a href="https://moodle.univ-lille.fr/" class="navbar-brand has-logo">
+                    <span class="logo d-none d-sm-inline">
+                        <img src="BDR%20Notes%20sur%20le%20TD%20indexation_files/ulille-mini-logo.png" alt="Moodle ULille">
+                    </span>
+                <span class="site-name d-none d-md-inline">Moodle ULille</span>
+            </a>
+    
+            <!-- course_controls -->
+            <div class="coursecontrols nav-item d-flex">
+                <div class="studentdash nav-item nav-link">
+        <a role="button" data-tooltip="tooltip" data-placement="bottom" title="" data-toggle="modal" href="#studentdashslider" class="btn btn-secondary fhs-tooltip" data-original-title="Tableau de bord du cours"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+    </div>
+                
+            </div>
+    
+            <ul class="navbar-nav d-none d-md-flex">
+                <!-- custom_menu -->
+                <li class="dropdown nav-item">
+    <a class="dropdown-toggle nav-link" id="drop-down-60a2745a5333f60a2745a3a19e3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" aria-controls="drop-down-menu-60a2745a5333f60a2745a3a19e3">
+        Mes cours
+    </a>
+    <div class="dropdown-menu" role="menu" id="drop-down-menu-60a2745a5333f60a2745a3a19e3" aria-labelledby="drop-down-60a2745a5333f60a2745a3a19e3">
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/my" title="Tableau de bord">Tableau de bord</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26467" title="RD">[M1 Info ML]  Réduction de dimensions</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=23383" title="ModLin">[M1 Info ML] : Modèles Linéaires</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=23278" title="[M1 Info ML] AP">[M1 Info ML] Apprentissage profond</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26501" title="[M1 Info] OA">[M1 Info] Optimisation et Apprentissage</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26531" title="BDR">[S2][M1 ML] BDR</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=1531" title="ACT">Algorithmes et Complexité</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=24111" title="ACA">Algorithmique et Complexité Avancés</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26297" title="co-modalité">Co-modalité</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=16574" title="S1-IMG">Image (RVA)</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=20249" title="S1-IIR">Initiation à l'Innovation et à la Recherche</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=24127" title="MasterThesis">Mémoire de Master</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=1525" title="S1-PJE-C">PJE C - Twitter</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=17020" title="S1-SD">Science des données (ML)</a>
+    </div>
+</li><li class="dropdown nav-item">
+    <a class="dropdown-toggle nav-link" id="drop-down-60a2745a5343960a2745a3a19e4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" aria-controls="drop-down-menu-60a2745a5343960a2745a3a19e4">
+        Ce cours
+    </a>
+    <div class="dropdown-menu" role="menu" id="drop-down-menu-60a2745a5343960a2745a3a19e4" aria-labelledby="drop-down-60a2745a5343960a2745a3a19e4">
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26531" title="Accueil du cours">Accueil du cours</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/calendar/view.php?view=month&amp;course=26531" title="Calendrier">Calendrier</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/user/index.php?id=26531" title="Participants">Participants</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/badges/view.php?type=2&amp;id=26531" title="Badges">Badges</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/admin/tool/lp/coursecompetencies.php?courseid=26531" title="Compétences">Compétences</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-0" title="Généralités">Généralités</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-1" title="Séance 1">Séance 1</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-2" title="Séance 2">Séance 2</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-3" title="Séance 3">Séance 3</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-4" title="Séance 4">Séance 4</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-5" title="Séance 5">Séance 5</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-6" title="Séance 6">Séance 6</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-7" title="Corrections des TPs">Corrections des TPs</a>
+    </div>
+</li>
+                <li class="dropdown nav-item">
+    <a class="dropdown-toggle nav-link" id="drop-down-60a2745a53c3060a2745a3a19e7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" aria-controls="drop-down-menu-60a2745a53c3060a2745a3a19e7">
+        Français ‎(fr)‎
+    </a>
+    <div class="dropdown-menu" role="menu" id="drop-down-menu-60a2745a53c3060a2745a3a19e7" aria-labelledby="drop-down-60a2745a53c3060a2745a3a19e7">
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=cs" title="Čeština ‎(cs)‎">Čeština ‎(cs)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=de" title="Deutsch ‎(de)‎">Deutsch ‎(de)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=en" title="English ‎(en)‎">English ‎(en)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=es" title="Español - Internacional ‎(es)‎">Español - Internacional ‎(es)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=fr" title="Français ‎(fr)‎">Français ‎(fr)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=it" title="Italiano ‎(it)‎">Italiano ‎(it)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=nl" title="Nederlands ‎(nl)‎">Nederlands ‎(nl)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=pt" title="Português - Portugal ‎(pt)‎">Português - Portugal ‎(pt)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=el" title="Ελληνικά ‎(el)‎">Ελληνικά ‎(el)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=he" title="עברית ‎(he)‎">עברית ‎(he)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=ar" title="العربية ‎(ar)‎">العربية ‎(ar)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=hi" title="हिंदी ‎(hi)‎">हिंदी ‎(hi)‎</a>
+                <a class="dropdown-item" role="menuitem" href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=ja" title="日本語 ‎(ja)‎">日本語 ‎(ja)‎</a>
+    </div>
+</li>
+                <!-- page_heading_menu -->
+                
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <div class="d-none d-lg-block">
+                
+            </div>
+                <!-- navbar_plugin_output -->
+                <li class="nav-item">
+                <div class="popover-region collapsed popover-region-messages" id="nav-message-popover-container" data-userid="87692" data-region="popover-region">
+    <div class="popover-region-toggle nav-link" data-region="popover-region-toggle" role="button" aria-controls="popover-region-container-60a2745a54dc360a2745a3a19e8" aria-haspopup="true" aria-label="Afficher la fenêtre des messages sans nouveau message" tabindex="0">
+                <i class="icon fa fa-comment fa-fw " title="Ouvrir/fermer le menu messages" aria-label="Ouvrir/fermer le menu messages"></i>
+        <div class="count-container hidden" data-region="count-container">0</div>
+
+    </div>
+    <div id="popover-region-container-60a2745a54dc360a2745a3a19e8" class="popover-region-container" data-region="popover-region-container" aria-expanded="false" aria-hidden="true" aria-label="Fenêtre de notification" role="region">
+        <div class="popover-region-header-container">
+            <h3 class="popover-region-header-text" data-region="popover-region-header-text">Messages personnels</h3>
+            <div class="popover-region-header-actions" data-region="popover-region-header-actions">        <div class="newmessage-link">
+            <a href="https://moodle.univ-lille.fr/message/index.php?contactsfirst=1">Nouveau message
+            </a>
+        </div>
+        <a class="mark-all-read-button" href="#" role="button" title="Tout marquer comme lu" data-action="mark-all-read">
+            <span class="normal-icon"><i class="icon fa fa-check fa-fw " title="Tout marquer comme lu" aria-label="Tout marquer comme lu"></i></span>
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " title="Chargement" aria-label="Chargement"></i></span>
+        </a>
+        <a href="https://moodle.univ-lille.fr/message/edit.php?id=87692" title="Préférences des messages">
+            <i class="icon fa fa-cog fa-fw " title="Préférences des messages" aria-label="Préférences des messages"></i>
+        </a>
+</div>
+        </div>
+        <div class="popover-region-content-container" data-region="popover-region-content-container">
+            <div class="popover-region-content" data-region="popover-region-content">
+                        <div class="messages" data-region="messages" role="log" aria-busy="false" aria-atomic="false" aria-relevant="additions"></div>
+        <div class="empty-message" data-region="empty-message" tabindex="0">Aucun message</div>
+
+            </div>
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " title="Chargement" aria-label="Chargement"></i></span>
+        </div>
+                <a class="see-all-link" href="https://moodle.univ-lille.fr/message/index.php">
+                    <div class="popover-region-footer-container">
+                        <div class="popover-region-seeall-text">Tout afficher</div>
+                    </div>
+                </a>
+    </div>
+</div><div class="popover-region collapsed popover-region-notifications" id="nav-notification-popover-container" data-userid="87692" data-region="popover-region">
+    <div class="popover-region-toggle nav-link" data-region="popover-region-toggle" role="button" aria-controls="popover-region-container-60a2745a5641860a2745a3a19e9" aria-haspopup="true" aria-label="Afficher la fenêtre des notifications sans nouvelle notification" tabindex="0">
+                <i class="icon fa fa-bell fa-fw " title="Ouvrir/fermer le menu notifications" aria-label="Ouvrir/fermer le menu notifications"></i>
+        <div class="count-container hidden" data-region="count-container">0</div>
+
+    </div>
+    <div id="popover-region-container-60a2745a5641860a2745a3a19e9" class="popover-region-container" data-region="popover-region-container" aria-expanded="false" aria-hidden="true" aria-label="Fenêtre de notification" role="region">
+        <div class="popover-region-header-container">
+            <h3 class="popover-region-header-text" data-region="popover-region-header-text">Notifications</h3>
+            <div class="popover-region-header-actions" data-region="popover-region-header-actions">        <a class="mark-all-read-button" href="#" title="Tout marquer comme lu" data-action="mark-all-read" role="button">
+            <span class="normal-icon"><i class="icon fa fa-check fa-fw " title="Tout marquer comme lu" aria-label="Tout marquer comme lu"></i></span>
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " title="Chargement" aria-label="Chargement"></i></span>
+        </a>
+        <a href="https://moodle.univ-lille.fr/message/notificationpreferences.php?userid=87692" title="Préférences de notification">
+            <i class="icon fa fa-cog fa-fw " title="Préférences de notification" aria-label="Préférences de notification"></i>
+        </a>
+</div>
+        </div>
+        <div class="popover-region-content-container" data-region="popover-region-content-container">
+            <div class="popover-region-content" data-region="popover-region-content">
+                        <div class="all-notifications" data-region="all-notifications" role="log" aria-busy="false" aria-atomic="false" aria-relevant="additions"></div>
+        <div class="empty-message" tabindex="0" data-region="empty-message">Vous n'avez pas de notification</div>
+
+            </div>
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " title="Chargement" aria-label="Chargement"></i></span>
+        </div>
+                <a class="see-all-link" href="https://moodle.univ-lille.fr/message/output/popup/notifications.php">
+                    <div class="popover-region-footer-container">
+                        <div class="popover-region-seeall-text">Tout afficher</div>
+                    </div>
+                </a>
+    </div>
+</div>
+                </li>
+                <!-- user_menu -->
+                <li class="nav-item d-flex align-items-center">
+                    <div class="usermenu"><div class="action-menu moodle-actionmenu nowrap-items d-inline" id="action-menu-2" data-enhance="moodle-core-actionmenu">
+
+        <div class="menubar d-flex " id="action-menu-2-menubar" role="menubar">
+
+            
+
+
+                <div class="action-menu-trigger">
+                    <div class="dropdown">
+                        <a href="#" tabindex="0" class=" dropdown-toggle icon-no-margin" id="dropdown-2" aria-label="Menu utilisateur" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="action-menu-2-menu">
+                            
+                            <span class="userbutton"><span class="usertext mr-1">Selim Lakhdar</span><span class="avatars"><span class="avatar current"><img src="BDR%20Notes%20sur%20le%20TD%20indexation_files/f2.png" class="userpicture defaultuserpic" role="presentation" aria-hidden="true" width="35" height="35"></span></span></span>
+                                
+                            <b class="caret"></b>
+                        </a>
+                            <div class="dropdown-menu dropdown-menu-right menu  align-tr-br" id="action-menu-2-menu" data-rel="menu-content" aria-labelledby="action-menu-toggle-2" role="menu" data-align="tr-br">
+                                        <a href="https://moodle.univ-lille.fr/my/" class="dropdown-item menu-action" role="menuitem" data-title="mymoodle,admin" aria-labelledby="actionmenuaction-1">
+                                                <i class="icon fa fa-tachometer fa-fw " aria-hidden="true"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-1">
+                                                Tableau de bord
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-divider" role="presentation"><span class="filler">&nbsp;</span></div>
+                                        <a href="https://moodle.univ-lille.fr/user/profile.php?id=87692" class="dropdown-item menu-action" role="menuitem" data-title="profile,moodle" aria-labelledby="actionmenuaction-2">
+                                                <i class="icon fa fa-user fa-fw " aria-hidden="true"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-2">
+                                                Profil
+                                            </span>
+                                        </a>
+                                        <a href="https://moodle.univ-lille.fr/grade/report/overview/index.php" class="dropdown-item menu-action" role="menuitem" data-title="grades,grades" aria-labelledby="actionmenuaction-3">
+                                                <i class="icon fa fa-table fa-fw " aria-hidden="true"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-3">
+                                                Notes
+                                            </span>
+                                        </a>
+                                        <a href="https://moodle.univ-lille.fr/message/index.php" class="dropdown-item menu-action" role="menuitem" data-title="messages,message" aria-labelledby="actionmenuaction-4">
+                                                <i class="icon fa fa-comment fa-fw " aria-hidden="true"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-4">
+                                                Messages personnels
+                                            </span>
+                                        </a>
+                                        <a href="https://moodle.univ-lille.fr/user/preferences.php" class="dropdown-item menu-action" role="menuitem" data-title="preferences,moodle" aria-labelledby="actionmenuaction-5">
+                                                <i class="icon fa fa-wrench fa-fw " aria-hidden="true"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-5">
+                                                Préférences
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-divider" role="presentation"><span class="filler">&nbsp;</span></div>
+                                        <a href="https://moodle.univ-lille.fr/login/logout.php?sesskey=5r7Uadel7e" class="dropdown-item menu-action" role="menuitem" data-title="logout,moodle" aria-labelledby="actionmenuaction-6">
+                                                <i class="icon fa fa-sign-out fa-fw " aria-hidden="true"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-6">
+                                                Déconnexion
+                                            </span>
+                                        </a>
+                            </div>
+                    </div>
+                </div>
+
+        </div>
+
+</div></div>
+                </li>
+            </ul>
+            <!-- search_box -->
+    </nav>
+
+
+    <div id="page" class="container-fluid">
+
+        <div id="learningcontent">
+        
+            <div class="modal fade" id="studentdashslider" tabindex="-1" role="dialog" aria-labelledby="teacherdashslider" aria-hidden="true">
+<div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+    <div class="modal-body">
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+
+        <div class="studentdashboard">
+        <div class="container-fluid">
+
+            <div class="row">
+
+                    <div class="col-md-2 studentcompletion">
+                            <p>Ma progression</p>
+                            <div class="progress-chart-container m-b-1">
+    <div class="no-progress">
+        <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+    </div>
+</div>
+                    </div>
+
+                    <div class="col-md-2 studentgradebook">
+                        <p>Mes notes</p><a href="https://moodle.univ-lille.fr/grade/report/user/index.php?id=26531" alt="Mes notes"><i class="fa fa-5x fa-bar-chart"></i></a>
+                    </div>
+
+                     
+                    <div class="col-md-2 studentadministration">
+                        <p>Administration du cours</p><a href="https://moodle.univ-lille.fr/course/admin.php?courseid=26531" alt="Administration du cours"><i class="fa fa-5x fa-cog"></i></a>
+                    </div>
+                     
+                </div>
+
+            <div class="row">
+                    <div class="col-md-4 coursesummary">
+                        <div class="dashtitle">
+                            <h3><i class="fa fa-map">&nbsp;</i>Description du cours</h3>
+                        </div>
+                            <div class="card-block">
+                                    
+                            </div>
+                    </div>
+
+                    <div class="col-md-5 coursestafflisting">
+                        <div class="dashtitle">
+                            <h3><i class="fa fa-users">&nbsp;</i>Enseignants du cours</h3>
+                        </div>
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <div class="staffmember">
+                                        <a href="https://moodle.univ-lille.fr/user/view.php?id=1432&amp;course=26531"><img src="BDR%20Notes%20sur%20le%20TD%20indexation_files/f1.png" class="userpicture defaultuserpic" alt="Avatar Sylvain Salvati" title="Avatar Sylvain Salvati" width="50" height="50"></a>
+                                        <div class="staffinfo">
+                                            <h4>Sylvain Salvati </h4>
+                                            <p><a href="mailto:sylvain.salvati@univ-lille.fr"><i class="fa fa-envelope-o">&nbsp;</i>Adresse de courriel</a> <br> <a href="https://moodle.univ-lille.fr/message/index.php?id=1432"><i class="fa fa-comment">&nbsp;</i>Envoyer message personnel</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 activitylinks">
+                        <div class="dashtitle">
+                            <h3><i class="fa fa-check-square-o dashicon"></i>Activités</h3>
+                        </div>
+                        <div class="list-group">
+                            <div class="list-group" aria-labelledby="list-group-60a2745a6111c60a2745a3a19e18">
+        <a href="https://moodle.univ-lille.fr/mod/assign/index.php?id=26531" class="list-group-item">Devoirs</a>
+        <a href="https://moodle.univ-lille.fr/mod/forum/index.php?id=26531" class="list-group-item">Forums</a>
+        <a href="https://moodle.univ-lille.fr/course/resources.php?id=26531" class="list-group-item">Ressources</a>
+ </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        </div>
+
+    </div>
+    </div>
+
+</div>
+</div>
+
+<div style="clear:both;"></div>
+            <header id="page-header" class="row">
+    <div class="col-12 pt-3 pb-3">
+        <div class="card">
+                <div class="headerbkg"><div class="customimage" style="background-image: url(&quot;//moodle.univ-lille.fr/pluginfile.php/1/theme_ulille/headerdefaultimage/1619762772/material3.jpg&quot;); background-size: cover; background-position:center;
+                width: 100%; height: 100%;"></div></div>
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="mr-auto">
+                    <a href="https://moodle.univ-lille.fr/course/view.php?id=26531"><div class="page-context-header"><div class="page-header-headings"><h1>[S2][M1 ML] BDR</h1></div></div></a>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap">
+                    <div id="page-navbar">
+                        <nav role="navigation">
+    <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="https://moodle.univ-lille.fr/">Accueil</a></li>
+                <li class="breadcrumb-item">Mes cours</li>
+                <li class="breadcrumb-item"><a href="https://moodle.univ-lille.fr/course/index.php?categoryid=16">Faculté des Sciences et Technologies (FST)</a></li>
+                <li class="breadcrumb-item"><a href="https://moodle.univ-lille.fr/course/index.php?categoryid=66">Département Informatique</a></li>
+                <li class="breadcrumb-item"><a href="https://moodle.univ-lille.fr/course/index.php?categoryid=152">Master Informatique</a></li>
+                <li class="breadcrumb-item"><a href="https://moodle.univ-lille.fr/course/index.php?categoryid=1888">Semestre 2</a></li>
+                <li class="breadcrumb-item"><a href="https://moodle.univ-lille.fr/course/view.php?id=26531" title="[S2][M1 ML] BDR">BDR</a></li>
+                <li class="breadcrumb-item"><a href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-2">Séance 2</a></li>
+                <li class="breadcrumb-item"><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221" title="Fichier">Notes sur le TD indexation</a></li>
+    </ul>
+</nav>
+                    </div>
+                    <div class="ml-auto d-flex">
+                        
+                    </div>
+                    <div id="course-header">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+            
+            <div id="page-content" class="row">
+                <div id="region-main-box" class="col-12">
+                    <section id="region-main">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="notifications" id="user-notifications"></span>
+                                <div role="main"><span id="maincontent"></span><h2>Notes sur le TD indexation</h2><div class="resourcecontent resourcegeneral">
+  <iframe id="resourceobject" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/notes_td_indexation.html" style="width: 1831px; height: 754px;">
+    Cliquer le lien &lt;a 
+href="https://moodle.univ-lille.fr/pluginfile.php/1493776/mod_resource/content/1/notes_td_indexation.html"
+ &gt;notes_td_indexation.html&lt;/a&gt; pour afficher le fichier.
+  </iframe>
+</div><div id="resourceintro" class="box mod_introbox py-3"><p class="resourcedetails">29.9Ko Document HTML</p></div></div>
+                                
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+                <div class="m-t-2 m-b-1">
+<div class="row">
+    <div class="col-md-4">        <div class="pull-left">
+                <a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=776901&amp;forceview=1" id="prev-activity-link" class="btn btn-link" title="Données pour le TD indexation">◄ Données pour le TD indexation</a>
+
+        </div>
+</div>
+    <div class="col-md-4">        <div class="mdl-align">
+            <div class="urlselect">
+    <form method="post" action="https://moodle.univ-lille.fr/course/jumpto.php" class="form-inline" id="url_select_f60a2745a3a19e19">
+        <input type="hidden" name="sesskey" value="5r7Uadel7e">
+            <label for="jump-to-activity" class="sr-only">
+                Aller à…
+            </label>
+        <select id="jump-to-activity" class="custom-select urlselect" name="jump">
+                    <option value="" selected="selected">Aller à…</option>
+                    <option value="/mod/forum/view.php?id=763757&amp;forceview=1">Annonces</option>
+                    <option value="/mod/resource/view.php?id=763789&amp;forceview=1">Transparents du cours</option>
+                    <option value="/mod/resource/view.php?id=763815&amp;forceview=1">Énoncé du TP</option>
+                    <option value="/mod/folder/view.php?id=763818&amp;forceview=1">Code pour le TP</option>
+                    <option value="/mod/assign/view.php?id=765717&amp;forceview=1">Rendu du code du TP pour commentaires (optionnel)</option>
+                    <option value="/mod/resource/view.php?id=778303&amp;forceview=1">Correction faite pendant le TP</option>
+                    <option value="/mod/resource/view.php?id=776883&amp;forceview=1">Transparents du cours</option>
+                    <option value="/mod/resource/view.php?id=776885&amp;forceview=1">TD Indexation</option>
+                    <option value="/mod/resource/view.php?id=776901&amp;forceview=1">Données pour le TD indexation</option>
+                    <option value="/mod/assign/view.php?id=778278&amp;forceview=1">Rendu TD indexation pour commentaire à partir de l'exercice 4 (optionnel)</option>
+                    <option value="/mod/resource/view.php?id=788652&amp;forceview=1">Transparents du cours</option>
+                    <option value="/mod/resource/view.php?id=788655&amp;forceview=1">TD procédures stockées</option>
+                    <option value="/mod/resource/view.php?id=788659&amp;forceview=1">Fichier sql pour le TD</option>
+                    <option value="/mod/assign/view.php?id=790378&amp;forceview=1">Rendu TD fonctions stockées (optionnel)</option>
+                    <option value="/mod/resource/view.php?id=800031&amp;forceview=1">Transparents du cours</option>
+                    <option value="/mod/resource/view.php?id=800032&amp;forceview=1">tdDenormalisation</option>
+                    <option value="/mod/folder/view.php?id=800034&amp;forceview=1">Fichiers SQL pour le TD</option>
+                    <option value="/mod/resource/view.php?id=808208&amp;forceview=1">Transparents sur les transactions</option>
+                    <option value="/mod/resource/view.php?id=808214&amp;forceview=1">TD sur les transactions</option>
+                    <option value="/mod/resource/view.php?id=808215&amp;forceview=1">Fichier sql pour l'exercice 2</option>
+                    <option value="/mod/resource/view.php?id=817030&amp;forceview=1">Transparents administration</option>
+                    <option value="/mod/resource/view.php?id=817031&amp;forceview=1">TP administration</option>
+                    <option value="/mod/resource/view.php?id=817928&amp;forceview=1">Shema SQL pour le TP</option>
+                    <option value="/mod/folder/view.php?id=833026&amp;forceview=1">Corrections</option>
+        </select>
+            <noscript>
+                <input type="submit" class="btn btn-secondary" value="Valider">
+            </noscript>
+    </form>
+</div>
+
+        </div>
+</div>
+    <div class="col-md-4">        <div class="pull-right">
+                <a href="https://moodle.univ-lille.fr/mod/assign/view.php?id=778278&amp;forceview=1" id="next-activity-link" class="btn btn-link" title="Rendu TD indexation pour commentaire à partir de l'exercice 4 (optionnel)">Rendu TD indexation pour commentaire à partir de l'exercice 4 (optionnel) ►</a>
+
+        </div>
+</div>
+</div>
+</div>
+        </div>
+    </div>
+    <div id="nav-drawer" data-region="drawer" class="d-print-none moodle-has-zindex closed" aria-hidden="true" tabindex="-1">
+        <nav class="list-group">
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26531" data-key="coursehome" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">BDR</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/user/index.php?id=26531" data-key="participants" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="90" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-users fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Participants</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/badges/view.php?type=2&amp;id=26531" data-key="badgesview" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-shield fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Badges</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/admin/tool/lp/coursecompetencies.php?courseid=26531" data-key="competencies" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-check-square-o fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Compétences</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/grade/report/index.php?id=26531" data-key="grades" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-table fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Notes</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-0" data-key="224570" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Généralités</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-1" data-key="224571" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Séance 1</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action active" href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-2" data-key="224572" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="1" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body font-weight-bold">Séance 2</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-3" data-key="224573" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Séance 3</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-4" data-key="224574" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Séance 4</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-5" data-key="224594" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Séance 5</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-6" data-key="224595" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Séance 6</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26531#section-7" data-key="233508" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="26531">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Corrections des TPs</span>
+                    </div>
+                </div>
+            </a>
+        </nav>
+        <nav class="list-group m-t-1">
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/" data-key="home" data-isexpandable="0" data-indent="0" data-showdivider="1" data-type="1" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-home fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Accueil</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/my/" data-key="myhome" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="home">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-tachometer fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Tableau de bord</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/calendar/view.php?view=month&amp;course=26531" data-key="calendar" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-calendar fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Calendrier</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/user/files.php" data-key="privatefiles" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-file-o fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Fichiers personnels</span>
+                    </div>
+                </div>
+            </a>
+            <div class="list-group-item" data-key="mycourses" data-isexpandable="1" data-indent="0" data-showdivider="0" data-type="0" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="home">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body">Mes cours</span>
+                    </div>
+                </div>
+            </div>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=1525" data-key="1525" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1887">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">S1-PJE-C</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=20249" data-key="20249" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1887">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">S1-IIR</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=1531" data-key="1531" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1887">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">ACT</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26531" data-key="26531" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1888">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">BDR</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26501" data-key="26501" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1888">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">[M1 Info] OA</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26467" data-key="26467" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1888">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">RD</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=24111" data-key="24111" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1888">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">ACA</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=23383" data-key="23383" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1888">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">ModLin</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=26297" data-key="26297" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="152">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">co-modalité</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/course/view.php?id=24127" data-key="24127" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="152">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">MasterThesis</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://moodle.univ-lille.fr/my/?myoverviewtab=courses" data-key="courseindexpage" data-isexpandable="0" data-indent="1" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="mycourses">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-fw fa-fw " aria-hidden="true"></i>
+                        </span>
+                        <span class="media-body ">Plus…</span>
+                    </div>
+                </div>
+            </a>
+        </nav>
+    </div>
+</div><div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important" class=""></div>
+
+<a href="#" id="back-to-top" class="btn btn-primary btn-lg" role="button" title="Retour en haut de page et Scrollspy"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a>
+
+
+<footer id="page-footer" class="py-3 text-light">
+    <div class="container">
+
+        <div id="course-footer"></div>
+
+        <div class="row">
+
+                <div class="col-md-8">
+                    
+
+                    <div class="logininfo">Connecté sous le nom «&nbsp;<a href="https://moodle.univ-lille.fr/user/profile.php?id=87692" title="Consulter le profil">Selim Lakhdar</a>&nbsp;» (<a href="https://moodle.univ-lille.fr/login/logout.php?sesskey=5r7Uadel7e">Déconnexion</a>)</div>
+
+                    <div class="homelink"><a href="https://moodle.univ-lille.fr/course/view.php?id=26531">BDR</a></div>
+
+
+                </div>
+
+                <div class="col-md-4">
+                    <div class="brandbox">
+
+                        <h3>Université de Lille</h3>
+                            <ul class="footercontact">
+                                <li><i class="fa fa-globe"></i>  https://www.univ-lille.fr/</li>
+                                
+                                
+                            </ul>
+
+                        
+
+                    </div>
+                </div>
+
+        </div>
+        <nav class="nav navbar-nav d-md-none">
+                <ul class="list-unstyled pt-3">
+                                    <li><a href="#" title="Langue">Français ‎(fr)‎</a></li>
+                                <li>
+                                    <ul class="list-unstyled ml-3">
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=cs" title="Čeština ‎(cs)‎">Čeština ‎(cs)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=de" title="Deutsch ‎(de)‎">Deutsch ‎(de)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=en" title="English ‎(en)‎">English ‎(en)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=es" title="Español - Internacional ‎(es)‎">Español - Internacional ‎(es)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=fr" title="Français ‎(fr)‎">Français ‎(fr)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=it" title="Italiano ‎(it)‎">Italiano ‎(it)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=nl" title="Nederlands ‎(nl)‎">Nederlands ‎(nl)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=pt" title="Português - Portugal ‎(pt)‎">Português - Portugal ‎(pt)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=el" title="Ελληνικά ‎(el)‎">Ελληνικά ‎(el)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=he" title="עברית ‎(he)‎">עברית ‎(he)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=ar" title="العربية ‎(ar)‎">العربية ‎(ar)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=hi" title="हिंदी ‎(hi)‎">हिंदी ‎(hi)‎</a></li>
+                                                        <li><a href="https://moodle.univ-lille.fr/mod/resource/view.php?id=778221&amp;lang=ja" title="日本語 ‎(ja)‎">日本語 ‎(ja)‎</a></li>
+                                    </ul>
+                                </li>
+                </ul>
+        </nav>
+        
+        
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.univ-lille.fr/dp/" target="_blank">Données personnelles </a> 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.univ-lille.fr/mentions-legales/" target="_blank">Mentions légales</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.univ-lille.fr/contact-dpo/" target="_blank">Contacter le DPO</a>
+<script type="text/javascript">
+//<![CDATA[
+var require = {
+    baseUrl : 'https://moodle.univ-lille.fr/lib/requirejs.php/1619762772/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://moodle.univ-lille.fr/lib/javascript.php/1619762772/lib/jquery/jquery-3.5.1.min',
+        jqueryui: 'https://moodle.univ-lille.fr/lib/javascript.php/1619762772/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://moodle.univ-lille.fr/lib/javascript.php/1619762772/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+      // Stub module for 'process'. This is a workaround for a bug in MathJax (see MDL-60458).
+      '*': { process: 'core/first' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+<script type="text/javascript" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/require.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.util.js_pending("core/first");require(['core/first'], function() {
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp(function(videojs) {
+        videojs.options.flash.swf = "https://moodle.univ-lille.fr/media/player/videojs/videojs/video-js.swf";
+videojs.addLanguage("fr",{
+ "Audio Player": "Lecteur audio",
+ "Video Player": "Lecteur vidéo",
+ "Play": "Lecture",
+ "Pause": "Pause",
+ "Replay": "Revoir",
+ "Current Time": "Temps actuel",
+ "Duration Time": "Durée",
+ "Remaining Time": "Temps restant",
+ "Stream Type": "Type de flux",
+ "LIVE": "EN DIRECT",
+ "Loaded": "Chargé",
+ "Progress": "Progression",
+ "Progress Bar": "Barre de progression",
+ "progress bar timing: currentTime={1} duration={2}": "{1} de {2}",
+ "Fullscreen": "Plein écran",
+ "Non-Fullscreen": "Fenêtré",
+ "Mute": "Sourdine",
+ "Unmute": "Son activé",
+ "Playback Rate": "Vitesse de lecture",
+ "Subtitles": "Sous-titres",
+ "subtitles off": "Sous-titres désactivés",
+ "Captions": "Sous-titres transcrits",
+ "captions off": "Sous-titres transcrits désactivés",
+ "Chapters": "Chapitres",
+ "Descriptions": "Descriptions",
+ "descriptions off": "descriptions désactivées",
+ "Audio Track": "Piste audio",
+ "Volume Level": "Niveau de volume",
+ "You aborted the media playback": "Vous avez interrompu la lecture de la vidéo.",
+ "A network error caused the media download to fail part-way.": "Une erreur de réseau a interrompu le téléchargement de la vidéo.",
+ "The media could not be loaded, either because the server or network failed or because the format is not supported.": "Cette vidéo n'a pas pu être chargée, soit parce que le serveur ou le réseau a échoué ou parce que le format n'est pas reconnu.",
+ "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "La lecture de la vidéo a été interrompue à cause d'un problème de corruption ou parce que la vidéo utilise des fonctionnalités non prises en charge par votre navigateur.",
+ "No compatible source was found for this media.": "Aucune source compatible n'a été trouvée pour cette vidéo.",
+ "The media is encrypted and we do not have the keys to decrypt it.": "Le média est chiffré et nous n'avons pas les clés pour le déchiffrer.",
+ "Play Video": "Lire la vidéo",
+ "Close": "Fermer",
+ "Close Modal Dialog": "Fermer la boîte de dialogue modale",
+ "Modal Window": "Fenêtre modale",
+ "This is a modal window": "Ceci est une fenêtre modale",
+ "This modal can be closed by pressing the Escape key or activating the close button.": "Ce modal peut être fermé en appuyant sur la touche Échap ou activer le bouton de fermeture.",
+ ", opens captions settings dialog": ", ouvrir les paramètres des sous-titres transcrits",
+ ", opens subtitles settings dialog": ", ouvrir les paramètres des sous-titres",
+ ", opens descriptions settings dialog": ", ouvrir les paramètres des descriptions",
+ ", selected": ", sélectionné",
+ "captions settings": "Paramètres des sous-titres transcrits",
+ "subtitles settings": "Paramètres des sous-titres",
+ "descriptions settings": "Paramètres des descriptions",
+ "Text": "Texte",
+ "White": "Blanc",
+ "Black": "Noir",
+ "Red": "Rouge",
+ "Green": "Vert",
+ "Blue": "Bleu",
+ "Yellow": "Jaune",
+ "Magenta": "Magenta",
+ "Cyan": "Cyan",
+ "Background": "Arrière-plan",
+ "Window": "Fenêtre",
+ "Transparent": "Transparent",
+ "Semi-Transparent": "Semi-transparent",
+ "Opaque": "Opaque",
+ "Font Size": "Taille des caractères",
+ "Text Edge Style": "Style des contours du texte",
+ "None": "Aucun",
+ "Raised": "Élevé",
+ "Depressed": "Enfoncé",
+ "Uniform": "Uniforme",
+ "Dropshadow": "Ombre portée",
+ "Font Family": "Famille de polices",
+ "Proportional Sans-Serif": "Polices à chasse variable sans empattement (Proportional Sans-Serif)",
+ "Monospace Sans-Serif": "Polices à chasse fixe sans empattement (Monospace Sans-Serif)",
+ "Proportional Serif": "Polices à chasse variable avec empattement (Proportional Serif)",
+ "Monospace Serif": "Polices à chasse fixe avec empattement (Monospace Serif)",
+ "Casual": "Manuscrite",
+ "Script": "Scripte",
+ "Small Caps": "Petites capitales",
+ "Reset": "Réinitialiser",
+ "restore all settings to the default values": "Restaurer tous les paramètres aux valeurs par défaut",
+ "Done": "Terminé",
+ "Caption Settings Dialog": "Boîte de dialogue des paramètres des sous-titres transcrits",
+ "Beginning of dialog window. Escape will cancel and close the window.": "Début de la fenêtre de dialogue. La touche d'échappement annulera et fermera la fenêtre.",
+ "End of dialog window.": "Fin de la fenêtre de dialogue."
+});
+
+    });
+});;
+
+require(['jquery'], function($) {
+    $('#single_select60a2745a3a19e6').change(function() {
+        var ignore = $(this).find(':selected').attr('data-ignore');
+        if (typeof ignore === typeof undefined) {
+            $('#single_select_f60a2745a3a19e5').submit();
+        }
+    });
+});
+;
+
+require(['jquery', 'message_popup/message_popover_controller'], function($, controller) {
+    var container = $('#nav-message-popover-container');
+    var controller = new controller(container);
+    controller.registerEventListeners();
+    controller.registerListNavigationEventListeners();
+});
+;
+
+require(['jquery', 'message_popup/notification_popover_controller'], function($, controller) {
+    var container = $('#nav-notification-popover-container');
+    var controller = new controller(container);
+    controller.registerEventListeners();
+    controller.registerListNavigationEventListeners();
+});
+;
+
+        require(['jquery'], function($) {
+            $('#jump-to-activity').change(function() {
+                if (!$(this).val()) {
+                    return false;
+                }
+                $('#url_select_f60a2745a3a19e19').submit();
+            });
+        });
+    ;
+
+require(['jquery'], function($) {
+    $('#single_select60a2745a3a19e21').change(function() {
+        var ignore = $(this).find(':selected').attr('data-ignore');
+        if (typeof ignore === typeof undefined) {
+            $('#single_select_f60a2745a3a19e20').submit();
+        }
+    });
+});
+;
+
+require(['theme_boost/loader']);
+require(['jquery','theme_boost/tooltip'], function($){$('[data-tooltip="tooltip"]').tooltip()});
+require(['theme_boost/drawer'], function(mod) {
+    mod.init();
+});
+;
+M.util.js_pending('core/notification');
+require(['core/notification'], function(amd) {
+    amd.init(1493776, []);
+    M.util.js_complete('core/notification');
+});;
+M.util.js_pending('core/log');
+require(['core/log'], function(amd) {
+    amd.setConfig({"level":"warn"});
+    M.util.js_complete('core/log');
+});M.util.js_complete("core/first");
+});
+//]]>
+</script>
+<script type="text/javascript" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/scrolltotop.js"></script>
+<script type="text/javascript" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/scrollspy.js"></script>
+<script type="text/javascript" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/tooltipfix.js"></script>
+<script type="text/javascript" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/blockslider.js"></script>
+<script type="text/javascript" src="BDR%20Notes%20sur%20le%20TD%20indexation_files/courseblock.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"Modifi\u00e9 le","name":"Nom","error":"Erreur","info":"Information","yes":"Oui","no":"Non","ok":"OK","cancel":"Annuler","confirm":"Confirmer","areyousure":"En \u00eates-vous bien s\u00fbr\u00a0?","closebuttontitle":"Fermer","unknownerror":"Erreur inconnue"},"repository":{"type":"Type","size":"Taille","invalidjson":"Cha\u00eene JSON non valide","nofilesattached":"Aucun fichier joint","filepicker":"S\u00e9lecteur de fichiers","logout":"D\u00e9connexion","nofilesavailable":"Aucun fichier disponible","norepositoriesavailable":"D\u00e9sol\u00e9, aucun de vos d\u00e9p\u00f4ts actuels ne peut retourner de fichiers dans le format requis.","fileexistsdialogheader":"Le fichier existe","fileexistsdialog_editor":"Un fichier de ce nom a d\u00e9j\u00e0 \u00e9t\u00e9 joint au texte que vous modifiez.","fileexistsdialog_filemanager":"Un fichier de ce nom a d\u00e9j\u00e0 \u00e9t\u00e9 joint","renameto":"Renommer \u00e0 \u00ab\u00a0{$a}\u00a0\u00bb","referencesexist":"Ce fichier est utilis\u00e9 comme source par {$a} alias.","select":"S\u00e9lectionnez"},"admin":{"confirmdeletecomments":"Voulez-vous vraiment supprimer des commentaires\u00a0?","confirmation":"Confirmation"}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+(function() { M.util.js_pending('random60a2745a3a19e1'); Y.on('domready', function() { M.util.init_maximised_embed(Y, "resourceobject");  M.util.js_complete('random60a2745a3a19e1'); });
+Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"MathJax.Hub.Config({\r\n    config: [\"Accessible.js\", \"Safe.js\"],\r\n    TeX: {extensions: [\"AMSmath.js\",\"AMSsymbols.js\",\"mhchem.js\",\"noErrors.js\",\"noUndefined.js\"]},\r\n    errorSettings: { message: [\"!\"] },\r\n    skipStartupTypeset: true,\r\n    messageStyle: \"none\"\r\n});\r\n","lang":"fr"});
+});
+Y.use("moodle-filter_glossary-autolinker",function() {M.filter_glossary.init_filter_autolinking({"courseid":0});
+});
+M.util.help_popups.setup(Y);
+ M.util.js_pending('random60a2745a3a19e22'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random60a2745a3a19e22'); });
+})();
+//]]>
+</script>
+
+
+    </div>
+
+</footer>
+
+
+</body></html>

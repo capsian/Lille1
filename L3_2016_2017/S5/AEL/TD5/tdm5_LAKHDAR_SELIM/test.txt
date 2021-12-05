@@ -1,0 +1,13 @@
+// Selim Lakhdar
+/**
+* Groupe 4
+* TD 5
+*/
+baisser
+aller 50 50
+pas 3
+100 fois sud
+100 fois est
+100 fois nord
+100 fois ouest
+lever

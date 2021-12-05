@@ -1,0 +1,48 @@
+original = getImageID();
+
+run("Duplicate...", "title=gateaux1-tr-1.png");
+tr1 = getImageID();
+
+run("Duplicate...", "title=gateaux1-tr-2.png");
+tr2 = getImageID();
+
+run("Duplicate...", "title=gateaux1-tr-3.png");
+tr3 = getImageID();
+
+selectWindow("gateaux1-tr-1.png");
+a = 8;
+b = 10;
+for (y = 0; y < getHeight; y = y + 1)
+{   
+	for (x = 0; x < getWidth; x = x + 1)
+	{   
+		setPixel(x,y,getPixel(x, y)*a + b);
+	}
+}
+updateDisplay();
+
+
+selectWindow("gateaux1-tr-2.png");
+a = 9;
+b = 10;
+for (y = 0; y < getHeight; y = y + 1)
+{   
+	for (x = 0; x < getWidth; x = x + 1)
+	{   
+		setPixel(x,y,getPixel(x, y)*a + b);
+	}
+}
+updateDisplay();
+
+
+selectWindow("gateaux1-tr-3.png");
+a = 10;
+b = 20;
+for (y = 0; y < getHeight; y = y + 1)
+{   
+	for (x = 0; x < getWidth; x = x + 1)
+	{   
+		setPixel(x,y,getPixel(x, y)*a + b);
+	}
+}
+updateDisplay();

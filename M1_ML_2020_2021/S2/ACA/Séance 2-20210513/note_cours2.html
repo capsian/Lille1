@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>ACA cours 2</title>
+<!-- 2021-03-17 mer. 16:25 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+.code-highlighted { background-color: #ffff00; }
+
+/* .verbatim { color: #3e9409;
+            background-color: #f5fbf4; }*/
+.verbatim {
+    color: #337ab7;
+    background-color: #d9edf7; }
+
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Exercice du premier cours (suite)</a>
+<ul class="nav">
+<li><a href="#sec-1-1">1.1. Exercice 1 question 3</a></li>
+<li><a href="#sec-1-2">1.2. Exercice 2</a></li>
+<li><a href="#sec-1-3">1.3. Exercice 3</a></li>
+<li><a href="#sec-1-4">1.4. Exercice 4</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">ACA cours 2</h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Exercice du premier cours (suite)</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Exercice 1 question 3</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Pour chaque dé, les probabilités de faire un jet de valeur paire ou impaire sont égales
+\[Pr(\text{valeur paire}) = Pr(\text{valeur impaire}) =
+   \frac{1}{2}\]
+</p>
+
+<p>
+Lorsque l'on jette les deux dés, il y a 2 situations dans lesquelles le résultat est paire :
+</p>
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="text-left">Parité premier dé</th>
+<th scope="col" class="text-left">Parité du second dé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-left">impaire</td>
+<td class="text-left">impaire</td>
+</tr>
+
+<tr>
+<td class="text-left">paire</td>
+<td class="text-left">paire</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Comme ces situations sont disjointes et que les dés prennent des valeurs inépendantes l'une de l'autre nous avons :
+\[ \begin{array}{rcl}
+   Pr(\text{somme paire}) &=& Pr(\text{premier dé impair}
+   \cap \text{deuxième dé impaire}) + Pr(\text{premier dé paire} \cap \text{deuxième dé paire})\\
+   &=& Pr(\text{premier dé impaire}) \times Pr(\text{second dé impaire}) +
+   Pr(\text{premier dé paire}) \times Pr(\text{second dé paire})\\
+   &=& \frac{1}{2}\times \frac{1}{2} + \frac{1}{2}\times\frac{1}{2}\\
+   &=&   \frac{1}{2}
+   \end{array}
+   \]
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Exercice 2</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+On prend comme espace  probabiliste les paires de booléens. Une paire (m,p) signifiant qu'un patient est malade ssi m=True et que son test est positif ssi p=True.
+</p>
+
+<p>
+Les données de l'énoncé sont :
+</p>
+<ul class="org-ul">
+<li>Pr(test positif | malade) = 0.999
+</li>
+<li>Pr(test Positif | non malade) = 0.005
+</li>
+<li>Pr(malade) = 0.02
+</li>
+</ul>
+
+
+<p>
+On cherche à déterminer Pr(malade | test positif).
+</p>
+
+<p>
+Par définition de la probabilité conditionnelle, cela revient à chercher :
+</p>
+
+<p>
+\[Pr(\text{malade} \mid \text{test positif}) = \frac{Pr(\text{malade} \cap \text{test positif})}{Pr(\text{test positif})}\]
+</p>
+
+<p>
+Pour obtenir notre résultat, il nous faut déterminer les deux probabilités suivantes :
+</p>
+<ol class="org-ol">
+<li>Pr(malade &cap; test positif)
+</li>
+<li>Pr(test positif)
+</li>
+</ol>
+
+<p>
+Calculons d'abord Pr(malade &cap; test positif). Par définition, nous avons :
+\[Pr(\text{test positif} \mid \text{malade}) =
+   \frac{Pr(\text{malade} \cap \text{test positif})}{Pr(\text{malade})}\]
+Ainsi
+\[\begin{array}{rcl}
+   Pr(\text{malade}\cap \text{test positif})
+   &=& Pr(\text{test positif} \mid \text{malade}) Pr(\text{malade})\\
+   &=&0.999\times 0.02=0.01998
+   \end{array}\]
+</p>
+
+<p>
+Calculons maintenant Pr(test positif). Pour cela on remarque que :
+\[Pr(\text{test positif}) = Pr(\text{test positif} \cap \text{malade}) + Pr(\text{test positif} \cap \text{non malade})\]
+</p>
+
+
+<p>
+Comme plus haut, nous avons :
+\[\begin{array}{rcl}
+   Pr(\text{test positif} \cap \text{non malade}) &=&  Pr(\text{test positif} \mid \text{non malade}) Pr(\text{non malade})\\
+   &=&  Pr(\text{test positif} \mid \text{non malade}) (1-Pr(\text{malade}))\\
+   &=& 0.005 (1-0.02) = 0.0049
+   \end{array}\]
+</p>
+
+<p>
+Pour conclure :
+\[Pr(\text{malade} \mid \text{test positif}) = 0.01998/(0.0049+ 0.01998) =0.8\]
+</p>
+
+<p>
+Il s'ensuit qu'une personne est malade lorsque son test est positif avec une probabilité de 80%.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Exercice 3</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Question 1</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+La probabilité dans un tour de boucle de renvoyer <code>True</code> est p(1-p) car les tirs sont indépendants.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Question 2</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+La réponse est la même pour les mêmes raisons.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Question 3</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+La probabilité qu'un tour de boucle en déclenche un autre est r = pp + (1-p)(1-p).
+C'est lorsque t1 est égal à t2.
+</p>
+
+<p>
+L'algorithme effectue au moins n tours de boucles avec une probabilité r<sup>n</sup>.
+</p>
+
+<p>
+La probilité que l'algorithme ne termine pas est \(\lim_{n \to \infty} r^n\).
+</p>
+
+<p>
+Si p est différent de 0 et de 1, cette limite tend vers 0.
+</p>
+
+<p>
+En effet, \(r = p^2 + 1-2p + p^2 = 2p^2 -2p +1 = 2p(p-1) +1\).
+</p>
+
+<p>
+Lorsque 0&lt;p&lt;1, nous avons : -1&lt;p-1 &lt;0. Ainsi -2 &lt; 2p(p-1) &lt; 0 et donc -1 &lt; 2p(p-1) + 1 &lt; 1.
+Nous avons bien -1 &lt; r &lt;1  et la limite tend vers 0.
+</p>
+
+<p>
+L'algorithme termine avec probabilité 1.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-3-4" class="outline-4">
+<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Question 4</h4>
+<div class="outline-text-4" id="text-1-3-4">
+<p>
+On calcule la probabilité de renvoyer <code>True</code> de 2 manières suivantes :
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-3-4-1" name="sec-1-3-4-1"></a>Méthode 1 : calcul complet<br ><div class="outline-text-5" id="text-1-3-4-1">
+<p>
+Nous commençons par calculer la probabilité de renvoyer <code>True</code> après k
+tours de boucle. Cette probabilité est
+</p>
+
+<p>
+\[r^{k-1} p(1-p)\]
+</p>
+
+
+<p>
+Comme, lorsque k ≠ k', les évènements "renvoyer <code>True</code> après k tours de
+boucle" et "renvoyer <code>True</code> après k' tours de boucle" sont disjoints, la
+probabilité de renvoyer <code>True</code> est :
+</p>
+
+<p>
+\[\begin{array}{rcl}
+     \sum_{k=1}^\infty r^{k-1} p(1-p)
+     &=& p(1-p)\sum_{k=0}^\infty (2p(p-1)+1)^k\\
+     &=& p(1-p)\frac{1}{1-(2p(p-1)+1)}\\
+     &=& \frac{p(1-p)}{2p(1-p)}\\
+     &=& \frac{1}{2}
+     \end{array}
+     \]
+</p>
+
+<p>
+<b><b>Rappel :</b></b> on utilise l'identité suivante (somme des termes d'une suite
+  géométrique de raison r t.q. 0 ≤ r  &lt; 1) :
+ \[\sum_{k=0}^\infty r^k = \frac{1}{1-r}\] 
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-3-4-2" name="sec-1-3-4-2"></a>Méthode 2 : utilisation des probabilités conditionnelles<br ><div class="outline-text-5" id="text-1-3-4-2">
+<p>
+1 = Pr(termine | True) = Pr(termine &cap; True)/Pr(True)
+</p>
+
+<p>
+Parce que renvoyer True c'est terminer.
+</p>
+
+<p>
+Pr(True) = Pr(termine &cap; True)
+</p>
+
+<p>
+Pr(True | termine) = Pr(termine &cap; True)/ Pr(termine) = Pr(temine &cap; True) = Pr(True)
+</p>
+
+<p>
+Or Pr(True | termine) = 1/2
+</p>
+
+<p>
+Puisque dans un tour de boucle qui termine les probabilités de renvoyer True ou False sont égales.
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-3-5" class="outline-4">
+<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> Question 5</h4>
+<div class="outline-text-4" id="text-1-3-5">
+<p>
+Pr(False) = 1-(Pr(True) + Pr(non termine)) = 1/2
+</p>
+
+
+<p>
+Pour terminer, on écrit l'algorithme sous forme récursive :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">def</span> <span style="color: #006699;">tir</span><span style="color: #707183;">()</span>:
+    <span style="color: #707183;">(</span>t1,t2<span style="color: #707183;">)</span> = <span style="color: #707183;">(</span>flip<span style="color: #7388D6;">()</span>, flip<span style="color: #7388D6;">()</span><span style="color: #707183;">)</span>
+    <span style="color: #0000FF;">return</span> <span style="color: #707183;">(</span>t1 <span style="color: #0000FF;">and</span> <span style="color: #0000FF;">not</span> t2<span style="color: #707183;">)</span> <span style="color: #0000FF;">or</span> <span style="color: #707183;">(</span><span style="color: #7388D6;">(</span>t1 <span style="color: #0000FF;">or</span> <span style="color: #0000FF;">not</span> t2<span style="color: #7388D6;">)</span> <span style="color: #0000FF;">and</span> tir<span style="color: #7388D6;">()</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Exercice 4</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Question 1</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+Avant la boucle, v = 1 et c = 0. L'ensemble {0,&#x2026;,v-1} est dans ce cas
+réduit à {0}. Comme Pr(c = 0) = 1, l'invariant est bien vérifié avant la
+boucle.
+</p>
+
+<p>
+En début de boucle, en supposant que v=p, l'invariant est vérifié et ainsi
+que pour toute valeur k dans {0,&#x2026;,p-1}, Pr(c=k) = 1/p.
+</p>
+
+<p>
+Après les deux affectations de début de boucle, v=2p et c prend valeur dans
+{0,&#x2026;,2p-1}. De plus, pour k dans cet ensemble, on pose l le résultat de la
+division euclidienne de k par 2. Comme la probabilité que <code>flip()</code> prenne
+valeur 0 ou 1 est 1/2, quelque soit la parité de k, la probabilité que c ait
+pour valeur k est 1/2 fois la probabilité qu'en début de boucle c avait pour
+valeur l. Ainsi la Pr(c=k)= 1/2p = 1/v.
+</p>
+
+<p>
+Lorsque v ≥ n, on suppose que v prend pour valeur p. Par l'invariant, pour
+chaque valeur k de {n,&#x2026;, p-1}, Pr(c=k) = 1/v. Ainsi, Pr(c=k | c ≥ n) =
+1/(p-n). Il s'ensuit que lorsque l'on affecte la valeur p-n dans v et c-n
+dans c, pour tout k dans {0,&#x2026;,p-n-1} la probabilité que c prenne pour
+valeur k est la probabilité qu'auparavant c avait pour valeur k+n sachant que
+c≥n. Cette probabilité est 1/(p-n). Ainsi c prend une valeur dans
+{0,&#x2026;,p-n-1} avec une probabilité uniforme.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Questions 2 et 3</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+La valeur contenue dans v est strictement inférieure à 2n. En effet,
+l'algorithme termine forcément si v prend valeur n. Car alors c prend une
+valeur dans {0,&#x2026;,n-1} et alors l'algorithme s'arrête.
+</p>
+
+<p>
+Pour que l'algorithme renvoie une valeur il faut que v contienne une valeur
+p supérieure ou égale à n. Comme vue précédemment, p est dans ce cas
+strictement inférieure à 2n. Ainsi la probabilité que l'algorithme utilise
+un tour de boucle supplémentaire est 1 - n/p. Or cette probabilité est
+inférieure à 1-1/2= 1/2 (car p&lt;2n). Ainsi, lorsque v contient une valeur
+supérieure à n, l'algorithme s'arrête avec une probabilité d'au moins 1/2.
+La probabilité que l'algorithme ne s'arrête pas est bornée par la limite 
+\(\lim_{n\to\infty} \left(\frac{1}{2}\right)^n\) qui vaut 0. L'algorithme termine avec
+probabilité 1.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Question 4</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+Lorsque v a pour valeur p ≥ n, l'algorithme termine si c contient une valeur
+k dans {0,&#x2026;,n-1}. Il nous faut évaluer la probabilité suivante : Pr(c=k |
+k&lt;n). Par définition :
+</p>
+
+<p>
+Pr(c=k | k&lt;n) = Pr(c=k ∩ k&lt;n)/Pr(k&lt;n) = (1/p)/(n/p) = 1/n
+</p>
+
+<p>
+Ainsi l'algorithme renvoie une valeur dans {0,&#x2026;,n-1} avec une probabilité
+uniforme.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Question 5</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<p>
+L'algorithme de <code>_randbelow_with_getrandbits</code> est similaire. Il tire au
+hasard à chaque tour de boucle le nombre de bit permettant de trouver
+n'importe quel nombre inférieur à n. Si le nombre tiré est plus grand que
+n-1, on recommence. L'algorithme de l'exercice a des chances de terminer
+plus tôt car en soustrayant n au résultat obtenu, on réutilise une partie
+des bits de la fonction <code>flip()</code> si bien que l'on peut espérer utiliser
+moins de bits pour obtenir une nombre entre 0 et n-1.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div></div></div>
+</body>
+</html>

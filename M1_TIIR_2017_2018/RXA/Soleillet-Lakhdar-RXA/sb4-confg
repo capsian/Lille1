@@ -1,0 +1,146 @@
+
+!
+! Last configuration change at 15:39:45 UTC Mon Jan 15 2018
+! NVRAM config last updated at 15:31:47 UTC Mon Jan 15 2018
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SB4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+username root privilege 15 password 0 bonjour
+no aaa new-model
+switch 1 provision ws-c2960x-24ts-l
+!
+!
+no ip domain-lookup
+ip domain-name lille.fr
+!
+!
+crypto pki trustpoint TP-self-signed-1568656768
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1568656768
+ revocation-check none
+ rsakeypair TP-self-signed-1568656768
+!
+!
+crypto pki certificate chain TP-self-signed-1568656768
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31353638 36353637 3638301E 170D3138 30313135 31353331 
+  34365A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 35363836 
+  35363736 3830819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100BEA4 291507C5 C2D2A8EE 88593161 0E1CF1BF C55DC5DB 8AABEF2B 0C505146 
+  AEB28FFF F5A1E031 516F5FEF A9A1F166 176633A6 BEEBE6F6 9DB0705C 165C5AE5 
+  797314A6 9034EB3D 9BE65C09 B0E6D4B8 F561D450 25B6BCED 548A34FA 9D8199FB 
+  A6663D55 9A1B16A7 7E0F7B9C 9A4C3177 E669224B 097A8742 41685E43 5DF74D7B 
+  AAE50203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14E0BEF0 592C6A9F A07FA897 32B160D5 0D95EE3A F6301D06 
+  03551D0E 04160414 E0BEF059 2C6A9FA0 7FA89732 B160D50D 95EE3AF6 300D0609 
+  2A864886 F70D0101 05050003 818100B4 5BE9C9E3 8378E1EC 41782C15 A10E2044 
+  A40B1A9A 227EABF9 4456F6D6 86B88C28 6E95B576 9D9672A8 A3A9BBD4 9A9E9881 
+  DFFCEBEF 98BBD035 10DCC060 382D84BC F47122CE DB946C6E B86120D7 5199F519 
+  270D4094 04377417 99D71E9C 5266A560 E908E0A6 FF7ABAAB E83247DA D8EE636A 
+  913C5C7D EC86E557 41B83CEA BD2BD5
+  	quit
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+ip ssh authentication-retries 5
+!
+!
+!
+!
+!
+interface FastEthernet0
+ no ip address
+!
+interface GigabitEthernet1/0/1
+!
+interface GigabitEthernet1/0/2
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+!
+interface GigabitEthernet1/0/6
+!
+interface GigabitEthernet1/0/7
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+!
+interface GigabitEthernet1/0/10
+!
+interface GigabitEthernet1/0/11
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+!
+interface GigabitEthernet1/0/14
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/0/25
+!
+interface GigabitEthernet1/0/26
+!
+interface GigabitEthernet1/0/27
+!
+interface GigabitEthernet1/0/28
+!
+interface Vlan1
+ ip address 192.168.1.254 255.255.255.0
+!
+ip http server
+ip http secure-server
+!
+!
+!
+!
+line con 0
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+end

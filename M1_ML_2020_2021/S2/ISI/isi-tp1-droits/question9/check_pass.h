@@ -1,0 +1,1 @@
+int check_pass(char *filename, uid_t user_id, char *password);

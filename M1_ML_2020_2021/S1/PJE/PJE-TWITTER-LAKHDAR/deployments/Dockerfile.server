@@ -1,0 +1,17 @@
+FROM golang:1.14
+
+ARG dummy
+
+RUN echo "arg: $dummy"
+
+WORKDIR /go/src/app
+
+COPY .. .
+
+RUN go mod download
+
+RUN go build -o server ./cmd/server.go
+
+EXPOSE 5000
+
+CMD ["./server"]

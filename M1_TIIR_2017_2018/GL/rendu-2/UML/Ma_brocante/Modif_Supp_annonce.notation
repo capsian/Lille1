@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <notation:Diagram xmi:id="_sSY4EMX5EeeJbdkEEN8WrQ" type="PapyrusUMLSequenceDiagram" name="Sequence Diagram_0" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_sSY4EcX5EeeJbdkEEN8WrQ" type="Interaction_Shape">
+      <children xmi:type="notation:DecorationNode" xmi:id="_sSY4EsX5EeeJbdkEEN8WrQ" type="Interaction_NameLabel"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_sSY4E8X5EeeJbdkEEN8WrQ" type="Interaction_SubfragmentCompartment">
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sSY4FMX5EeeJbdkEEN8WrQ"/>
+      </children>
+      <element xmi:type="uml:Interaction" href="Modif_Supp_annonce.uml#_sSCSwMX5EeeJbdkEEN8WrQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sSY4FcX5EeeJbdkEEN8WrQ"/>
+    </children>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_sSY4FsX5EeeJbdkEEN8WrQ" name="diagram_compatibility_version" stringValue="1.3.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_sSY4F8X5EeeJbdkEEN8WrQ"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_sSY4GMX5EeeJbdkEEN8WrQ" diagramKindId="org.eclipse.papyrus.uml.diagram.sequence">
+      <owner xmi:type="uml:Model" href="Modif_Supp_annonce.uml#_sRKwEMX5EeeJbdkEEN8WrQ"/>
+    </styles>
+    <element xmi:type="uml:Interaction" href="Modif_Supp_annonce.uml#_sSCSwMX5EeeJbdkEEN8WrQ"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_sSgM0MX5EeeJbdkEEN8WrQ" type="PapyrusUMLSequenceDiagram" name="Sequence Diagram_1" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_sSgM0cX5EeeJbdkEEN8WrQ" type="Interaction_Shape">
+      <children xmi:type="notation:DecorationNode" xmi:id="_sSgM0sX5EeeJbdkEEN8WrQ" type="Interaction_NameLabel"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_sSgM08X5EeeJbdkEEN8WrQ" type="Interaction_SubfragmentCompartment">
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sSgM1MX5EeeJbdkEEN8WrQ"/>
+      </children>
+      <element xmi:type="uml:Interaction" href="Modif_Supp_annonce.uml#_sSe-sMX5EeeJbdkEEN8WrQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sSgM1cX5EeeJbdkEEN8WrQ"/>
+    </children>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_sSgM1sX5EeeJbdkEEN8WrQ" name="diagram_compatibility_version" stringValue="1.3.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_sSgM18X5EeeJbdkEEN8WrQ"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_sSgM2MX5EeeJbdkEEN8WrQ" diagramKindId="org.eclipse.papyrus.uml.diagram.sequence">
+      <owner xmi:type="uml:Model" href="Modif_Supp_annonce.uml#_sRKwEMX5EeeJbdkEEN8WrQ"/>
+    </styles>
+    <element xmi:type="uml:Interaction" href="Modif_Supp_annonce.uml#_sSe-sMX5EeeJbdkEEN8WrQ"/>
+  </notation:Diagram>
+</xmi:XMI>

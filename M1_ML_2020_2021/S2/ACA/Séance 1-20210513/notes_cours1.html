@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Notes du cours ACA <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-03-09 mar.&gt;</span></span></title>
+<!-- 2021-03-09 mar. 11:46 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+.code-highlighted { background-color: #ffff00; }
+
+/* .verbatim { color: #3e9409;
+            background-color: #f5fbf4; }*/
+.verbatim {
+    color: #337ab7;
+    background-color: #d9edf7; }
+
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Vérification égalité de polynômes</a></li>
+<li><a href="#sec-2">2. Un peu de probabilités</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. Démonstration du Lemme 1</a></li>
+<li><a href="#sec-2-2">2.2. Démonstration du Lemme 2</a></li>
+<li><a href="#sec-2-3">2.3. Sur le fait d'éliminer des valeur dans la méthode de sampling</a></li>
+<li><a href="#sec-2-4">2.4. Itération de l'algo de test.</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Exercices</a>
+<ul class="nav">
+<li><a href="#sec-3-1">3.1. Ex 1</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">Notes du cours ACA <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-03-09 mar.&gt;</span></span></h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Vérification égalité de polynômes</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Question : pourquoi choisir des valeurs dans l'ensemble {1,&#x2026;, 100d} ?
+
+<p>
+Réponse : si on suppose que F ≠ G, on utilise un ensemble suffisamment grand
+pour contenir très majoritairement des valeurs n telles que F(n) ≠ G(n).
+En prenant cet ensemble, on sait qu'il y a au plus d valeurs n pour
+lesquelles (F-G)(n) = 0. Il se peut très bien qu'il y en ait aucune. Il y a
+ainsi au moins 100 fois plus de témoins que F-G ≠ 0 que de valeurs qui
+annulent F-G. On aurait pu, pour avoir cette propriété, utiliser n'importe
+quel ensemble contenant 100d valeurs.
+</p>
+</li>
+<li>Question : pourquoi y a-t-il une probabilité de 1/100 de se tromper ?
+
+<p>
+Réponse : si l'algorithme renvoie que F ≠ G, il ne se trompe pas. Il a
+trouvé un témoin que F ≠ G. Si il répond qu'ils sont égaux, dans la pire
+situation il y avait 100 racines de F- G dans notre ensemble et il en a
+prise une au hasard. La probabilité de faire ce mauvais choix et est d/100d
+= 1/100.
+</p>
+</li>
+
+<li>La confiance que l'on a calculé est une confiance dans le pire des cas. Car
+il se peut qu'il n'y ait aucune valeur qui annule F-G dans notre ensemble.
+</li>
+
+<li><b>Attention</b> : il ne faut pas tester un grand nombre de valeurs. Si on teste
+l'égalité de F et G en d+1 valeurs distinctes, on sait avec certitude que F
+est égal à G lorsqu'ils sont égaux pour d+1 valeurs. Cependant, comme évaluer F
+et G prend un temps en Θ(d), on obtient un algorithme en O(d²). Ce n'est pas
+meilleur que de développer et mettre en forme canonique les polynômes.
+</li>
+</ul>
+
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">def</span> <span style="color: #006699;">f</span><span style="color: #707183;">(</span>x<span style="color: #707183;">)</span>:
+   <span style="color: #0000FF;">return</span> <span style="color: #707183;">(</span>x+<span style="color: #D0372D;">1</span><span style="color: #707183;">)</span>*<span style="color: #707183;">(</span>x-<span style="color: #D0372D;">2</span><span style="color: #707183;">)</span>*<span style="color: #707183;">(</span>x+<span style="color: #D0372D;">3</span><span style="color: #707183;">)</span>*<span style="color: #707183;">(</span>x-<span style="color: #D0372D;">4</span><span style="color: #707183;">)</span>*<span style="color: #707183;">(</span>x+<span style="color: #D0372D;">5</span><span style="color: #707183;">)</span>*<span style="color: #707183;">(</span>x-<span style="color: #D0372D;">6</span><span style="color: #707183;">)</span> 
+
+<span style="color: #0000FF;">def</span> <span style="color: #006699;">g</span><span style="color: #707183;">(</span>x<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> x**<span style="color: #D0372D;">6</span> + <span style="color: #D0372D;">7</span>*x**<span style="color: #D0372D;">3</span> + <span style="color: #D0372D;">25</span>
+
+<span style="color: #0000FF;">import</span> random
+
+<span style="color: #0000FF;">def</span> <span style="color: #006699;">test_poly</span><span style="color: #707183;">(</span>f, g, d<span style="color: #707183;">)</span>:
+    <span style="color: #036A07;">"""Si f et g sont de fonctions qui impl&#233;mentent des polyn&#244;mes de degr&#233;s au plus</span>
+<span style="color: #036A07;">       d, renvoie False si f &#8800; g et True avec une confiance de 99% que f = g."""</span>
+    <span style="color: #BA36A5;">choix</span> = random.randint<span style="color: #707183;">(</span><span style="color: #D0372D;">1</span>,<span style="color: #D0372D;">100</span>*d<span style="color: #707183;">)</span>
+    <span style="color: #0000FF;">return</span> f<span style="color: #707183;">(</span>choix<span style="color: #707183;">)</span> == g<span style="color: #707183;">(</span>choix<span style="color: #707183;">)</span>
+
+<span style="color: #0000FF;">print</span><span style="color: #707183;">(</span>test_poly<span style="color: #7388D6;">(</span>f, g, <span style="color: #D0372D;">6</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Un peu de probabilités</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Démonstration du Lemme 1</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Pour bien comprendre les deux première identités du Lemme 1, il faut remarquer que :
+</p>
+
+<p>
+\[E_1  = (E_1 - (E_1\cap E_2)) \cup (E_1\cap E_2)\]
+</p>
+
+<p>
+et que les ensembles \(E_1 - (E_1\cap E_2)\) et \(E_1\cap E_2\) sont disjoints.
+Cela nous permet d'utiliser la <i>quasi-linéarité</i> de la fonction de probabilité
+(elle commute avec + sur les unions disjointes).
+</p>
+
+<p>
+De même il faut remarque que
+\[E_1\cup E_2 =  (E_1 - (E_1\cap E_2)) \cup  (E_2 - (E_1\cap E_2)) \cup
+   (E_1\cap E_2)\]
+et que les trois ensembles \(E_1 - (E_1\cap E_2)\), \(E_1 - (E_1\cap E_2)\) et
+\(E_1\cap E_2\) sont deux à deux disjoints.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Démonstration du Lemme 2</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Le Lemme 2 est une conséquence du Lemme 1, il s'agit de faire une récurrence
+sur le nombre d'ensembles impliqués dans l'énoncé. Un passage relativement
+simple à la limite permet alors de conclure.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Sur le fait d'éliminer des valeur dans la méthode de sampling</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+En faisant un calcul (avec des probabilités conditionnelles) sur la précision
+gagnée en éliminant les valeurs utilisées dans la méthode de sampling, on
+trouve un gain marginal (on ne change pas d'ordre de grandeur). En revanche,
+cela complique l'algorithme :
+</p>
+<ul class="org-ul">
+<li>il faut maintenir l'ensemble des valeurs disponibles,
+</li>
+<li>ce calcul supplémentaire augmente le temps de calcul au moins d'un log dans
+la taille de l'ensemble sur lequel on emploie la méthode de sampling.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Itération de l'algo de test.</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Travail sur l'une des propositions faites :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">def</span> <span style="color: #006699;">test_poly_precis</span><span style="color: #707183;">(</span>f, g, d, seuil<span style="color: #707183;">)</span>:
+    <span style="color: #036A07;">"""Si f et g sont de fonctions qui impl&#233;mentent des polyn&#244;mes de degr&#233;s au plus</span>
+<span style="color: #036A07;">       d, renvoie False si f &#8800; g et True avec une confiance de 1-seuil que f = g."""</span>
+    <span style="color: #BA36A5;">i</span> = <span style="color: #D0372D;">0</span>
+    <span style="color: #0000FF;">while</span> <span style="color: #707183;">(</span><span style="color: #D0372D;">1</span>-<span style="color: #7388D6;">(</span><span style="color: #D0372D;">1</span>/<span style="color: #D0372D;">100</span><span style="color: #7388D6;">)</span>**i<span style="color: #707183;">)</span> &lt; seuil:
+        <span style="color: #BA36A5;">test</span> = test_poly<span style="color: #707183;">(</span>f, g, d<span style="color: #707183;">)</span>
+        <span style="color: #0000FF;">if</span> <span style="color: #0000FF;">not</span> test:
+            <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">False</span>
+        <span style="color: #BA36A5;">i</span> += <span style="color: #D0372D;">1</span>
+    <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">True</span>
+</pre>
+</div>
+<p>
+Ici, il y a une confusion entre seuil d'erreur et seuil de confiance.
+</p>
+
+<p>
+Il faut modifier la condition d'arrêt de la boucle :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">def</span> <span style="color: #006699;">test_poly_precis</span><span style="color: #707183;">(</span>f, g, d, seuil<span style="color: #707183;">)</span>:
+    <span style="color: #036A07;">"""Si f et g sont de fonctions qui impl&#233;mentent des polyn&#244;mes de degr&#233;s au plus</span>
+<span style="color: #036A07;">       d, renvoie False si f &#8800; g et True avec une confiance de 1-seuil que f = g."""</span>
+    <span style="color: #BA36A5;">i</span> = <span style="color: #D0372D;">0</span>
+    <span style="color: #0000FF;">while</span> <span style="color: #707183;">(</span><span style="color: #D0372D;">1</span>/<span style="color: #D0372D;">100</span><span style="color: #707183;">)</span>**i &gt; seuil:
+        <span style="color: #BA36A5;">test</span> = test_poly<span style="color: #707183;">(</span>f, g, d<span style="color: #707183;">)</span>
+        <span style="color: #0000FF;">if</span> <span style="color: #0000FF;">not</span> test:
+            <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">False</span>
+        <span style="color: #BA36A5;">i</span> += <span style="color: #D0372D;">1</span>
+    <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">True</span>
+</pre>
+</div>
+<p>
+Une autre remarque est qu'il vaut mieux calculer la précision incrémentalement
+plutôt qu'à chaque tour de boucle. Cela donne :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">def</span> <span style="color: #006699;">test_poly_precis</span><span style="color: #707183;">(</span>f, g, d, seuil<span style="color: #707183;">)</span>:
+    <span style="color: #036A07;">"""Si f et g sont de fonctions qui impl&#233;mentent des polyn&#244;mes de degr&#233;s au plus</span>
+<span style="color: #036A07;">       d, renvoie False si f &#8800; g et True avec une confiance de 1-seuil que f = g."""</span>
+    <span style="color: #BA36A5;">i</span> = <span style="color: #D0372D;">0</span>
+    <span style="color: #BA36A5;">probabilite_erreur</span> = <span style="color: #D0372D;">1</span>
+    <span style="color: #0000FF;">while</span> probabilite_erreur &gt; seuil:
+        <span style="color: #BA36A5;">test</span> = test_poly<span style="color: #707183;">(</span>f, g, d<span style="color: #707183;">)</span>
+        <span style="color: #BA36A5;">probabilite_erreur</span> *= <span style="color: #D0372D;">1</span>/<span style="color: #D0372D;">100</span>
+        <span style="color: #0000FF;">if</span> <span style="color: #0000FF;">not</span> test:
+            <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">False</span>
+    <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">True</span>
+</pre>
+</div>
+
+<p>
+On aurait pu également adopter une version récursive relativement élégante :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #0000FF;">def</span> <span style="color: #006699;">test_poly_precis</span><span style="color: #707183;">(</span>f, g, d, seuil<span style="color: #707183;">)</span>:
+    <span style="color: #036A07;">"""Si f et g sont de fonctions qui impl&#233;mentent des polyn&#244;mes de degr&#233;s au plus</span>
+<span style="color: #036A07;">       d, renvoie False si f &#8800; g et True avec une confiance de 1-seuil que f = g."""</span>
+    <span style="color: #0000FF;">return</span> seuil &gt; <span style="color: #D0372D;">1</span> <span style="color: #0000FF;">or</span> test_poly<span style="color: #707183;">(</span>f,g,d<span style="color: #707183;">)</span> <span style="color: #0000FF;">and</span> test_poly_precis<span style="color: #707183;">(</span>f,g,d,seuil*<span style="color: #D0372D;">100</span><span style="color: #707183;">)</span>
+
+</pre>
+</div>
+<p>
+Cette version se base sur la propriété que :
+</p>
+
+<p>
+\[\left(\frac{1}{100}\right)^k < \mathrm{seuil} \Leftrightarrow 1 <
+   \mathrm{seuil} \times 100^k\]
+</p>
+
+<p>
+Il faut remarquer également que la <i>séquentialité</i> des opérateurs a pour
+conséquence que cette fonction est <i>récursive terminale</i>. Dans un autre
+langage que <code class="verbatim">python</code> l'algorithme serait optimisé par le compilateur en
+éliminant la pile d'appel. Malheureusement <code class="verbatim">python</code> n'optimise pas la
+récursion terminale&#x2026;
+</p>
+
+<p>
+<b>NB</b> : <code>and</code> est prioritaire sur <code>or</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Exercices</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Ex 1</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Il y a 36 combinaisons possibles de valeurs pour les dés. Nous considérons
+que les dés sont parfaits et qu'ils sont jetés de manière indépendante. Ces
+hypothèses impliques que les combinaisons sont équi-probables et ont ainsi
+probabilité 1/36 d'advenir.
+</p>
+
+<p>
+Pour pouvoir calculer la probabilité d'un évènement E, il suffit de calculer
+le cardinale de E et alors nous avons :
+\[Pr(E) = \frac{|E|}{36}\]
+</p>
+</div>
+
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Question 1</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+Il y a 6 valeurs possibles pour chaque dé, il y a ainsi 6 combinaisons
+possibles pour que les dés aient les mêmes valeurs. Ainsi :
+\[Pr(\text{les deux dés ont la même valeur}) = \frac{6}{36} = \frac{1}{6}\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Question 2</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+On regarde quelques exemples :
+</p>
+<ul class="org-ul">
+<li>si le deuxième dé vaut 1, il y a 6 possibilités pour le premier dé qui
+satisfont la condition.
+</li>
+<li>si le deuxième dé vaut 2, il y a 5 possibilités pour le premier dé qui
+satisfont la condition.
+</li>
+<li>de manière générale si le deuxième dé prend la valeur i, le premier dé à
+6-i+1 valeurs possibles pour satisfaire la condition.
+
+<p>
+Ainsi le nombre de possibilité est:
+\[\sum_{i=1}^6 i = \frac{6\times(6+1)}{2} = 21\]
+</p>
+
+<p>
+Donc le probabilité recherchée est :
+\[\frac{21}{36} = \frac{7}{12}\]
+</p>
+
+<p>
+Si on avait pris l'inégalité stricte nous aurions trouvés :
+\[\sum_{i=1}^5 i = \frac{5\times(5+1)}{2} = 15\]
+Donc le probabilité recherchée serait :
+\[\frac{15}{36} = \frac{5}{12}\]
+</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div></div>
+</body>
+</html>

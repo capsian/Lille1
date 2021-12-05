@@ -1,0 +1,120 @@
+Algorithme d'approximation pour min set cover :
+
+prendre les sous ensembles contenant le plus d'éléments pas encore couverts.
+
+idée : on réparti le coût de l'ensemble qu'on ajoute sur tous les éléments qu'il permet de couvrir : si c permet de couvrir r éléments, le coût de couverture de chacun des r éléments est 1/r.
+
+A chaque itération, les éléments non couverts peuvent être couverts en prenant tous les ensembles d'une solution optimale pour un coût maximum de OPT. Parmi tous ces ensembles il doit donc y en avoir un qui a un coût au plus OPT/|éléments pas encore couverts|.
+
+Combien d'éléments ne sont pas encore couverts à l'itération où l'élément  u_k (= keme à être couvert) ?
+
+n-k+1
+
+=> le coût de couverture de u_k est donc cou(u_k) <= OPT/|éléments pas encore couverts| <= OPT/(n-k+1)
+
+Comme on a distribué le coût sur tous les éléments => le coût de la couverture trouvée par l'algorithme est
+
+somme_{k=1..n} cout(u_k) <= somme_{k=1..n}OPT/(n-k+1)
+                                                 = (1+ 1/2 + 1/3 +1/4 + .. + 1/n) OPT = H_n * OPT <= (ln(n)+1)*OPT
+
+---------------------------------------------
+Exercices NPO :
+
+------
+1- montrer que Minimum Vertex Cover est NPO.
+
+Minimum Vertex Cover :
+Donnée : Graphe G
+Sortie : un ensemble de sommets tel que chaque arête a au moins une de ses extrémités dans l'ensemble, et ensemble de taille minimum.
+
+-> Vérifier en temps polynomial qu'une instance est bien une instance du problème :
+= vérifier que la donnée est bien un graphe : parcourrir l'ensemble de sommets et l'ensemble d'aretes en vérifiant que les aretes ont leurs deux extremités dans l'ensemble de sommets vu avant => polynomial : parcours des sommets (ou lecture du nombre de sommets) + deux parcours éventuels (ou 2 comparaisons) pour chaque arretes => parcours un nombre polynomial de fois l'entrée.
+
+-> vérifier qu'un y de taille polynomial en taille de l'entrée est ou non une solution réalisable : parcourir y pour chaque arrete pour chercher si les deux extremités de l'arete sont bien dans y => polynomial
+
+-> solution réalisable y vérifier que |y| est polynomial en |x| : y est un sous ensemble de l'ensemble des sommets du graphe => sa taille est nécessairement polynomial en |x|.
+
+-> m(x,y) = |y| = nombre de sommets de la couverture : pour calculer la taille de y il suffit de le parcourir une fois => au max parcourir tous les sommets du graphe => calculer m(x,y) est polynomial.
+
+------
+2- Montrer que si P1 est dans NPO alors le problème de décision associé est dans NP.
+
+Certificat pour le problème de décision (décider s'il existe une solution de valeur <= k ou >= k suivant si minimisation ou maximisation): une chaine y de taille polynomiale en la taille de l'instance (|x|), comme P1 est dans NPO on peut vérifier en temps polynomial en |x| que y représente une solution réalisable du problème d'optimisation, pour savoir si c'est un certificat valide il faut en plus vérifier si m(x,y) <= k (min) ou m(x,y)>=k (max).
+
+Algo de vérification : 1- vérifier si c'est une solution réalisable
+                                  2- vérifier si le certificat est valide pour le problème de décision par rapport à k
+				  -> polynomial car NPO
+
+------------------------------------
+Algorithme d'approximation -> permet de montrer qu'un problème est approximable à un certain facteur
+
+Si on veut montrer qu'on ne peut pas trouver de meilleur approximation comment faire ?
+
+parallèle avec les problèmes de décision :
+- montrer qu'on peut les résoudre en temps polynomial = donner l'algorithme qui permet de le faire
+- montrer qu'on ne peut pas les résoudre en temps polynomial = réduction d'un problème NP vers ce problème
+
+Est ce que les réductions peuvent servir à montrer qu'un problème n'est pas approximable à un certain facteur ?
+
+Quel type de réduction peut on utiliser pour les résultats d'inapproximabilité ?
+
+Ex : Min Vertex Cover et Max Clique
+
+Max clique :
+donnée : Graphe G=(V,E)
+sortie : un ensemble de sommet C inclu dans V de taille maximum tel que pour tout u, v dans C, l'arete {u,v} est dans E
+
+regarder G et son complémentaire Gc : même sommets, 
+
+ex triangle + 1 sommet relié par une arete à un des 3 sommets du triangle
+
+-> clique dans le graphe avec le triangle G = les trois sommets du triangle = max clique
+-> Gc : deux arêtes reliant 3 sommets et un sommet tout seul : o-O-o o : le sommet au milieu du chemin = le sommet qui n'était pas dans la clique dans G est un min vertex cover pour Gc.
+
+si C est une clique de G, alors V-C est un vertex cover de Gc
+
+-> exercice pour la semaine prochaine : petite preuve par l'absurde, montrer que c'est la même chose pour tous les graphes et leurs complémentaires
+
+réduction de clique -> vertex cover : Clique : existe-til une clique de taille >= k dans G ? => existe-t-il un vertex cover de taille <= |V|-k
+
+=> marche bien pour les problèmes de décision mais on n'a pas de facteur d'approximation qu'on peut déduire de l'un vers l'autre => Clique pas approx à un facteur O(n^(1-epsilon)) pour tout epsilon >0 vertex cover plutôt bien approximable (2-approx).
+
+---------
+Essaie d'une réduction qui permet de montrer un facteur d'inapproximabilité :
+
+TSP = Traveling sale Person = voyageur de commerce
+Donnée : graphe Gt=(V,E), distances sur les arêtes
+sortie : cycle hamiltonien le plus court possible : cycle (tour) qui passe par toutes les arêtes et la somme des distances de ses arêtes est minimum.
+
+Cycle hamiltonien (décision) :
+Donnée : graphe Gh
+sortie : oui s'il existe un cycle qui passe par tous les sommets du graphe, non sinon
+
+Theoreme : Pour toute fonction calculable en temps polynomial f(n), TSP n'est pas approximable à un facteur f(n) sauf si P=NP.
+
+Idée : on suppose qu'il existe un algorithme A d'approximation à un facteur f(n) pour TSP, et on montre qu'on peut utiliser cet algorithme A pour décider Cycle hamiltonien.
+
+-> réduire cycle hamiltonien vers TSP en sorte que :
+     - si Gh a un cycle hamiltonien, alors le coût d'un tour optimal pour TSP dans Gt (construit à partir de Gh) est n
+     - si Gh n'a pas de cycle hamiltonien alors le coût d'un tour optimal pour TSP dans Gt est > f(n)*n
+
+
+
+(= exemple de gap introduction reduction : un problème de décision réduit vers un problème d'optimisation)
+
+Autre exemple :
+
+th : Bin packing n'est pas approximable à un facteur 3/2-epsilon pour tout epsilon > 0 sauf si P = NP.
+
+-> preuve avec le problème de décision Partition.
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+original = getImageID();
+
+getHistogram(values, counts, 256);
+
+
+Plot.create("Histo", "X-axis Label", "Y-axis Label", values, counts)
+Plot.show()
+
+hc = newArray(256);
+hc[0] = 0;
+
+
+n = 0
+for (y = 1; y < 256; y = y + 1)
+{   
+	hc[y] = counts[y] + hc[y-1];
+	n = n + counts[y];
+}
+
+//print(n);
+
+Plot.create("Histo Cum", "X-axis Label", "Y-axis Label", values, hc)
+Plot.show()
+
+hc2 = newArray(256);
+for (y = 0; y < 256; y = y + 1)
+{   
+	s = 0;
+	for (x = 0; x < y; x = x + 1) {
+		s = s + hc[x];
+	}
+	
+	hc2[y] = ((256 * s) / (400*289)) - 1;
+}
+
+Plot.create("Histo Ega", "X-axis Label", "Y-axis Label", values, hc2);
+Plot.show();
+
+
+hn = newArray(256)
+for (y = 0; y < 256; y = y + 1)
+{   
+	hn[y] = counts[y] / (400*289);
+}

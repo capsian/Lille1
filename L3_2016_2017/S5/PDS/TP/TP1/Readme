@@ -1,0 +1,35 @@
+Makefile
+	make : compile tous les fichiers
+	make prlimit : compile prlimit.c
+	make maccess : compile maccess.c
+	make maccess+ : compile maccess+.c
+	make test : exécute le script tests.sh
+	make clean : supprime les fichiers *.o et leurs exécutables
+
+./prlimit
+	Affiche les valeurs limites PATH_MAX, NAME8MAX
+
+
+./maccess path -x -r -w [-v] 
+	paramètre
+		path : fichier à tester
+	options (peu importe l'ordre)
+		-x : test accessibilité
+		-r : test lecture
+		-w : test écriture
+		-v : verbose
+
+./maccess+ path -x -r -w [-v]
+        paramètre
+                path : fichier à tester
+        options (peu importe l'ordre)
+                -x : test accessibilité
+                -r : test lecture
+                -w : test écriture
+                -v : verbose
+
+
+
+
+Amélioration possible
+	reconnaitre les options sous forme -xrw au lieu de -x -r -w

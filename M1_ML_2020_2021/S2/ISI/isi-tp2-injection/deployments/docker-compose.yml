@@ -1,0 +1,82 @@
+version: '3.3'
+
+networks:
+  isi:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.1.0.0/24
+
+services:
+   db:
+     image: mysql
+     volumes:
+       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+     restart: always
+     environment:
+       MYSQL_ROOT_USER: root
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_DATABASE: isitp
+       MYSQL_USER: pouet
+       MYSQL_PASSWORD: pouet
+     ports:
+          - "3306:3306"
+     networks:
+      isi:
+          ipv4_address: "10.1.0.2"
+
+   web_vul:
+     image: isi2_web:0.1.0
+     restart: always
+     build:
+      context: ..
+      dockerfile: /home/ubuntu/isi-tp2-injection/deployments/Dockerfile.server
+     restart: always
+     ports:
+          - "8080:8080"
+     depends_on:
+      - db     
+     networks:
+      isi:
+          ipv4_address: "10.1.0.3"
+          
+   web_sql_correct:
+     image: isi2_web_correct:0.1.0
+     restart: always
+     build:
+      context: ..
+      dockerfile: /home/ubuntu/isi-tp2-injection/deployments/Dockerfile.server_correct
+     restart: always
+     ports:
+          - "8081:8081"
+     depends_on:
+      - db     
+     networks:
+      isi:
+          ipv4_address: "10.1.0.5"
+          
+   web_xss:
+     image: isi2_web_xss:0.1.0
+     restart: always
+     build:
+      context: ..
+      dockerfile: /home/ubuntu/isi-tp2-injection/deployments/Dockerfile.server_xss
+     restart: always
+     ports:
+          - "8082:8082"
+     depends_on:
+      - db     
+     networks:
+      isi:
+          ipv4_address: "10.1.0.6"
+          
+   adminer:
+     image: adminer
+     restart: always
+     ports:
+          - "8000:8080"
+     networks:
+      isi:
+          ipv4_address: "10.1.0.4"
+     
+

@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Bornes de Chernoff</title>
+<!-- 2021-04-13 mar. 07:29 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sylvain Salvati">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style>body { margin-bottom: 0px; }</style><script>
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-3 col-md-push-9"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Fonction des moments d'une variable aléatoire</a>
+<ul class="nav">
+<li><a href="#sec-1-1">1.1. Exercice : fonction des moments d'une loi géométrique</a></li>
+<li><a href="#sec-1-2">1.2. Exercice : somme et moments</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Les bornes de Chernoff</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. Exercice : variables de Bernoulli</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Utilisation pour le tri rapide</a>
+<ul class="nav">
+<li><a href="#sec-3-1">3.1. Exercice : analyse du tri rapide aléatoire.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div><div class="col-md-9 col-md-pull-3"><h1 class="title">Bornes de Chernoff</h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Fonction des moments d'une variable aléatoire</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Après les inégalités de Markov et de Chebyshev, nous allons voir une borne plus
+précise encore. L'inégalité de Markov fait intervenir l'espérance, celle de
+Chebyshev la variance, nous pourrions affiner encore en utilisant des moments
+d'ordre supérieur. En fait, tous ces moments sont contenus dans la fonction
+exponentielle.
+</p>
+
+<p>
+La <i>fonction des moments</i> d'une variable aléatoire X est:
+</p>
+
+<p>
+\[M_X(t) = E(e^{tX})\]
+</p>
+
+<p>
+Nous allons nous intéresser principalement aux propriétés de cette fonction (de
+t) au voisinage de 0. Nous constatons tout d'abord que :
+</p>
+
+<p>
+\[E(X^n) = M^{(n)}_X(0)\]
+où \(M^{(n)}_X(0)\) est la nème dérivée de \(M_X(t)\) en 0. En effet, du fait
+que la dérivation et l'espérance commutent, nous avons:
+</p>
+
+<p>
+\[M^{(n)}_X(t) = E(X^ne^{tX})\]
+</p>
+
+
+<p>
+et ainsi pour t=0, nous obtenons l'identité.
+</p>
+
+
+<p>
+Pour deux variables aléatoires X et Y, si il existe \(\delta>0\) tel que pour
+tout \(t\in \rbrack -\delta,\delta\lbrack\), \(M_X(t)= M_Y(t)\) alors X et Y ont
+même distribution.
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Exercice : fonction des moments d'une loi géométrique</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+On suppose que X est une variable aléatoire de loi géométrique de paramètre
+p et que \(t < \ln\left(\frac{1}{1-p}\right)\). Calculer \(M_X(t)\).
+En déduire \(E(X)\) et \(E(X^2)\).
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Exercice : somme et moments</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Montrer que si X et Y sont deux variables indépendantes alors \[M_{X+Y}(t) =
+    M_X(t)M_Y(y)\]
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Les bornes de Chernoff</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+En utilisant l'inégalité de Markov, nous pouvons obtenir l'inégalité suivante
+pour tout \(t>0\):
+\[Pr(X\geq a) = Pr(e^{tX}\geq e^{ta}) \leq \frac{E(e^{tX})}{e^{ta}}\]
+</p>
+
+<p>
+En particulier,
+</p>
+
+<p>
+\[Pr(X\geq a)\leq \inf_{t>0} \frac{E(e^{tX})}{e^{ta}}\]
+</p>
+
+<p>
+Symétriquement, pour tout \(t<0\):
+\[Pr(X\leq a) = Pr(e^{tX}\geq e^{ta}) \leq \frac{E(e^{tX})}{e^{ta}}\]
+</p>
+
+<p>
+Et,
+</p>
+
+<p>
+\[Pr(X\geq a)\leq \inf_{t<0} \frac{E(e^{tX})}{e^{ta}}\]
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Exercice : variables de Bernoulli</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Soient \(X_1\), &#x2026;, \(X_n\) n variables aléatoires de Bernoulli de paramètre p
+et soit \(X = \sum_{i=1}^n X_i\). 
+</p>
+
+<ol class="org-ol">
+<li>Montrer que pour tout i:
+\[E(e^{tX_i} \leq e^{p(e^t-1)}\]
+et
+\[E(e^{tX} \leq e^{np(e^t-1)}\]
+</li>
+<li>Si on suppose \(t>0\), on peut poser trouver \(\delta >0\) tel que
+\(t=\ln(1+\delta)\) :
+
+<ol class="org-ol">
+<li>Borner \(E(e^{tX})\) en fonction de \(\delta\)
+</li>
+
+<li>Borner exprimer \(e^{-t(1+\delta np)}\) en fonction de \(\delta\) uniquement
+</li>
+</ol>
+</li>
+
+<li>Montrer que:
+<ol class="org-ol">
+<li>pour tout \(\delta>0\):
+\[Pr(X\geq (1+\delta)np) \leq  \left(\frac{e^\delta}{(1+\delta)^{1+\delta}}\right)^{np}\]
+</li>
+<li>pour tout \(t<0\): \[Pr(X\leq (1-\delta)np) \leq
+         \left(\frac{e^{-\delta}}{(1-\delta)^{1-\delta}}\right)^{np}\]
+</li>
+</ol>
+</li>
+</ol>
+
+<p>
+<b><b>NB:</b></b> Nous utiliserons en général les identités suivant (pour tout \(\delta\in \rbrack 0,1\lbrack\)):
+      \[Pr(X\geq (1+\delta)np) \leq  e^{-np\delta^2/3}\]
+      \[Pr(X\geq (1-\delta)np) \leq  e^{-np\delta^2/3}\]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Utilisation pour le tri rapide</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Nous allons reprendre ici l'analyse du tri rapide aléatoire. Si nous appelons
+Q la variable aléatoire qui indique le nombre de comparaisons lors d'un tri
+rapide aléatoire d'une liste de n nombres, nous avons vu que \(E(Q) = O(n
+  \log(n))\). Nous allons borner la probabilité que l'algorithme se comporte mal
+sur une entrée.
+</p>
+
+<p>
+Pour rappel on peut voir l'algorithme du tri rapide comme un arbre binaire:
+</p>
+<ol class="org-ol">
+<li>à la racine on a l'ensemble à trier
+</li>
+<li>à gauche on a le sous-problème du tri des éléments plus petits que le pivot
+</li>
+<li>à droite on a le sous-problème du tri des éléments plus grands que le pivot
+</li>
+<li>chaque noeud interne est un sous-problème de taille plus petite taille
+</li>
+<li>chaque feuille est un singleton
+</li>
+</ol>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Exercice : analyse du tri rapide aléatoire.</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+On dit qu'un noeud x est <i>bon</i> si chacun de ses fils est un problème de
+taille au plus \(\frac{2}{3}\) que x.
+</p>
+
+<ol class="org-ol">
+<li>Donner la probabilité qu'un noeud soit bon
+</li>
+<li>Donner le nombre maximal M de noeuds bons dans un chemin de la racine à une
+feuille.
+</li>
+<li>Nous considérons un chemin de taille 48M et nous voulons évaluer la
+probabilité  qu'il contient moins de M bons noeuds. Pour cela nous
+introduisons les variables de Bernoulli \(X_i\) qui prennent pour valeur 1
+lorsque le ième noeud est bon et 0 sinon. Si on pose \(X=\sum_{i=1}^n X_i\),
+borner \(Pr(X \leq M)\) par \(\frac{1}{n^2}\).
+</li>
+<li>En déduire que la probabilité qu'il existe un chemin dans l'arbre de
+longueur au moins 48M est inférieure à \(\frac{1}{n}\).
+</li>
+<li>En déduire que le tri rapide termine en \(O(n\log(n))\) avec forte
+probabilité.
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div></div>
+</body>
+</html>

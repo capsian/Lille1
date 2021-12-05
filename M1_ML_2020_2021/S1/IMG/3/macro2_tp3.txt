@@ -1,0 +1,64 @@
+original = getImageID();
+
+run("Duplicate...", "title=t50");
+t50 = getImageID();
+
+run("Duplicate...", "title=t55");
+t55 = getImageID();
+
+run("Duplicate...", "title=t60");
+t60 = getImageID();
+
+selectWindow("t50");
+t = 50;
+for (y = 0; y < getHeight; y = y + 1)
+{   
+	for (x = 0; x < getWidth; x = x + 1)
+	{   
+		valeurPixel = getPixel(x, y);     
+		if (valeurPixel > t)    
+		{
+			setPixel(x,y,255);
+		} else {
+			setPixel(x,y,0);
+		}
+	}
+}
+updateDisplay();
+
+
+selectWindow("t55");
+t = 55;
+for (y = 0; y < getHeight; y = y + 1)
+{   
+	for (x = 0; x < getWidth; x = x + 1)
+	{   
+		valeurPixel = getPixel(x, y);     
+		if (valeurPixel > t)    
+		{
+			setPixel(x,y,255);
+		} else {
+			setPixel(x,y,0);
+		}
+	}
+}
+updateDisplay();
+
+
+selectWindow("t60");
+t = 60;
+for (y = 0; y < getHeight; y = y + 1)
+{   
+	for (x = 0; x < getWidth; x = x + 1)
+	{   
+		valeurPixel = getPixel(x, y);     
+		if (valeurPixel > t)    
+		{
+			setPixel(x,y,255);
+		} else {
+			setPixel(x,y,0);
+		}
+	}
+}
+
+updateDisplay();

@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: userhelloworld
+  namespace: helloworld
+
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: userhelloworld-full-access
+  namespace: helloworld
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["*"]
+  verbs: ["*"]
+- apiGroups: ["batch"]
+  resources:
+  - jobs
+  - cronjobs
+  verbs: ["*"]
+
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: userhelloworld-view
+  namespace: helloworld
+subjects:
+- kind: ServiceAccount
+  name: userhelloworld
+  namespace: helloworld
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: userhelloworld-full-access

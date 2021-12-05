@@ -1,0 +1,19 @@
+# pull official base image
+FROM node:12.18.4-alpine
+
+# set working directory
+WORKDIR /app
+
+# install app dependencies
+COPY . .
+
+RUN npm install
+RUN npm run  build
+RUN mkdir server/public
+RUN mv build/* ./server/public
+RUN rm -rf build
+
+#EXPOSE 5001
+
+# start app
+#CMD ["node", "server/server.js"]

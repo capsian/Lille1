@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  namespace: helloworld
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: groupe8.tiir.ovh
+    http:
+      paths:
+      - backend:
+          serviceName: backend-service
+          servicePort: 8080
+        path: /api/*

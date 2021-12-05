@@ -1,0 +1,5 @@
+1004 lambda_b
+list /home/ubuntu/isi-tp1/question10/dir_b/lambda_b
+read /home/ubuntu/isi-tp1/question10/dir_b/lambda_b/lambda_a.txt
+read /home/ubuntu/isi-tp1/question10/dir_a/lambda_a/lambda_a.txt
+exit
