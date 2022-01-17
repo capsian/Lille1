@@ -71,3 +71,8 @@ test_server:
 
 tmp:
 	python3 src/models.py -v -in ./dataset/server/train_master_stemm.csv -m rdg
+
+
+# Docker
+docker_up:
+	docker-compose up

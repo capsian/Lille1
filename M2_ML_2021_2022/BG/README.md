@@ -1,11 +1,24 @@
-# BigData
+# BigData: Micro Service Sentiment Classification
 
 # Author
 
 - Selim Lakhdar
     - selim.lakhdar@gmail.com
     - selim.lakhdar.etu@univ-lille.fr
+--------------------------------------------------------------------------
 
+# Run
+```
+docker-compose -f deployments/docker-compose.yml up
+```
+
+# Test
+```
+./scripts/test_server.sh
+```
+
+
+----------------------------------------------------------------------
 
 # Content
 ## Notebooks

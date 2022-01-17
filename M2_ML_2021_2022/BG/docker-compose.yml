@@ -1,0 +1,9 @@
+version: "3.3"
+
+services:
+  server:
+    build: .
+    volumes:
+      - ./deployment:/sentiment_classifier
+    ports:
+      - "5000:5000"

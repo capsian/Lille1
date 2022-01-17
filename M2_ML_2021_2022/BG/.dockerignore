@@ -1,0 +1,12 @@
+doc
+lib
+models
+notebooks
+scripts
+deployment
+.git
+.idea
+.gitignore
+.dockerignore
+docker-compose.yml
+Dockerfile

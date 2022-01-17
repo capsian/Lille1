@@ -1,0 +1,7 @@
+Flask
+spacy==3.2.0
+numpy
+pandas
+sklearn
+scipy
+nltk
