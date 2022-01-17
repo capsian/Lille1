@@ -1,9 +1,1 @@
-build
-data
-deployments
-doc
-ml
-
-web/node_modules
-web/build
-web/package-lock.json
+web

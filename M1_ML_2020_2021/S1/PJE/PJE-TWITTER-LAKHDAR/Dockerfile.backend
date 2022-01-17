@@ -1,0 +1,18 @@
+FROM golang:latest
+
+RUN apt-get install -y python
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python get-pip.py
+RUN pip install numpy argparse pandas
+
+WORKDIR /go/src/app
+
+COPY . .
+
+RUN go mod download
+
+RUN go build -o server ./cmd/server.go
+
+EXPOSE 5000
+
+CMD ["./server"]

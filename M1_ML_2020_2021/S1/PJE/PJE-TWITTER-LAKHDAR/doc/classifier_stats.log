@@ -1,0 +1,39 @@
+Read ....
+Cleaning ....
+error clean with : nan
+bayes_pres: n_gram:1, min_word:1, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:1, min_word:1, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:1, min_word:1, accuracy:0.5924018029620091, precision:0.3084795321637427, recall:0.42369477911646586, f1_score:0.3570219966159052
+bayes_pres: n_gram:1, min_word:2, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:1, min_word:2, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:1, min_word:2, accuracy:0.5924018029620091, precision:0.3084795321637427, recall:0.42369477911646586, f1_score:0.3570219966159052
+bayes_pres: n_gram:1, min_word:3, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:1, min_word:3, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:1, min_word:3, accuracy:0.5924018029620091, precision:0.3084795321637427, recall:0.42369477911646586, f1_score:0.3570219966159052
+bayes_pres: n_gram:2, min_word:1, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:2, min_word:1, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:2, min_word:1, accuracy:0.631974921630094, precision:0.375, recall:0.5120481927710844, f1_score:0.432937181663837
+bayes_pres: n_gram:2, min_word:2, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:2, min_word:2, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:2, min_word:2, accuracy:0.631974921630094, precision:0.375, recall:0.5120481927710844, f1_score:0.432937181663837
+bayes_pres: n_gram:2, min_word:3, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:2, min_word:3, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:2, min_word:3, accuracy:0.631974921630094, precision:0.375, recall:0.5120481927710844, f1_score:0.432937181663837
+bayes_pres: n_gram:3, min_word:1, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:3, min_word:1, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:3, min_word:1, accuracy:0.6497395833333334, precision:0.4424778761061947, recall:0.5020080321285141, f1_score:0.4703668861712136
+bayes_pres: n_gram:3, min_word:2, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:3, min_word:2, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:3, min_word:2, accuracy:0.6497395833333334, precision:0.4424778761061947, recall:0.5020080321285141, f1_score:0.4703668861712136
+bayes_pres: n_gram:3, min_word:3, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:3, min_word:3, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:3, min_word:3, accuracy:0.6497395833333334, precision:0.4424778761061947, recall:0.5020080321285141, f1_score:0.4703668861712136
+bayes_pres: n_gram:4, min_word:1, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:4, min_word:1, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:4, min_word:1, accuracy:0.6310679611650486, precision:0.5738161559888579, recall:0.41365461847389556, f1_score:0.48074679113185526
+bayes_pres: n_gram:4, min_word:2, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:4, min_word:2, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:4, min_word:2, accuracy:0.6310679611650486, precision:0.5738161559888579, recall:0.41365461847389556, f1_score:0.48074679113185526
+bayes_pres: n_gram:4, min_word:3, accuracy:0.5914634146341463, precision:1.0, recall:0.2791164658634538, f1_score:0.4364207221350078
+pred_freq: n_gram:4, min_word:3, accuracy:0.5752808988764045, precision:0.7417582417582418, recall:0.2710843373493976, f1_score:0.39705882352941174
+pred_keyword: n_gram:4, min_word:3, accuracy:0.6310679611650486, precision:0.5738161559888579, recall:0.41365461847389556, f1_score:0.48074679113185526

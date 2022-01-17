@@ -1,29 +1,35 @@
 .idea
 build
 
-data/db
+deployments/data/db
 
 ## WEB
 # dependencies
-web/node_modules
-web/.pnp
-web/.pnp.js
+web/app/node_modules
+web/app/.pnp
+web/app/.pnp.js
 
 # testing
-web/coverage
+web/app/coverage
 
 # production
-web/build
+web/app/build
 
 # misc
-web/.DS_Store
-web/.env.local
-web/.env.development.local
-web/.env.test.local
-web/.env.production.local
+web/app/.DS_Store
+web/app/.env.local
+web/app/.env.development.local
+web/app/.env.test.local
+web/app/.env.production.local
 
-web/npm-debug.log*
-web/yarn-debug.log*
-web/yarn-error.log*
+web/app/npm-debug.log*
+web/app/yarn-debug.log*
+web/app/yarn-error.log*
 
-web/package-lock.json
+web/app/package-lock.json
+
+scripts/ml/__pycache__/
+
+data/training/training.1600000.processed.noemoticon.clean.csv
+data/training/training.1600000.processed.noemoticon.clean.old.csv
+data/old/training.1600000.processed.noemoticon.csv

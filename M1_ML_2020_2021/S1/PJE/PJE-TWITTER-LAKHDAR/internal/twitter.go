@@ -3,10 +3,17 @@ package internal
 import (
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
-	"os"
-	"os/signal"
-	"syscall"
 )
+
+type Tweet struct {
+	ID        string `json:"id"`
+	Request   string `json:"request"`
+	Author    string `json:"author"`
+	CreatedAt string `json:"createdAt"`
+	Lang      string `json:"lang"`
+	Message   string `json:"message"`
+	Score     int    `json:"score"`
+}
 
 type TwitterClient struct {
 	client         *twitter.Client
@@ -28,51 +35,13 @@ func InitClient() TwitterClient {
 	return c
 }
 
-func (tc TwitterClient) Search(query string) (*twitter.Search, error) {
+func (tc TwitterClient) Search(query string, english string) (*twitter.Search, error) {
 	search, _, err := tc.client.Search.Tweets(&twitter.SearchTweetParams{
 		Query: query,
+		Lang: english,
 	})
 	if err != nil {
 		return nil, err
 	}
 	return search, nil
-}
-
-func (tc TwitterClient) Stream(query string) (*twitter.Search, error) {
-
-	// Convenience Demux demultiplexed stream messages
-	demux := twitter.NewSwitchDemux()
-	demux.Tweet = func(tweet *twitter.Tweet) {
-		//fmt.Println(tweet.Text)
-	}
-	demux.DM = func(dm *twitter.DirectMessage) {
-		//fmt.Println(dm.SenderID)
-	}
-	demux.Event = func(event *twitter.Event) {
-		//fmt.Printf("%#v\n", event)
-	}
-
-	//fmt.Println("Starting Stream...")
-
-	// FILTER
-	filterParams := &twitter.StreamFilterParams{
-		Track:         []string{"cat"},
-		StallWarnings: twitter.Bool(true),
-	}
-	stream, err := tc.stream.Filter(filterParams)
-	if err != nil {
-		//log.Fatal(err)
-	}
-
-	go demux.HandleChan(stream.Messages)
-
-	// Wait for SIGINT and SIGTERM (HIT CTRL-C)
-	ch := make(chan os.Signal)
-	signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM)
-	//log.Println(<-ch)
-
-	//fmt.Println("Stopping Stream...")
-	stream.Stop()
-
-	return nil, nil
 }
