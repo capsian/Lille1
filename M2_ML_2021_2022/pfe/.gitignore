@@ -1,5 +1,0 @@
-.idea
-.config
-
-wandb
-data/*.cache
